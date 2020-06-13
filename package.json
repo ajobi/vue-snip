@@ -1,6 +1,8 @@
 {
   "name": "vue-snip-text",
   "version": "0.0.1",
+  "author": "Andrej Bilec <andrej.bilec@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "lint": "eslint ./src"
   },
