@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>vue-snip-text</title>
-  <link rel="stylesheet" type="text/css" href="index.css">
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
-<div id="playground">
-  <h1>Development Playground</h1>
-</div>
+  <head>
+    <meta charset="UTF-8">
+    <title>vue-snip-text</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="playground">
+      <h1>Development Playground</h1>
+      <div class="card">
+        <h4>Original Text</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.</p>
+      </div>
+      <div class="card">
+        <h4>Snipped Text</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.</p>
+      </div>
+      <div class="controls">
+        <button @click="lines++">+</button>
+        <button @click="lines--">-</button>
+      </div>
+    </div>
 
-<script>
-  new Vue({
-    el: '#playground',
-  });
-</script>
-</body>
+    <script>
+      new Vue({
+        el: '#playground',
+        data: () => ({
+          lines: 3,
+          narrow: false
+        })
+      });
+    </script>
+  </body>
 </html>
