@@ -5,7 +5,6 @@
     <title>vue-snip-text</title>
     <link rel="stylesheet" type="text/css" href="index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="index.js" type="module"></script>
   </head>
   <body>
     <div id="playground">
@@ -16,7 +15,7 @@
       </div>
       <div class="card">
         <h4>Snipped Text</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.</p>
+        <p v-snip-text="3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.</p>
       </div>
       <div class="controls">
         <button @click="lines++">+</button>
@@ -24,7 +23,10 @@
       </div>
     </div>
 
-    <script>
+    <script type="module">
+      import VueSnipText from '../src/index.js'
+      Vue.use(VueSnipText)
+
       new Vue({
         el: '#playground',
         data: () => ({

@@ -1,5 +1,9 @@
 export default {
   install (Vue, options) {
-    console.log('vue-snip-text installed!')
+    Vue.directive('snip-text', {
+      bind (el, binding, vnode, oldVnode) {
+        console.log(el)
+      }
+    })
   }
 }
