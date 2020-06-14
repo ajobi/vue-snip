@@ -49,7 +49,8 @@ export class ElementSnipper {
   }
 
   ellipsis () {
-    while ([' ', '.'].includes(this.processed[this.processed.length - 1])) {
+    // strip trailing spaces, commas, and dots before ellipsis is applied
+    while ([' ', '.', ','].includes(this.processed[this.processed.length - 1])) {
       this.processed = this.processed.substring(0, this.processed.length - 1)
     }
 
