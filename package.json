@@ -7,6 +7,7 @@
     "lint": "eslint ./src",
     "build": "webpack --config webpack.config.js"
   },
+  "main": "src/index.js",
   "devDependencies": {
     "eslint": "^7.1.0",
     "eslint-config-standard": "^14.1.1",
