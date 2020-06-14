@@ -1,4 +1,4 @@
-export const getComputedLines = el => {
+export const getLines = el => {
   const computedStyle = window.getComputedStyle(el)
 
   const computedHeight = parseInt(computedStyle.height)

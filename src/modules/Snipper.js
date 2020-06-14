@@ -1,11 +1,11 @@
-import { getComputedLines } from './getComputedLines.js'
+import { getLines } from './getLines.js'
 
 const SEPARATOR_SENTENCE = '. '
 const SEPARATOR_WORD = ' '
 const SEPARATOR_LETTER = ''
 const ELLIPSIS = '...'
 
-export class ElementSnipper {
+export class Snipper {
   constructor (el) {
     this.el = el
     this.maxLines = el._snipText.maxLines
@@ -33,7 +33,7 @@ export class ElementSnipper {
   }
 
   _isWithinRange () {
-    return getComputedLines(this.el) <= this.maxLines
+    return getLines(this.el) <= this.maxLines
   }
 
   snipSentences () {

@@ -1,4 +1,4 @@
-import { ElementSnipper } from './ElementSnipper.js'
+import { Snipper } from './Snipper.js'
 
 export const snipElement = (el) => {
   if (el._snipText.maxLines <= 0) {
@@ -6,7 +6,7 @@ export const snipElement = (el) => {
     return
   }
 
-  new ElementSnipper(el)
+  new Snipper(el)
     .snipSentences()
     .snipWords()
     .snipCharacters()
