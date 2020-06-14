@@ -7,18 +7,18 @@ export default {
         const resizeObserver = new ResizeObserver(() => snipElement(el))
         resizeObserver.observe(el)
 
-        el.__snipText = {
+        el._snipText = {
           observer: resizeObserver,
           fullText: el.innerText,
           maxLines: value
         }
       },
       update (el, { value }) {
-        el.__snipText.maxLines = value
+        el._snipText.maxLines = value
         snipElement(el)
       },
       unbind (el) {
-        el.__snipText.observer.disconnect()
+        el._snipText.observer.disconnect()
       }
     })
   }

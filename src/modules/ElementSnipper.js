@@ -8,8 +8,8 @@ const ELLIPSIS = '...'
 export class ElementSnipper {
   constructor (el) {
     this.el = el
-    this.maxLines = el.__snipText.maxLines
-    this.unprocessed = el.__snipText.fullText
+    this.maxLines = el._snipText.maxLines
+    this.unprocessed = el._snipText.fullText
     this.processed = ''
   }
 
