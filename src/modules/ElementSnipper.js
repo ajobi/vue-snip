@@ -22,7 +22,7 @@ export class ElementSnipper {
     this.unprocessed = chunks.find(chunk => {
       this.el.innerText = `${this.processed}${chunk}${ELLIPSIS}`
 
-      if (getComputedLines(this.el) > this.maxLines) {
+      if (!this.isWithinRange()) {
         return true
       }
 
@@ -30,6 +30,10 @@ export class ElementSnipper {
     })
 
     return this
+  }
+
+  isWithinRange () {
+    return getComputedLines(this.el) <= this.maxLines
   }
 
   snipSentences () {
@@ -44,7 +48,7 @@ export class ElementSnipper {
     return this._snipChunks(SEPARATOR_LETTER)
   }
 
-  applyEllipsis () {
-    this.el.innerText = `${this.processed}${ELLIPSIS}`
+  ellipsis () {
+    this.el.innerText = `${this.processed.trim()}${ELLIPSIS}`
   }
 }
