@@ -9,6 +9,9 @@
     "prepare": "yarn build"
   },
   "main": "dist/main.js",
+  "files": [
+    "dist/"
+  ],
   "devDependencies": {
     "eslint": "^7.1.0",
     "eslint-config-standard": "^14.1.1",
