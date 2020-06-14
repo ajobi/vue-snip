@@ -2,6 +2,8 @@ import { getComputedLines } from './getComputedLines.js'
 
 const SEPARATOR_SENTENCE = '. '
 const SEPARATOR_WORD = ' '
+const SEPARATOR_LETTER = ''
+const ELLIPSIS = '...'
 
 export class ElementSnipper {
   constructor (el) {
@@ -11,57 +13,38 @@ export class ElementSnipper {
     this.processed = ''
   }
 
-  snipSentences () {
-    const sentences = this.unprocessed.split(SEPARATOR_SENTENCE)
-
-    let sentenceIndex = sentences.length - 1
-    for (sentenceIndex; sentenceIndex >= 0; sentenceIndex--) {
-      this.el.innerText = `${sentences.slice(0, sentenceIndex).join(SEPARATOR_SENTENCE)}...`
-
-      if (getComputedLines(this.el) <= this.maxLines) {
-        break
-      }
+  _snipChunks (separator) {
+    if (!this.unprocessed) {
+      return this
     }
 
-    this.processed = `${this.processed}${sentences.slice(0, sentenceIndex).join(SEPARATOR_SENTENCE)}`
-    this.unprocessed = sentences[sentenceIndex]
+    const chunks = this.unprocessed.split(separator)
+    this.unprocessed = chunks.find(chunk => {
+      this.el.innerText = `${this.processed}${chunk}${ELLIPSIS}`
+
+      if (getComputedLines(this.el) > this.maxLines) {
+        return true
+      }
+
+      this.processed = `${this.processed}${chunk}${separator}`
+    })
 
     return this
+  }
+
+  snipSentences () {
+    return this._snipChunks(SEPARATOR_SENTENCE)
   }
 
   snipWords () {
-    const words = this.unprocessed.split(SEPARATOR_WORD)
-
-    let wordIndex = words.length - 1
-    for (wordIndex; wordIndex >= 0; wordIndex--) {
-      this.el.innerText = `${this.processed}. ${words.slice(0, wordIndex).join(SEPARATOR_WORD)}...`
-
-      if (getComputedLines(this.el) <= this.maxLines) {
-        break
-      }
-    }
-
-    this.processed = `${this.processed}${words.slice(0, wordIndex).join(SEPARATOR_WORD)}`
-    this.unprocessed = words[wordIndex]
-
-    return this
+    return this._snipChunks(SEPARATOR_WORD)
   }
 
   snipCharacters () {
-    const chars = this.unprocessed
+    return this._snipChunks(SEPARATOR_LETTER)
+  }
 
-    let charIndex = chars.length - 1
-    for (charIndex; charIndex >= 0; charIndex--) {
-      this.el.innerText = `${this.processed} ${chars.slice(0, charIndex)}...`
-
-      if (getComputedLines(this.el) <= this.maxLines) {
-        break
-      }
-    }
-
-    this.processed = `${this.processed} ${chars.slice(0, charIndex)}`
-    this.unprocessed = ''
-
-    return this
+  applyEllipsis () {
+    this.el.innerText = `${this.processed}${ELLIPSIS}`
   }
 }

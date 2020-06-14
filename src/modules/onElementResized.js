@@ -5,4 +5,5 @@ export const snipElement = (el) => {
     .snipSentences()
     .snipWords()
     .snipCharacters()
+    .applyEllipsis()
 }
