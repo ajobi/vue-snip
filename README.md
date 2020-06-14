@@ -1,1 +1,3 @@
-# vue-snip-text
+# Vue Snip Text
+
+In preparation...
