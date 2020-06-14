@@ -11,6 +11,7 @@ export class Snipper {
     this.maxLines = el._snipText.maxLines
     this.unprocessed = el._snipText.fullText
     this.processed = ''
+    el.innerText = el._snipText.fullText
   }
 
   _snipChunks (separator) {
@@ -22,7 +23,7 @@ export class Snipper {
     this.unprocessed = chunks.find(chunk => {
       this.el.innerText = `${this.processed}${chunk}${ELLIPSIS}`
 
-      if (!this._isWithinRange()) {
+      if (!this.isWithinRange()) {
         return true
       }
 
@@ -32,7 +33,7 @@ export class Snipper {
     return this
   }
 
-  _isWithinRange () {
+  isWithinRange () {
     return getLines(this.el) <= this.maxLines
   }
 

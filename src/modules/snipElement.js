@@ -6,7 +6,13 @@ export const snipElement = (el) => {
     return
   }
 
-  new Snipper(el)
+  const snipper = new Snipper(el)
+
+  if (snipper.isWithinRange()) {
+    return
+  }
+
+  snipper
     .snipSentences()
     .snipWords()
     .snipCharacters()
