@@ -1,5 +1,8 @@
 import { getComputedLines } from './getComputedLines.js'
 
+const SEPARATOR_SENTENCE = '. '
+const SEPARATOR_WORD = ' '
+
 export class ElementSnipper {
   constructor (el) {
     this.el = el
@@ -9,7 +12,6 @@ export class ElementSnipper {
   }
 
   snipSentences () {
-    const SEPARATOR_SENTENCE = '. '
     const sentences = this.unprocessed.split(SEPARATOR_SENTENCE)
 
     let sentenceIndex = sentences.length - 1
@@ -28,7 +30,6 @@ export class ElementSnipper {
   }
 
   snipWords () {
-    const SEPARATOR_WORD = ' '
     const words = this.unprocessed.split(SEPARATOR_WORD)
 
     let wordIndex = words.length - 1
