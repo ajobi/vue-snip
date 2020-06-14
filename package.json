@@ -16,5 +16,9 @@
     "eslint-plugin-standard": "^4.0.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ajobi/vue-snip-text"
   }
 }
