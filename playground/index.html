@@ -11,11 +11,11 @@
       <h1>Development Playground</h1>
       <div class="card">
         <h4>Original Text</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.</p>
+        <p>{{ displayText }}</p>
       </div>
       <div class="card">
-        <h4>Snipped Text ({{ maxLines }})</h4>
-        <p v-snip-text="maxLines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.</p>
+        <h4>Snipped Text ({{ maxLines }} lines)</h4>
+        <p v-snip-text="maxLines">{{ displayText }}</p>
       </div>
       <div class="controls">
         <button @click="maxLines++">+</button>
@@ -31,7 +31,12 @@
         el: '#playground',
         data: () => ({
           maxLines: 3,
-        })
+        }),
+        computed: {
+          displayText () {
+            return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.'
+          }
+        }
       });
     </script>
   </body>

@@ -28,5 +28,6 @@ button {
 }
 
 .controls {
-  margin-top: 30px;
+  position: fixed;
+  bottom: 100px;
 }
