@@ -49,6 +49,10 @@ export class ElementSnipper {
   }
 
   ellipsis () {
-    this.el.innerText = `${this.processed.trim()}${ELLIPSIS}`
+    while ([' ', '.'].includes(this.processed[this.processed.length - 1])) {
+      this.processed = this.processed.substring(0, this.processed.length - 1)
+    }
+
+    this.el.innerText = `${this.processed}${ELLIPSIS}`
   }
 }
