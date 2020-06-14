@@ -1,6 +1,6 @@
 {
   "name": "vue-snip-text",
-  "version": "1.0.0-alpha",
+  "version": "1.0.1-alpha",
   "author": "Andrej Bilec <andrej.bilec@gmail.com>",
   "license": "MIT",
   "scripts": {
