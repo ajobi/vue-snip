@@ -13,14 +13,13 @@
         <h4>Original Text</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.</p>
       </div>
-      <div class="card" :style="{ width: narrow ? '300px' : 'auto' }">
-        <h4>Snipped Text ({{ maxHeight }}px)</h4>
-        <p v-snip-text="maxHeight">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.</p>
+      <div class="card">
+        <h4>Snipped Text ({{ maxLines }})</h4>
+        <p v-snip-text="maxLines">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.</p>
       </div>
       <div class="controls">
-        <button @click="maxHeight+=10">+</button>
-        <button @click="maxHeight-=10">-</button>
-        <button @click="narrow = !narrow">resize</button>
+        <button @click="maxLines++">+</button>
+        <button @click="maxLines--">-</button>
       </div>
     </div>
 
@@ -31,8 +30,7 @@
       new Vue({
         el: '#playground',
         data: () => ({
-          maxHeight: 100,
-          narrow: false
+          maxLines: 3,
         })
       });
     </script>
