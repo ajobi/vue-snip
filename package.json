@@ -17,8 +17,22 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },
+  "homepage": "https://github.com/ajobi/vue-snip-text",
   "repository": {
     "type": "git",
     "url": "https://github.com/ajobi/vue-snip-text"
-  }
+  },
+  "keywords": [
+    "clamp",
+    "ellipsis",
+    "snip-text",
+    "cut-text",
+    "clamp-text",
+    "truncate-text",
+    "multiline-text",
+    "vue",
+    "vuejs",
+    "vue-directive",
+    "vue-plugin"
+  ]
 }
