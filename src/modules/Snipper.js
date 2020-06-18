@@ -6,12 +6,12 @@ const SEPARATOR_LETTER = ''
 const ELLIPSIS = '...'
 
 export class Snipper {
-  constructor (el) {
+  constructor (el, elementMap) {
     this.el = el
-    this.maxLines = el._snipText.maxLines
-    this.unprocessed = el._snipText.fullText
+    this.maxLines = elementMap.get(el).maxLines
+    this.unprocessed = elementMap.get(el).fullText
     this.processed = ''
-    el.innerText = el._snipText.fullText
+    el.innerText = this.unprocessed
   }
 
   _snipChunks (separator) {

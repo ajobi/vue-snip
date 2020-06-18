@@ -1,24 +1,27 @@
-import { snipElement } from './modules/snipElement.js'
+import { getSnipElement } from './modules/getSnipElement.js'
 
 export default {
   install (Vue, options) {
+    const elementMap = new WeakMap()
+    const snipElement = getSnipElement(elementMap)
+
     Vue.directive('snip-text', {
       inserted (el, { value }) {
-        const resizeObserver = new ResizeObserver(() => snipElement(el))
-        resizeObserver.observe(el)
+        const observer = new ResizeObserver(() => snipElement(el))
+        observer.observe(el)
 
-        el._snipText = {
-          observer: resizeObserver,
+        elementMap.set(el, {
+          observer: observer,
           fullText: el.innerText,
           maxLines: value
-        }
+        })
       },
       update (el, { value }) {
-        el._snipText.maxLines = value
+        elementMap.get(el).maxLines = value
         snipElement(el)
       },
       unbind (el) {
-        el._snipText.observer.disconnect()
+        elementMap.get(el).observer.disconnect()
       }
     })
   }
