@@ -21,6 +21,7 @@ export default {
         snipElement(el)
       },
       unbind (el) {
+        elementMap.delete(el)
         elementMap.get(el).observer.disconnect()
       }
     })
