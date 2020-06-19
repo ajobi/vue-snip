@@ -1,3 +1,4 @@
 export const defaultOptions = {
-  directiveName: 'snip-text'
+  directiveName: 'snip-text',
+  ellipsis: '...'
 }
