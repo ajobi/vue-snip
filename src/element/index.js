@@ -8,9 +8,7 @@ export const getSnipText = (state) => (el) => {
     return
   }
 
-  const snipper = new ElementSnipper(el, state)
-
-  snipper
+  new ElementSnipper(el, state)
     .initText()
     .snipSentences()
     .snipWords()

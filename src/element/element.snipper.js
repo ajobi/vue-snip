@@ -21,7 +21,7 @@ export class ElementSnipper {
     this.unprocessed = chunks.find(chunk => {
       this.el.innerText = `${this.processed}${chunk}${this.state.options.ellipsis}`
 
-      if (!this.isWithinRange()) {
+      if (!this._isWithinRange()) {
         return true
       }
 
@@ -31,23 +31,20 @@ export class ElementSnipper {
     return this
   }
 
-  initText () {
-    const { fullText } = this.state.elementMap.get(this.el)
-    this.el.innerText = fullText
-
-    if (this.isWithinRange()) {
-      this.unprocessed = ''
-      this.processed = fullText
-    } else {
-      this.unprocessed = fullText
-      this.processed = ''
-    }
-
-    return this
+  _isWithinRange () {
+    return elementLines(this.el) <= this.state.elementMap.get(this.el).maxLines
   }
 
-  isWithinRange () {
-    return elementLines(this.el) <= this.state.elementMap.get(this.el).maxLines
+  initText () {
+    const { fullText } = this.state.elementMap.get(this.el)
+
+    this.el.innerText = fullText
+    const isWithinRange = this._isWithinRange()
+
+    this.unprocessed = isWithinRange ? '' : fullText
+    this.processed = isWithinRange ? fullText : ''
+
+    return this
   }
 
   snipSentences () {
