@@ -7,8 +7,7 @@ const SEPARATOR_LETTER = ''
 export class ElementSnipper {
   constructor (el, state) {
     this.el = el
-    this.ellipsisSymbol = state.options.ellipsis
-    this.maxLines = state.elementMap.get(el).maxLines
+    this.state = state
     this.unprocessed = state.elementMap.get(el).fullText
     this.processed = ''
     el.innerText = this.unprocessed
@@ -21,7 +20,7 @@ export class ElementSnipper {
 
     const chunks = this.unprocessed.split(separator)
     this.unprocessed = chunks.find(chunk => {
-      this.el.innerText = `${this.processed}${chunk}${this.ellipsisSymbol}`
+      this.el.innerText = `${this.processed}${chunk}${this.state.options.ellipsis}`
 
       if (!this.isWithinRange()) {
         return true
@@ -34,7 +33,7 @@ export class ElementSnipper {
   }
 
   isWithinRange () {
-    return elementLines(this.el) <= this.maxLines
+    return elementLines(this.el) <= this.state.elementMap.get(this.el).maxLines
   }
 
   snipSentences () {
@@ -55,6 +54,6 @@ export class ElementSnipper {
       this.processed = this.processed.substring(0, this.processed.length - 1)
     }
 
-    this.el.innerText = `${this.processed}${this.ellipsisSymbol}`
+    this.el.innerText = `${this.processed}${this.state.options.ellipsis}`
   }
 }
