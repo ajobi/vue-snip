@@ -32,9 +32,16 @@ export class ElementSnipper {
   }
 
   initText () {
-    this.unprocessed = this.state.elementMap.get(this.el).fullText
-    this.processed = ''
-    this.el.innerText = this.unprocessed
+    const { fullText } = this.state.elementMap.get(this.el)
+    this.el.innerText = fullText
+
+    if (this.isWithinRange()) {
+      this.unprocessed = ''
+      this.processed = fullText
+    } else {
+      this.unprocessed = fullText
+      this.processed = ''
+    }
 
     return this
   }

@@ -8,12 +8,10 @@ export const getSnipText = (state) => (el) => {
     return
   }
 
-  const snipper = new ElementSnipper(el, state).initText()
-  if (snipper.isWithinRange()) {
-    return
-  }
+  const snipper = new ElementSnipper(el, state)
 
   snipper
+    .initText()
     .snipSentences()
     .snipWords()
     .snipCharacters()
