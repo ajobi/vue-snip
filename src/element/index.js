@@ -1,4 +1,4 @@
-import { ElementSnipper } from './element.Snipper.js'
+import { ElementSnipper } from './element.snipper.js'
 
 export const getSnipText = (state) => (el) => {
   const { elementMap } = state
