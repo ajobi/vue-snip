@@ -1,1 +1,3 @@
-export const defaultOptions = { }
+export const defaultOptions = {
+  directiveName: 'snip-text'
+}
