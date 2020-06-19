@@ -59,7 +59,7 @@ export class ElementSnipper {
     return this._snipChunks(SEPARATOR_LETTER)
   }
 
-  ellipsis () {
+  addEllipsis () {
     // strip trailing spaces, commas, and dots before ellipsis is applied
     while ([' ', '.', ','].includes(this.processed[this.processed.length - 1])) {
       this.processed = this.processed.substring(0, this.processed.length - 1)
