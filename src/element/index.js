@@ -8,7 +8,7 @@ export const getSnipText = (state) => (el) => {
     return
   }
 
-  const snipper = new ElementSnipper(el, state)
+  const snipper = new ElementSnipper(el, state).initText()
   if (snipper.isWithinRange()) {
     return
   }

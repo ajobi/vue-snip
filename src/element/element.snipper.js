@@ -8,9 +8,8 @@ export class ElementSnipper {
   constructor (el, state) {
     this.el = el
     this.state = state
-    this.unprocessed = state.elementMap.get(el).fullText
-    this.processed = ''
-    el.innerText = this.unprocessed
+    this.unprocessed = null
+    this.processed = null
   }
 
   _snipChunks (separator) {
@@ -28,6 +27,14 @@ export class ElementSnipper {
 
       this.processed = `${this.processed}${chunk}${separator}`
     })
+
+    return this
+  }
+
+  initText () {
+    this.unprocessed = this.state.elementMap.get(this.el).fullText
+    this.processed = ''
+    this.el.innerText = this.unprocessed
 
     return this
   }
