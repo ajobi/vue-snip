@@ -1,11 +1,11 @@
-import { getLines } from './getLines.js'
+import { elementLines } from './element.lines.js'
 
 const SEPARATOR_SENTENCE = '. '
 const SEPARATOR_WORD = ' '
 const SEPARATOR_LETTER = ''
 const ELLIPSIS = '...'
 
-export class Snipper {
+export class ElementSnipper {
   constructor (el, elementMap) {
     this.el = el
     this.maxLines = elementMap.get(el).maxLines
@@ -34,7 +34,7 @@ export class Snipper {
   }
 
   isWithinRange () {
-    return getLines(this.el) <= this.maxLines
+    return elementLines(this.el) <= this.maxLines
   }
 
   snipSentences () {

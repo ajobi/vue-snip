@@ -1,13 +1,14 @@
-import { Snipper } from './Snipper.js'
+import { ElementSnipper } from './element.Snipper.js'
 
-export const getSnipElement = (elementMap) => (el) => {
+export const getSnipText = (state) => (el) => {
+  const { elementMap } = state
+
   if (elementMap.get(el).maxLines <= 0) {
     el.innerText = ''
     return
   }
 
-  const snipper = new Snipper(el, elementMap)
-
+  const snipper = new ElementSnipper(el, elementMap)
   if (snipper.isWithinRange()) {
     return
   }
