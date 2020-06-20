@@ -1,5 +1,4 @@
 import { elementLines } from '../src/element/element.lines.js'
-import { ElementSnipper } from '../src/element/element.snipper'
 import { getSnipText } from '../src/element'
 
 const getMockStyles = (height, lineHeight, fontSize) => ({
