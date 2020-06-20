@@ -1,6 +1,7 @@
 import { elementLines } from './element.lines.js'
 
 const SEPARATOR_SENTENCE = '. '
+const SEPARATOR_SUBSENTENCE = ', '
 const SEPARATOR_WORD = ' '
 const SEPARATOR_LETTER = ''
 
@@ -56,6 +57,10 @@ export class ElementSnipper {
 
   snipSentences () {
     return this._snipChunks(SEPARATOR_SENTENCE)
+  }
+
+  snipSubsentences () {
+    return this._snipChunks(SEPARATOR_SUBSENTENCE)
   }
 
   snipWords () {
