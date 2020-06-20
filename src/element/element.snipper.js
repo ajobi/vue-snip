@@ -37,7 +37,13 @@ export class ElementSnipper {
   }
 
   initText () {
-    const { fullText } = this.state.elementMap.get(this.el)
+    const { fullText, maxLines } = this.state.elementMap.get(this.el)
+
+    if (maxLines <= 0) {
+      this.el.innerText = ''
+      this.optout = true
+      return this
+    }
 
     this.el.innerText = fullText
 
