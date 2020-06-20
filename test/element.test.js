@@ -81,4 +81,15 @@ describe('snipText', () => {
 
     expect(element.innerText).toEqual('')
   })
+
+  it('opts out on within line range properly', () => {
+    spy.mockReturnValue(getMockStyles())
+    const { element, mockState } = getMockState(20)
+    const snipText = getSnipText(mockState)
+    const originalText = element.innerText
+
+    snipText(element)
+
+    expect(element.innerText).toEqual(originalText)
+  })
 })
