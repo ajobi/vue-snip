@@ -10,10 +10,11 @@ export class ElementSnipper {
     this.state = state
     this.unprocessed = null
     this.processed = null
+    this.optout = false
   }
 
   _snipChunks (separator) {
-    if (!this.unprocessed) {
+    if (!this.unprocessed || this.optout) {
       return this
     }
 
@@ -39,10 +40,10 @@ export class ElementSnipper {
     const { fullText } = this.state.elementMap.get(this.el)
 
     this.el.innerText = fullText
-    const isWithinRange = this._isWithinRange()
 
-    this.unprocessed = isWithinRange ? '' : fullText
-    this.processed = isWithinRange ? fullText : ''
+    this.optout = this._isWithinRange()
+    this.unprocessed = fullText
+    this.processed = ''
 
     return this
   }
@@ -60,6 +61,10 @@ export class ElementSnipper {
   }
 
   addEllipsis () {
+    if (this.optout) {
+      return
+    }
+
     // strip trailing spaces, commas, and dots before ellipsis is applied
     while ([' ', '.', ','].includes(this.processed[this.processed.length - 1])) {
       this.processed = this.processed.substring(0, this.processed.length - 1)
