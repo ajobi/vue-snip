@@ -1,28 +1,36 @@
 import { elementLines } from '../src/element/element.lines.js'
 
-const getImplicitStyles = (height) => ({
-  lineHeight: 'normal',
-  fontSize: '10px',
-  height: height
+const getMockStyles = (height, lineHeight, fontSize) => ({
+  height: height || '100px',
+  lineHeight: lineHeight || 'normal',
+  fontSize: fontSize || '10px'
 })
 
 describe('elementLines', () => {
   describe('with implicit lineheight', () => {
-    test('uses 1.2 lineheight', () => {
-      window.getComputedStyle = () => getImplicitStyles('120px')
+    it('uses 1.2 effective lineheight', () => {
+      window.getComputedStyle = () => getMockStyles('120px')
       expect(elementLines()).toEqual(10)
     })
 
-    test('rounds the decimal result up', () => {
-      window.getComputedStyle = () => getImplicitStyles('119px')
+    it('rounds the decimal result up', () => {
+      window.getComputedStyle = () => getMockStyles('119px')
       expect(elementLines()).toEqual(10)
 
-      window.getComputedStyle = () => getImplicitStyles('121px')
+      window.getComputedStyle = () => getMockStyles('121px')
       expect(elementLines()).toEqual(11)
     })
   })
 
-  describe('with explicit lineheight', () => {})
+  describe('with explicit lineheight', () => {
+    it('respects the explicit line-height', () => {
+      window.getComputedStyle = () => getMockStyles('120px', '20px')
+      expect(elementLines()).toEqual(6)
+
+      window.getComputedStyle = () => getMockStyles('121px', '20px')
+      expect(elementLines()).toEqual(7)
+    })
+  })
 })
 
 describe('ElementSnipper', () => {
