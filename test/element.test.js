@@ -24,14 +24,12 @@ const getMockState = (element, maxLines = 3, ellipsis = '...') => {
     maxLines: maxLines
   })
 
-  const mockState = {
+  return {
     elementMap,
     options: {
       ellipsis
     }
   }
-
-  return mockState
 }
 
 describe('snipText', () => {
