@@ -1,4 +1,4 @@
-import { elementLines } from '../src/element/element.lines.js'
+import { elementLines } from '../../src/element/element.lines.js'
 
 const getMockStyles = (height, lineHeight, fontSize) => ({
   height: height || '100px',

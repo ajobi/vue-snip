@@ -1,4 +1,4 @@
-import { getSnipText } from '../src/element'
+import { getSnipText } from '../../src/element'
 
 const getMockStyles = (height, lineHeight, fontSize) => ({
   height: height || '100px',
