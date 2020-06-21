@@ -1,5 +1,8 @@
 module.exports = {
-  extends: 'standard',
+  extends: [
+    'standard',
+    'plugin:cypress/recommended'
+  ],
   env: {
     browser: true,
     jest: true
