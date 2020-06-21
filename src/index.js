@@ -1,4 +1,4 @@
-import { setupDirective } from './directive'
+import { setupDirective } from './directive/index.js'
 import { defaultOptions } from './defaultOptions.js'
 
 export default {
