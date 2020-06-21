@@ -31,14 +31,12 @@ const getMockState = (element, maxLines = 3, ellipsis = '...') => {
     }
   }
 
-  return {
-    mockState
-  }
+  return mockState
 }
 
 describe('snipText', () => {
   it('opts out on zero maxLines properly', () => {
-    const { mockState } = getMockState(element, 0)
+    const mockState = getMockState(element, 0)
     const snipText = getSnipText(mockState)
 
     snipText(element)
@@ -47,7 +45,7 @@ describe('snipText', () => {
   })
 
   it('opts out on negative maxLines properly', () => {
-    const { mockState } = getMockState(element, -1)
+    const mockState = getMockState(element, -1)
     const snipText = getSnipText(mockState)
 
     snipText(element)
@@ -57,7 +55,7 @@ describe('snipText', () => {
 
   it('opts out on within line range properly', () => {
     spy.mockReturnValue(getMockStyles())
-    const { mockState } = getMockState(element, 20)
+    const mockState = getMockState(element, 20)
     const snipText = getSnipText(mockState)
     const originalText = element.textContent
 
