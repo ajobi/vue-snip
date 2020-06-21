@@ -6,7 +6,7 @@ export const getInserted = (state, snipText) => (el, { value }) => {
 
   elementMap.set(el, {
     observer: observer,
-    fullText: el.innerText,
+    fullText: el.textContent,
     maxLines: value
   })
 }
