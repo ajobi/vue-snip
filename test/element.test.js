@@ -13,7 +13,7 @@ beforeAll(() => {
 
 const getMockState = (maxLines = 3, ellipsis = '...') => {
   const element = {
-    innerText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.'
+    textContent: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.'
   }
 
   const elementMap = new WeakMap()
@@ -42,7 +42,7 @@ describe('snipText', () => {
 
     snipText(element)
 
-    expect(element.innerText).toEqual('')
+    expect(element.textContent).toEqual('')
   })
 
   it('opts out on negative maxLines properly', () => {
@@ -51,7 +51,7 @@ describe('snipText', () => {
 
     snipText(element)
 
-    expect(element.innerText).toEqual('')
+    expect(element.textContent).toEqual('')
   })
 
   it('opts out on within line range properly', () => {
@@ -62,6 +62,6 @@ describe('snipText', () => {
 
     snipText(element)
 
-    expect(element.innerText).toEqual(originalText)
+    expect(element.textContent).toEqual(originalText)
   })
 })

@@ -21,7 +21,7 @@ export class ElementSnipper {
 
     const chunks = this.unprocessed.split(separator)
     this.unprocessed = chunks.find(chunk => {
-      this.el.innerText = `${this.processed}${chunk}${this.state.options.ellipsis}`
+      this.el.textContent = `${this.processed}${chunk}${this.state.options.ellipsis}`
 
       if (!this._isWithinRange()) {
         return true
@@ -41,12 +41,12 @@ export class ElementSnipper {
     const { fullText, maxLines } = this.state.elementMap.get(this.el)
 
     if (maxLines <= 0) {
-      this.el.innerText = ''
+      this.el.textContent = ''
       this.optout = true
       return this
     }
 
-    this.el.innerText = fullText
+    this.el.textContent = fullText
 
     this.optout = this._isWithinRange()
     this.unprocessed = fullText
@@ -81,6 +81,6 @@ export class ElementSnipper {
       this.processed = this.processed.substring(0, this.processed.length - 1)
     }
 
-    this.el.innerText = `${this.processed}${this.state.options.ellipsis}`
+    this.el.textContent = `${this.processed}${this.state.options.ellipsis}`
   }
 }
