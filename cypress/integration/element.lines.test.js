@@ -6,6 +6,10 @@ const getMockStyles = (height, lineHeight, fontSize) => ({
   fontSize: fontSize || '10px'
 })
 
+beforeEach(() => {
+  cy.visit('/')
+})
+
 describe('elementLines', () => {
   describe('with implicit lineheight', () => {
     it('uses 1.2 effective lineheight', () => {
