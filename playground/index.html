@@ -5,6 +5,7 @@
     <title>vue-snip-text</title>
     <link rel="stylesheet" type="text/css" href="index.css">
     <script src="vue.js"></script>
+    <script src="http://localhost:9000/main.js"></script>
   </head>
   <body>
     <div id="playground">
@@ -23,9 +24,8 @@
       </div>
     </div>
 
-    <script type="module">
-      import VueSnipText from '../src/index.js'
-      Vue.use(VueSnipText)
+    <script>
+      Vue.use(VueSnipText.default)
 
       new Vue({
         el: '#playground',

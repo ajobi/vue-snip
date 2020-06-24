@@ -5,7 +5,9 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    libraryTarget: 'amd'
+    library: 'VueSnipText',
+    libraryTarget: 'umd',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -17,7 +19,8 @@ module.exports = {
     ]
   },
   devServer: {
+    contentBase: 'playground',
     port: 9000,
-    hot: true
+    open: true
   }
 }
