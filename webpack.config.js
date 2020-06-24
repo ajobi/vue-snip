@@ -6,8 +6,7 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'VueSnipText',
-    libraryTarget: 'umd',
-    publicPath: '/'
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
