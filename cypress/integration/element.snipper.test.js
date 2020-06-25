@@ -21,17 +21,19 @@ describe('ElementSnipper', () => {
   })
 
   describe('Complete snipping sequence', () => {
+    const executeSequence = elementSnipper => elementSnipper
+      .initText()
+      .snipSentences()
+      .snipSubsentences()
+      .snipWords()
+      .snipCharacters()
+      .addEllipsis()
+
     it('snips on negative max lines', () => {
       cy.get('p').then(([paragraph]) => {
         const elementSnipper = new ElementSnipper(paragraph, getMockState(paragraph, -1))
 
-        elementSnipper
-          .initText()
-          .snipSentences()
-          .snipSubsentences()
-          .snipWords()
-          .snipCharacters()
-          .addEllipsis()
+        executeSequence(elementSnipper)
 
         expect(paragraph.innerText).to.equal('')
       })
@@ -41,13 +43,7 @@ describe('ElementSnipper', () => {
       cy.get('p').then(([paragraph]) => {
         const elementSnipper = new ElementSnipper(paragraph, getMockState(paragraph, 0))
 
-        elementSnipper
-          .initText()
-          .snipSentences()
-          .snipSubsentences()
-          .snipWords()
-          .snipCharacters()
-          .addEllipsis()
+        executeSequence(elementSnipper)
 
         expect(paragraph.innerText).to.equal('')
       })
@@ -57,13 +53,7 @@ describe('ElementSnipper', () => {
       cy.get('p').then(([paragraph]) => {
         const elementSnipper = new ElementSnipper(paragraph, getMockState(paragraph, 1))
 
-        elementSnipper
-          .initText()
-          .snipSentences()
-          .snipSubsentences()
-          .snipWords()
-          .snipCharacters()
-          .addEllipsis()
+        executeSequence(elementSnipper)
 
         expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum...')
       })
@@ -73,13 +63,7 @@ describe('ElementSnipper', () => {
       cy.get('p').then(([paragraph]) => {
         const elementSnipper = new ElementSnipper(paragraph, getMockState(paragraph, 2))
 
-        elementSnipper
-          .initText()
-          .snipSentences()
-          .snipSubsentences()
-          .snipWords()
-          .snipCharacters()
-          .addEllipsis()
+        executeSequence(elementSnipper)
 
         expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam ve...')
       })
@@ -89,13 +73,7 @@ describe('ElementSnipper', () => {
       cy.get('p').then(([paragraph]) => {
         const elementSnipper = new ElementSnipper(paragraph, getMockState(paragraph, 10))
 
-        elementSnipper
-          .initText()
-          .snipSentences()
-          .snipSubsentences()
-          .snipWords()
-          .snipCharacters()
-          .addEllipsis()
+        executeSequence(elementSnipper)
 
         expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam veniam, voluptates? Distinctio ex hic maiores obcaecati quibusdam quod repudiandae temporibus. Amet consequatur iste nisi quos! Alias atque beatae consectetur dolor doloremque earum eos expedita fugiat pariatur possimus provident quod quos, repudiandae similique sit unde ut veritatis voluptates voluptatibus voluptatum? Assumenda culpa cum eligendi, eos itaque mollitia nostrum possimus praesentium quod rerum totam.')
       })
