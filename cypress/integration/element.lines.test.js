@@ -1,38 +1,45 @@
-import { elementLines } from '../../src/element/element.lines.js'
-
-const getMockStyles = (height, lineHeight, fontSize) => ({
-  height: height || '100px',
-  lineHeight: lineHeight || 'normal',
-  fontSize: fontSize || '10px'
-})
-
-beforeEach(() => {
-  cy.visit('/')
-})
+import { elementLines } from '../../src/element/element.lines'
 
 describe('elementLines', () => {
+  beforeEach(() => {
+    cy.visit('/lines')
+  })
+
   describe('with implicit lineheight', () => {
-    it('uses 1.2 effective lineheight', () => {
-      window.getComputedStyle = () => getMockStyles('120px')
-      expect(elementLines()).to.equal(10)
+    it('returns 0 on empty text', () => {
+      cy.get('p').then(paragraphs => {
+        expect(elementLines(paragraphs[0])).to.equal(0)
+      })
     })
 
-    it('rounds the decimal result up', () => {
-      window.getComputedStyle = () => getMockStyles('119px')
-      expect(elementLines()).to.equal(10)
-
-      window.getComputedStyle = () => getMockStyles('121px')
-      expect(elementLines()).to.equal(11)
+    it('returns correct values on wrapping text', () => {
+      cy.get('p').then(paragraphs => {
+        expect(elementLines(paragraphs[1])).to.equal(1)
+        expect(elementLines(paragraphs[2])).to.equal(2)
+        expect(elementLines(paragraphs[3])).to.equal(3)
+        expect(elementLines(paragraphs[4])).to.equal(4)
+      })
     })
   })
 
   describe('with explicit lineheight', () => {
-    it('respects the explicit line-height', () => {
-      window.getComputedStyle = () => getMockStyles('120px', '20px')
-      expect(elementLines()).to.equal(6)
+    before(() => {
+      cy.get('p').invoke('attr', 'style', 'line-height: 3rem')
+    })
 
-      window.getComputedStyle = () => getMockStyles('121px', '20px')
-      expect(elementLines()).to.equal(7)
+    it('returns 0 on empty text', () => {
+      cy.get('p').then(paragraphs => {
+        expect(elementLines(paragraphs[0])).to.equal(0)
+      })
+    })
+
+    it('returns correct values on wrapping text', () => {
+      cy.get('p').then(paragraphs => {
+        expect(elementLines(paragraphs[1])).to.equal(1)
+        expect(elementLines(paragraphs[2])).to.equal(2)
+        expect(elementLines(paragraphs[3])).to.equal(3)
+        expect(elementLines(paragraphs[4])).to.equal(4)
+      })
     })
   })
 })
