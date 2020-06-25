@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>vue-snip-text</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="vue.js"></script>
+    <script src="http://localhost:9001/main.js"></script>
+  </head>
+  <body>
+    <div id="playground">
+      <h1>Development Playground</h1>
+      <div class="card">
+        <h4>Original Text</h4>
+        <p>{{ displayText }}</p>
+      </div>
+      <div class="card">
+        <h4>Snipped Text ({{ maxLines }} lines)</h4>
+        <p v-snip-text="maxLines">{{ displayText }}</p>
+      </div>
+      <div class="controls">
+        <button @click="maxLines++">+</button>
+        <button @click="maxLines--">-</button>
+      </div>
+    </div>
+
+    <script>
+      Vue.use(VueSnipText.default)
+
+      new Vue({
+        el: '#playground',
+        data: () => ({
+          maxLines: 3,
+        }),
+        computed: {
+          displayText () {
+            return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.'
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

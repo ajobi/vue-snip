@@ -21,7 +21,7 @@ module.exports = (env, argv) => {
       ]
     },
     devServer: {
-      contentBase: 'playground',
+      contentBase: testDevServer ? 'dev/test' : 'dev/playground',
       port: testDevServer ? 9001 : 9000,
       open: !testDevServer
     }
