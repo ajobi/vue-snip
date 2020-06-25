@@ -7,5 +7,9 @@ export const elementLines = el => {
     ? parseInt(computedStyle.fontSize) * UA_LINE_HEIGHT
     : parseInt(computedStyle.lineHeight)
 
+  if (computedHeight === 0 && computedLineHeight === 0) {
+    return 0
+  }
+
   return Math.ceil(computedHeight / computedLineHeight)
 }
