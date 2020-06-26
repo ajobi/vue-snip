@@ -7,10 +7,12 @@
     "build": "webpack --config webpack.config.js",
     "prepare": "yarn build",
     "lint": "eslint ./src",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "start:dev": "webpack-dev-server",
     "start:test": "webpack-dev-server --testDevServer",
-    "cypress": "cypress run",
-    "test": "start-server-and-test start:test http://localhost:9001 cypress"
+    "test:dev": "start-server-and-test start:test http://localhost:9001 cy:open",
+    "test": "start-server-and-test start:test http://localhost:9001 cy:run"
   },
   "main": "dist/main.js",
   "files": [
