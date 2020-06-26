@@ -1,4 +1,4 @@
-import { getSnipText } from '../../src/element/element.snip'
+import { getSnipText } from '../../../src/element/element.snip'
 
 const getMockState = (element, maxLines = 3, ellipsis = '...') => {
   const elementMap = new WeakMap()
