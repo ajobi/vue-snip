@@ -2,7 +2,7 @@ import { getInserted } from './directive.inserted.js'
 import { getUpdate } from './directive.update.js'
 import { getUnbind } from './directive.unbind.js'
 import { getDirectiveName } from './directive.name.js'
-import { getSnipText } from '../element/index.js'
+import { getSnipText } from '../element/element.snip.js'
 
 export const setupDirective = (options) => {
   const elementMap = new WeakMap()

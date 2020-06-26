@@ -5,7 +5,7 @@ const SEPARATOR_SUBSENTENCE = ', '
 const SEPARATOR_WORD = ' '
 const SEPARATOR_LETTER = ''
 
-export class ElementSnipper {
+class ElementSnipper {
   constructor (el, state) {
     this.el = el
     this.state = state
@@ -84,3 +84,12 @@ export class ElementSnipper {
     this.el.textContent = `${this.processed}${this.state.options.ellipsis}`
   }
 }
+
+export const getSnipText = (state) => (el) =>
+  new ElementSnipper(el, state)
+    .initText()
+    .snipSentences()
+    .snipSubsentences()
+    .snipWords()
+    .snipCharacters()
+    .addEllipsis()
