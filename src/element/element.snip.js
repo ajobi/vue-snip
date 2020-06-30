@@ -85,11 +85,22 @@ class ElementSnipper {
   }
 }
 
-export const getSnipText = (state) => (el) =>
-  new ElementSnipper(el, state)
-    .initText()
-    .snipSentences()
-    .snipSubsentences()
-    .snipWords()
-    .snipCharacters()
-    .addEllipsis()
+export const getSnipText = (state) => (el) => {
+  const { snipMethod } = state.options
+
+  if (snipMethod === 'css') {
+    // https://css-tricks.com/almanac/properties/l/line-clamp/
+    el.style = `display: -webkit-box; -webkit-line-clamp: ${state.elementMap.get(el).maxLines}; -webkit-box-orient: vertical; overflow: hidden;`
+    return
+  }
+
+  if (snipMethod === 'js') {
+    return new ElementSnipper(el, state)
+      .initText()
+      .snipSentences()
+      .snipSubsentences()
+      .snipWords()
+      .snipCharacters()
+      .addEllipsis()
+  }
+}

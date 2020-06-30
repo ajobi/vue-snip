@@ -10,7 +10,8 @@ const getMockState = (element, maxLines = 3, ellipsis = '...') => {
   return {
     elementMap,
     options: {
-      ellipsis
+      ellipsis,
+      snipMethod: 'js'
     }
   }
 }
