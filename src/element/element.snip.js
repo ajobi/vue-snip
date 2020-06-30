@@ -100,7 +100,7 @@ export const getSnipText = (state) => (el) => {
       .snipSentences()
       .snipSubsentences()
       .snipWords()
-      .snipCharacters()
+      // .snipCharacters()
       .addEllipsis()
   }
 }
