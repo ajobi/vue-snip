@@ -1,11 +1,12 @@
 import { getSnipText } from '../../../src/element/element.snip'
+import { elementLines } from '../../../src/element/element.lines'
 
-const getMockState = (element, maxLines = 3, ellipsis = '...') => {
+const getMockState = (element, maxLines = 3, method = 'css', ellipsis = '...') => {
   const elementMap = new WeakMap()
   elementMap.set(element, {
     fullText: element.textContent,
     maxLines: maxLines,
-    method: 'js'
+    method: method
   })
 
   return {
@@ -21,63 +22,120 @@ describe('snipText', () => {
     cy.visit('element/snip')
   })
 
-  it('Snips on negative max lines', () => {
-    cy.get('p').then(([paragraph]) => {
-      const snipText = getSnipText(getMockState(paragraph, -1))
+  describe('CSS Method', () => {
+    it('Snips on negative max lines', () => {
+      cy.get('p').then(([paragraph]) => {
+        const snipText = getSnipText(getMockState(paragraph, -1, 'css'))
+        const oldLines = elementLines(paragraph)
 
-      snipText(paragraph)
+        snipText(paragraph)
 
-      expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam veniam, voluptates? Distinctio ex hic maiores obcaecati quibusdam quod repudiandae temporibus. Amet consequatur iste nisi quos! Alias atque beatae consectetur dolor doloremque earum eos expedita fugiat pariatur possimus provident quod quos, repudiandae similique sit unde ut veritatis voluptates voluptatibus voluptatum? Assumenda culpa cum eligendi, eos itaque mollitia nostrum possimus praesentium quod rerum totam.')
+        expect(elementLines(paragraph)).to.equal(oldLines)
+      })
+    })
+
+    it('Snips on zero max lines', () => {
+      cy.get('p').then(([paragraph]) => {
+        const snipText = getSnipText(getMockState(paragraph, 0, 'css'))
+        const oldLines = elementLines(paragraph)
+
+        snipText(paragraph)
+
+        expect(elementLines(paragraph)).to.equal(oldLines)
+      })
+    })
+
+    it('Snips on 1 max lines', () => {
+      cy.get('p').then(([paragraph]) => {
+        const snipText = getSnipText(getMockState(paragraph, 1, 'css'))
+
+        snipText(paragraph)
+
+        expect(elementLines(paragraph)).to.equal(1)
+      })
+    })
+
+    it('Snips on 2 max lines', () => {
+      cy.get('p').then(([paragraph]) => {
+        const snipText = getSnipText(getMockState(paragraph, 2, 'css'))
+
+        snipText(paragraph)
+
+        expect(elementLines(paragraph)).to.equal(2)
+      })
+    })
+
+    it('Does not snip on 10 max lines', () => {
+      cy.get('p').then(([paragraph]) => {
+        const snipText = getSnipText(getMockState(paragraph, 10, 'css'))
+        const oldLines = elementLines(paragraph)
+
+        snipText(paragraph)
+
+        expect(elementLines(paragraph)).to.equal(oldLines)
+      })
     })
   })
 
-  it('Snips on zero max lines', () => {
-    cy.get('p').then(([paragraph]) => {
-      const snipText = getSnipText(getMockState(paragraph, 0))
+  describe('JS Method', () => {
+    it('Snips on negative max lines', () => {
+      cy.get('p').then(([paragraph]) => {
+        const snipText = getSnipText(getMockState(paragraph, -1, 'js'))
 
-      snipText(paragraph)
+        snipText(paragraph)
 
-      expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam veniam, voluptates? Distinctio ex hic maiores obcaecati quibusdam quod repudiandae temporibus. Amet consequatur iste nisi quos! Alias atque beatae consectetur dolor doloremque earum eos expedita fugiat pariatur possimus provident quod quos, repudiandae similique sit unde ut veritatis voluptates voluptatibus voluptatum? Assumenda culpa cum eligendi, eos itaque mollitia nostrum possimus praesentium quod rerum totam.')
+        expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam veniam, voluptates? Distinctio ex hic maiores obcaecati quibusdam quod repudiandae temporibus. Amet consequatur iste nisi quos! Alias atque beatae consectetur dolor doloremque earum eos expedita fugiat pariatur possimus provident quod quos, repudiandae similique sit unde ut veritatis voluptates voluptatibus voluptatum? Assumenda culpa cum eligendi, eos itaque mollitia nostrum possimus praesentium quod rerum totam.')
+      })
     })
-  })
 
-  it('Snips on 1 max lines', () => {
-    cy.get('p').then(([paragraph]) => {
-      const snipText = getSnipText(getMockState(paragraph, 1))
+    it('Snips on zero max lines', () => {
+      cy.get('p').then(([paragraph]) => {
+        const snipText = getSnipText(getMockState(paragraph, 0, 'js'))
 
-      snipText(paragraph)
+        snipText(paragraph)
 
-      expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum...')
+        expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam veniam, voluptates? Distinctio ex hic maiores obcaecati quibusdam quod repudiandae temporibus. Amet consequatur iste nisi quos! Alias atque beatae consectetur dolor doloremque earum eos expedita fugiat pariatur possimus provident quod quos, repudiandae similique sit unde ut veritatis voluptates voluptatibus voluptatum? Assumenda culpa cum eligendi, eos itaque mollitia nostrum possimus praesentium quod rerum totam.')
+      })
     })
-  })
 
-  it('Snips on 2 max lines', () => {
-    cy.get('p').then(([paragraph]) => {
-      const snipText = getSnipText(getMockState(paragraph, 2))
+    it('Snips on 1 max lines', () => {
+      cy.get('p').then(([paragraph]) => {
+        const snipText = getSnipText(getMockState(paragraph, 1, 'js'))
 
-      snipText(paragraph)
+        snipText(paragraph)
 
-      expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam...')
+        expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum...')
+      })
     })
-  })
 
-  it('Does not snip on 10 max lines', () => {
-    cy.get('p').then(([paragraph]) => {
-      const snipText = getSnipText(getMockState(paragraph, 10))
+    it('Snips on 2 max lines', () => {
+      cy.get('p').then(([paragraph]) => {
+        const snipText = getSnipText(getMockState(paragraph, 2, 'js'))
 
-      snipText(paragraph)
+        snipText(paragraph)
 
-      expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam veniam, voluptates? Distinctio ex hic maiores obcaecati quibusdam quod repudiandae temporibus. Amet consequatur iste nisi quos! Alias atque beatae consectetur dolor doloremque earum eos expedita fugiat pariatur possimus provident quod quos, repudiandae similique sit unde ut veritatis voluptates voluptatibus voluptatum? Assumenda culpa cum eligendi, eos itaque mollitia nostrum possimus praesentium quod rerum totam.')
+        expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam...')
+      })
     })
-  })
 
-  it('Uses given ellipsis', () => {
-    cy.get('p').then(([paragraph]) => {
-      const snipText = getSnipText(getMockState(paragraph, 1, '-----'))
+    it('Does not snip on 10 max lines', () => {
+      cy.get('p').then(([paragraph]) => {
+        const snipText = getSnipText(getMockState(paragraph, 10, 'js'))
 
-      snipText(paragraph)
+        snipText(paragraph)
 
-      expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur-----')
+        expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam veniam, voluptates? Distinctio ex hic maiores obcaecati quibusdam quod repudiandae temporibus. Amet consequatur iste nisi quos! Alias atque beatae consectetur dolor doloremque earum eos expedita fugiat pariatur possimus provident quod quos, repudiandae similique sit unde ut veritatis voluptates voluptatibus voluptatum? Assumenda culpa cum eligendi, eos itaque mollitia nostrum possimus praesentium quod rerum totam.')
+      })
+    })
+
+    it('Uses given ellipsis', () => {
+      cy.get('p').then(([paragraph]) => {
+        const snipText = getSnipText(getMockState(paragraph, 1, 'js', '-----'))
+
+        snipText(paragraph)
+
+        expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur-----')
+      })
     })
   })
 })
