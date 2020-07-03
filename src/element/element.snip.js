@@ -95,6 +95,7 @@ export const getSnipText = (state) => (el) => {
   }
 
   if (elementMap.get(el).method === 'js') {
+    el.style = ''
     return new ElementSnipper(el, state)
       .initText()
       .snipSentences()
