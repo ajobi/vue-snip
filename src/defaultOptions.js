@@ -1,5 +1,5 @@
 export const defaultOptions = {
   directiveName: 'snip-text',
-  snipMethod: 'js',
+  snipMethod: 'css',
   ellipsis: '...'
 }
