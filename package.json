@@ -4,7 +4,7 @@
   "author": "Andrej Bilec <andrej.bilec@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack",
     "prepare": "yarn build",
     "lint": "eslint ./src",
     "start:dev": "webpack-dev-server",
