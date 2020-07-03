@@ -1,5 +1,5 @@
-export const getInserted = (state, snipText) => (el, { value }) => {
-  const { elementMap } = state
+export const getInserted = (state, snipText) => (el, { value, arg }) => {
+  const { elementMap, options } = state
 
   const observer = new ResizeObserver(() => snipText(el))
   observer.observe(el)
@@ -7,6 +7,7 @@ export const getInserted = (state, snipText) => (el, { value }) => {
   elementMap.set(el, {
     observer: observer,
     fullText: el.textContent,
-    maxLines: value
+    maxLines: value,
+    method: arg || options.snipMethod
   })
 }
