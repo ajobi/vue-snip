@@ -89,6 +89,7 @@ export const getSnipText = (state) => (el) => {
   const { elementMap } = state
 
   if (elementMap.get(el).method === 'css') {
+    el.textContent = elementMap.get(el).fullText
     // https://css-tricks.com/almanac/properties/l/line-clamp/
     el.style = `display: -webkit-box; -webkit-line-clamp: ${elementMap.get(el).maxLines}; -webkit-box-orient: vertical; overflow: hidden;`
     return
