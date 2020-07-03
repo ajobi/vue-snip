@@ -86,15 +86,15 @@ class ElementSnipper {
 }
 
 export const getSnipText = (state) => (el) => {
-  const { snipMethod } = state.options
+  const { elementMap } = state
 
-  if (snipMethod === 'css') {
+  if (elementMap.get(el).method === 'css') {
     // https://css-tricks.com/almanac/properties/l/line-clamp/
-    el.style = `display: -webkit-box; -webkit-line-clamp: ${state.elementMap.get(el).maxLines}; -webkit-box-orient: vertical; overflow: hidden;`
+    el.style = `display: -webkit-box; -webkit-line-clamp: ${elementMap.get(el).maxLines}; -webkit-box-orient: vertical; overflow: hidden;`
     return
   }
 
-  if (snipMethod === 'js') {
+  if (elementMap.get(el).method === 'js') {
     return new ElementSnipper(el, state)
       .initText()
       .snipSentences()
