@@ -41,7 +41,7 @@ class ElementSnipper {
     const { fullText, maxLines } = this.state.elementMap.get(this.el)
 
     if (maxLines <= 0) {
-      this.el.textContent = ''
+      this.el.textContent = fullText
       this.optout = true
       return this
     }
