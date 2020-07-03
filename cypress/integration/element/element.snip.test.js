@@ -4,14 +4,14 @@ const getMockState = (element, maxLines = 3, ellipsis = '...') => {
   const elementMap = new WeakMap()
   elementMap.set(element, {
     fullText: element.textContent,
-    maxLines: maxLines
+    maxLines: maxLines,
+    method: 'js'
   })
 
   return {
     elementMap,
     options: {
-      ellipsis,
-      snipMethod: 'js'
+      ellipsis
     }
   }
 }
