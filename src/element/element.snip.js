@@ -41,12 +41,9 @@ class ElementSnipper {
     const { fullText, maxLines } = this.state.elementMap.get(this.el)
 
     if (maxLines <= 0) {
-      this.el.textContent = fullText
       this.optout = true
       return this
     }
-
-    this.el.textContent = fullText
 
     this.optout = this._isWithinRange()
     this.unprocessed = fullText
@@ -86,16 +83,17 @@ class ElementSnipper {
 }
 
 export const getSnipText = (state) => (el) => {
-  const { elementMap } = state
+  const { fullText, maxLines, method } = state.elementMap.get(el)
 
-  if (elementMap.get(el).method === 'css') {
-    el.textContent = elementMap.get(el).fullText
+  el.textContent = fullText
+
+  if (method === 'css') {
     // https://css-tricks.com/almanac/properties/l/line-clamp/
-    el.style = `display: -webkit-box; -webkit-line-clamp: ${elementMap.get(el).maxLines}; -webkit-box-orient: vertical; overflow: hidden;`
+    el.style = `display: -webkit-box; -webkit-line-clamp: ${maxLines}; -webkit-box-orient: vertical; overflow: hidden;`
     return
   }
 
-  if (elementMap.get(el).method === 'js') {
+  if (method === 'js') {
     el.style = ''
     return new ElementSnipper(el, state)
       .initText()
