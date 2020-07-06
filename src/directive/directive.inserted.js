@@ -1,3 +1,5 @@
+import { ResizeObserver } from '../element/element.observer.js'
+
 export const getInserted = (state, snipText) => (el, { value, arg }) => {
   const { elementMap, options } = state
 
