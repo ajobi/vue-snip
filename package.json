@@ -16,6 +16,9 @@
   "files": [
     "dist/"
   ],
+  "dependencies": {
+    "@juggle/resize-observer": "^3.2.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
