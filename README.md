@@ -6,7 +6,7 @@
 ![npm](https://img.shields.io/npm/v/vue-snip-text?color=brightgreen)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/vue-snip-text)
 
-In preparation...
+Vue.js directive that clamps the content of a text element if it exceeds specified number of lines.
 
 ## Installation
 
