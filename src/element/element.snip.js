@@ -3,6 +3,7 @@ import { elementLines } from './element.lines.js'
 const SEPARATOR_SENTENCE = '. '
 const SEPARATOR_SUBSENTENCE = ', '
 const SEPARATOR_WORD = ' '
+const ELLIPSIS = '...'
 
 class ElementSnipper {
   constructor (el, state) {
@@ -20,7 +21,7 @@ class ElementSnipper {
 
     const chunks = this.unprocessed.split(separator)
     this.unprocessed = chunks.find(chunk => {
-      this.el.textContent = `${this.processed}${chunk}${this.state.options.ellipsis}`
+      this.el.textContent = `${this.processed}${chunk}${ELLIPSIS}`
 
       if (!this._isWithinRange()) {
         return true
@@ -73,7 +74,7 @@ class ElementSnipper {
       this.processed = this.processed.substring(0, this.processed.length - 1)
     }
 
-    this.el.textContent = `${this.processed}${this.state.options.ellipsis}`
+    this.el.textContent = `${this.processed}${ELLIPSIS}`
   }
 }
 

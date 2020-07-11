@@ -1,7 +1,7 @@
 import { getSnipText } from '../../../src/element/element.snip'
 import { elementLines } from '../../../src/element/element.lines'
 
-const getMockState = (element, maxLines = 3, method = 'css', ellipsis = '...') => {
+const getMockState = (element, maxLines = 3, method = 'css') => {
   const elementMap = new WeakMap()
   elementMap.set(element, {
     fullText: element.textContent,
@@ -10,10 +10,7 @@ const getMockState = (element, maxLines = 3, method = 'css', ellipsis = '...') =
   })
 
   return {
-    elementMap,
-    options: {
-      ellipsis
-    }
+    elementMap
   }
 }
 
@@ -125,16 +122,6 @@ describe('snipText', () => {
         snipText(paragraph)
 
         expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam veniam, voluptates? Distinctio ex hic maiores obcaecati quibusdam quod repudiandae temporibus. Amet consequatur iste nisi quos! Alias atque beatae consectetur dolor doloremque earum eos expedita fugiat pariatur possimus provident quod quos, repudiandae similique sit unde ut veritatis voluptates voluptatibus voluptatum? Assumenda culpa cum eligendi, eos itaque mollitia nostrum possimus praesentium quod rerum totam.')
-      })
-    })
-
-    it('Uses given ellipsis', () => {
-      cy.get('p').then(([paragraph]) => {
-        const snipText = getSnipText(getMockState(paragraph, 1, 'js', '-----'))
-
-        snipText(paragraph)
-
-        expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur-----')
       })
     })
   })
