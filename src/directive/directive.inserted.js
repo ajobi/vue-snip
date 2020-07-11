@@ -1,5 +1,5 @@
 import { getResizeObserver } from '../element/element.observer.js'
-import { normalizeMaxLines, normalizeSnipMethod } from './directive.utils.js'
+import { normalizeMaxLines, normalizeSnipMethod } from '../utils'
 
 export const getInserted = (state, snipText) => (el, { value, arg }) => {
   const { elementMap } = state

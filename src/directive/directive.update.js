@@ -1,4 +1,4 @@
-import { normalizeMaxLines, normalizeSnipMethod } from './directive.utils.js'
+import { normalizeMaxLines, normalizeSnipMethod } from '../utils'
 
 export const getUpdate = (state, snipText) => (el, { value, arg }) => {
   const { elementMap } = state
