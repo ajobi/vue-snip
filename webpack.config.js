@@ -1,7 +1,7 @@
 const path = require('path')
 
-module.exports = (env, argv) => {
-  const { testDevServer } = argv
+module.exports = () => {
+  const testDevServer = process.env.NODE_ENV === 'test'
 
   return {
     entry: './src/index.js',
