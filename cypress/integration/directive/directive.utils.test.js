@@ -38,12 +38,12 @@ describe('normalizeSnipMethod', () => {
     expect(normalizeSnipMethod(getMockState('css'), 'js')).to.equal('js')
   })
 
-  it('returns valid global value on invalid snip method', () => {
+  it('returns valid state value on invalid snip method', () => {
     expect(normalizeSnipMethod(getMockState('js'), 'invalid')).to.equal('js')
     expect(normalizeSnipMethod(getMockState('css'), 'invalid')).to.equal('css')
   })
 
-  it('returns default value on invalid snip method and invalid global value', () => {
+  it('returns default value on invalid snip method and invalid state value', () => {
     expect(normalizeSnipMethod(getMockState('invalid'), 'invalid')).to.equal('css')
     expect(normalizeSnipMethod(getMockState('invalid'), 'invalid')).to.equal('css')
   })
