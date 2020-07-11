@@ -3,7 +3,6 @@ import { elementLines } from './element.lines.js'
 const SEPARATOR_SENTENCE = '. '
 const SEPARATOR_SUBSENTENCE = ', '
 const SEPARATOR_WORD = ' '
-const SEPARATOR_LETTER = ''
 
 class ElementSnipper {
   constructor (el, state) {
@@ -64,10 +63,6 @@ class ElementSnipper {
     return this._snipChunks(SEPARATOR_WORD)
   }
 
-  snipCharacters () {
-    return this._snipChunks(SEPARATOR_LETTER)
-  }
-
   addEllipsis () {
     if (this.optout) {
       return
@@ -100,7 +95,6 @@ export const getSnipText = (state) => (el) => {
       .snipSentences()
       .snipSubsentences()
       .snipWords()
-      // .snipCharacters()
       .addEllipsis()
   }
 }
