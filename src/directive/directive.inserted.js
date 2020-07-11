@@ -1,4 +1,5 @@
 import { getResizeObserver } from '../element/element.observer.js'
+import { normalizeMaxLines } from './directive.utils.js'
 
 export const getInserted = (state, snipText) => (el, { value, arg }) => {
   const { elementMap, options } = state
@@ -15,7 +16,7 @@ export const getInserted = (state, snipText) => (el, { value, arg }) => {
   elementMap.set(el, {
     observer: observer,
     fullText: el.textContent,
-    maxLines: value,
+    maxLines: normalizeMaxLines(value),
     snipMethod: arg || options.snipMethod
   })
 }
