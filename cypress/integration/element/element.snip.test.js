@@ -6,7 +6,7 @@ const getMockState = (element, maxLines = 3, method = 'css', ellipsis = '...') =
   elementMap.set(element, {
     fullText: element.textContent,
     maxLines: maxLines,
-    method: method
+    snipMethod: method
   })
 
   return {
