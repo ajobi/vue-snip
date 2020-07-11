@@ -1,5 +1,5 @@
 {
-  "name": "vue-snip-text",
+  "name": "vue-snip",
   "version": "1.2.0-alpha",
   "author": "Andrej Bilec <andrej.bilec@gmail.com>",
   "license": "MIT",
@@ -41,14 +41,15 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
   },
-  "homepage": "https://github.com/ajobi/vue-snip-text",
+  "homepage": "https://github.com/ajobi/vue-snip",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ajobi/vue-snip-text"
+    "url": "https://github.com/ajobi/vue-snip"
   },
   "keywords": [
     "clamp",
     "ellipsis",
+    "snip",
     "snip-text",
     "cut-text",
     "clamp-text",
