@@ -1,5 +1,3 @@
-![](assets/logo.png)
-
 # vue-snip
 
 [![Build Status](https://travis-ci.org/ajobi/vue-snip.svg?branch=master)](https://travis-ci.org/ajobi/vue-snip)
