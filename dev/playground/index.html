@@ -16,7 +16,7 @@
       </div>
       <div class="card">
         <h4>Snipped Text ({{ maxLines }} lines - {{ method }})</h4>
-        <p v-snip-text:[method]="maxLines">{{ displayText }}</p>
+        <p v-snip:[method]="maxLines">{{ displayText }}</p>
       </div>
       <div class="controls">
         <button @click="maxLines++">+</button>
