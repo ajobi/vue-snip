@@ -1,5 +1,7 @@
 # vue-snip
 
+![](assets/logo.png)
+
 [![Build Status](https://travis-ci.org/ajobi/vue-snip.svg?branch=master)](https://travis-ci.org/ajobi/vue-snip)
 ![Coveralls github](https://img.shields.io/coveralls/github/ajobi/vue-snip)
 ![GitHub issues](https://img.shields.io/github/issues/ajobi/vue-snip)
