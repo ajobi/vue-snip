@@ -1,8 +1,8 @@
 import { getResizeObserver } from '../element/element.observer.js'
-import { normalizeMaxLines } from './directive.utils.js'
+import { normalizeMaxLines, normalizeSnipMethod } from './directive.utils.js'
 
 export const getInserted = (state, snipText) => (el, { value, arg }) => {
-  const { elementMap, options } = state
+  const { elementMap } = state
 
   const ResizeObserver = getResizeObserver()
   const observer = new ResizeObserver(([entry]) => {
@@ -17,6 +17,6 @@ export const getInserted = (state, snipText) => (el, { value, arg }) => {
     observer: observer,
     fullText: el.textContent,
     maxLines: normalizeMaxLines(value),
-    snipMethod: arg || options.snipMethod
+    snipMethod: normalizeSnipMethod(state, arg)
   })
 }
