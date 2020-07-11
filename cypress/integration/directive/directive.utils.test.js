@@ -1,4 +1,4 @@
-import { normalizeMaxLines } from '../../../src/directive/directive.utils.js'
+import { normalizeMaxLines, normalizeSnipMethod } from '../../../src/directive/directive.utils.js'
 
 describe('normalizeMaxLines', () => {
   it('returns original integer values', () => {
@@ -23,5 +23,28 @@ describe('normalizeMaxLines', () => {
   it('returns zero on non-parseable values', () => {
     expect(normalizeMaxLines('text')).to.equal(0)
     expect(normalizeMaxLines('text123')).to.equal(0)
+  })
+})
+
+const getMockState = (snipMethod) => ({
+  options: {
+    snipMethod
+  }
+})
+
+describe('normalizeSnipMethod', () => {
+  it('returns value of valid snip method', () => {
+    expect(normalizeSnipMethod(getMockState('js'), 'css')).to.equal('css')
+    expect(normalizeSnipMethod(getMockState('css'), 'js')).to.equal('js')
+  })
+
+  it('returns valid global value on invalid snip method', () => {
+    expect(normalizeSnipMethod(getMockState('js'), 'invalid')).to.equal('js')
+    expect(normalizeSnipMethod(getMockState('css'), 'invalid')).to.equal('css')
+  })
+
+  it('returns default value on invalid snip method and invalid global value', () => {
+    expect(normalizeSnipMethod(getMockState('invalid'), 'invalid')).to.equal('css')
+    expect(normalizeSnipMethod(getMockState('invalid'), 'invalid')).to.equal('css')
   })
 })
