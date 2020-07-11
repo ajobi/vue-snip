@@ -26,6 +26,7 @@
     "@cypress/code-coverage": "^3.8.1",
     "babel-loader": "^8.1.0",
     "babel-plugin-istanbul": "^6.0.0",
+    "coveralls": "^3.1.0",
     "cypress": "^4.8.0",
     "eslint": "^7.1.0",
     "eslint-config-standard": "^14.1.1",
