@@ -16,6 +16,6 @@ export const getInserted = (state, snipText) => (el, { value, arg }) => {
     observer: observer,
     fullText: el.textContent,
     maxLines: value,
-    method: arg || options.snipMethod
+    snipMethod: arg || options.snipMethod
   })
 }
