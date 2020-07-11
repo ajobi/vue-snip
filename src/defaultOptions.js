@@ -1,4 +1,5 @@
 export const defaultOptions = {
   directiveName: 'snip',
-  snipMethod: 'css'
+  snipMethod: 'css',
+  maxLines: 3
 }

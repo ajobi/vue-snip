@@ -16,7 +16,7 @@ export const getInserted = (state, snipText) => (el, { value, arg }) => {
   elementMap.set(el, {
     observer: observer,
     fullText: el.textContent,
-    maxLines: normalizeMaxLines(value),
+    maxLines: normalizeMaxLines(state, value),
     snipMethod: normalizeSnipMethod(state, arg)
   })
 }
