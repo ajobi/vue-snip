@@ -2,3 +2,5 @@ language: node_js
 cache:
   directories:
     - ../../../.cache/Cypress
+after_success:
+  - coveralls-lcov coverage/lcov.info
