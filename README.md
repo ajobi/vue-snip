@@ -7,6 +7,8 @@
 
 Vue.js directive that clamps the content of a text element if it exceeds specified number of lines.
 
+![](assets/illustration.png)
+
 ## Installation
 
 In preparation...
@@ -16,3 +18,5 @@ In preparation...
 In preparation...
 
 ## Options
+
+In preparation...
