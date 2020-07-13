@@ -18,6 +18,10 @@ export const setupDirective = (options) => {
   const update = getUpdate(state, snipText)
   const unbind = getUnbind(state, snipText)
 
+  if (options.debugMode) {
+    window.__VueSnipState = state
+  }
+
   return {
     directiveName,
     inserted,

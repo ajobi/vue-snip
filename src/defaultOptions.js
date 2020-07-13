@@ -2,5 +2,6 @@ export const defaultOptions = {
   directiveName: 'snip',
   snipMethod: 'css',
   maxLines: 3,
-  resizeObserverPolyfill: null
+  resizeObserverPolyfill: null,
+  debugMode: false
 }
