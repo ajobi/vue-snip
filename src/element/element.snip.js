@@ -69,12 +69,7 @@ class ElementSnipper {
       return
     }
 
-    // strip trailing spaces, commas, and dots before ellipsis is applied
-    while ([' ', '.', ','].includes(this.processed[this.processed.length - 1])) {
-      this.processed = this.processed.substring(0, this.processed.length - 1)
-    }
-
-    this.el.textContent = `${this.processed}${ELLIPSIS}`
+    this.el.textContent = `${this.processed.trim()}${ELLIPSIS}`
   }
 }
 
