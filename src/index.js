@@ -5,7 +5,7 @@ export default {
   install (Vue, options) {
     options = {
       ...defaultOptions,
-      options
+      ...options
     }
 
     const {
