@@ -9,14 +9,15 @@
   <body>
     <div id="playground" style="max-width: 600px">
       <div v-if="visible">
-        <p v-snip>{{ displayText }}</p>
-        <p v-snip="maxLines">{{ displayText }}</p>
-        <p v-snip:[method]="maxLines">{{ displayText }}</p>
+        <p v-snip data-cy="paragraphOne">{{ displayText }}</p>
+        <p v-snip="maxLines" data-cy="paragraphTwo">{{ displayText }}</p>
+        <p v-snip:[method] data-cy="paragraphThree">{{ displayText }}</p>
+        <p v-snip:[method]="maxLines" data-cy="paragraphFour">{{ displayText }}</p>
       </div>
-      <button @click="maxLines++">+</button>
-      <button @click="maxLines--">-</button>
-      <button @click="method = method === 'css' ? 'js' : 'css'">Method</button>
-      <button @click="visible = !visible">Visible</button>
+      <button @click="maxLines++" data-cy="linesPlus">+</button>
+      <button @click="maxLines--" data-cy="linesMinus">-</button>
+      <button @click="method = method === 'css' ? 'js' : 'css'" data-cy="methodToggle">Method</button>
+      <button @click="visible = !visible" data-cy="visibilityToggle">Visible</button>
     </div>
 
     <script>
