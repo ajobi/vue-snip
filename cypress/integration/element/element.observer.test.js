@@ -1,6 +1,10 @@
 import { getResizeObserver } from '../../../src/element/element.observer'
 import { ResizeObserver as ResizeObserverPolyfill } from '@juggle/resize-observer'
 
+const optionsWithPolyfill = {
+  resizeObserverPolyfill: ResizeObserverPolyfill
+}
+
 describe('ResizeObserver polyfill', () => {
   beforeEach(() => {
     cy.visit('element/observer')
@@ -13,6 +17,6 @@ describe('ResizeObserver polyfill', () => {
 
   it('returns polyfill if native observer is unavailable', () => {
     window.ResizeObserver = undefined
-    expect(getResizeObserver()).to.equal(ResizeObserverPolyfill)
+    expect(getResizeObserver(optionsWithPolyfill)).to.equal(ResizeObserverPolyfill)
   })
 })

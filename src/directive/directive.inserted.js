@@ -2,9 +2,9 @@ import { getResizeObserver } from '../element/element.observer.js'
 import { normalizeMaxLines, normalizeSnipMethod } from '../utils'
 
 export const getInserted = (state, snipText) => (el, { value, arg }) => {
-  const { elementMap } = state
+  const { elementMap, options } = state
 
-  const ResizeObserver = getResizeObserver()
+  const ResizeObserver = getResizeObserver(options)
   const observer = new ResizeObserver(([entry]) => {
     if (entry.contentRect.width !== elementMap.get(el).prevWidth) {
       snipText(el)
