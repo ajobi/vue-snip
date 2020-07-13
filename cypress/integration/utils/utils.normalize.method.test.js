@@ -7,6 +7,13 @@ const getMockState = (snipMethod) => ({
 })
 
 describe('normalizeSnipMethod', () => {
+  it('returns js if CSS method is unsupported', () => {
+    cy.stub(CSS, 'supports', () => false)
+
+    expect(normalizeSnipMethod(getMockState('js'), 'css')).to.equal('js')
+    expect(normalizeSnipMethod(getMockState('css'), 'js')).to.equal('js')
+  })
+
   it('returns value of valid snip method', () => {
     expect(normalizeSnipMethod(getMockState('js'), 'css')).to.equal('css')
     expect(normalizeSnipMethod(getMockState('css'), 'js')).to.equal('js')
