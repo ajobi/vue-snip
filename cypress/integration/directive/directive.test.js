@@ -1,6 +1,6 @@
-describe('vue-snip', () => {
+describe('Directive', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/directive')
   })
 
   it('', () => {

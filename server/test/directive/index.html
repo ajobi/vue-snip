@@ -2,26 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>vue-snip</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>Title</title>
     <script src="vue.js"></script>
     <script src="http://localhost:9001/main.js"></script>
   </head>
   <body>
-    <div id="playground">
-      <h1>Development Playground</h1>
-      <div class="card">
-        <h4>Original Text</h4>
-        <p>{{ displayText }}</p>
-      </div>
-      <div class="card">
-        <h4>Snipped Text ({{ maxLines }} lines)</h4>
-        <p v-snip="maxLines">{{ displayText }}</p>
-      </div>
-      <div class="controls">
-        <button @click="maxLines++">+</button>
-        <button @click="maxLines--">-</button>
-      </div>
+    <div id="playground" style="max-width: 600px">
+      <p v-snip="maxLines">{{ displayText }}</p>
+      <button @click="maxLines++">+</button>
+      <button @click="maxLines--">-</button>
     </div>
 
     <script>
