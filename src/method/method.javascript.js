@@ -5,84 +5,41 @@ const SEPARATOR_SUBSENTENCE = ', '
 const SEPARATOR_WORD = ' '
 const ELLIPSIS = '...'
 
-class ElementSnipper {
-  constructor (el, state) {
-    this.el = el
-    this.state = state
-    this.unprocessed = null
-    this.processed = null
-    this.optout = false
+const snipChunks = (snipProgress, el, maxLines, separator) => {
+  if (!snipProgress.unprocessed) {
+    return
   }
 
-  _snipChunks (separator) {
-    if (!this.unprocessed || this.optout) {
-      return this
+  const chunks = snipProgress.unprocessed.split(separator)
+  snipProgress.unprocessed = chunks.find(chunk => {
+    el.textContent = `${snipProgress.processed}${chunk}${ELLIPSIS}`
+
+    if (elementLines(el) > maxLines) {
+      return true
     }
 
-    const chunks = this.unprocessed.split(separator)
-    this.unprocessed = chunks.find(chunk => {
-      this.el.textContent = `${this.processed}${chunk}${ELLIPSIS}`
-
-      if (!this._isWithinRange()) {
-        return true
-      }
-
-      this.processed = `${this.processed}${chunk}${separator}`
-    })
-
-    return this
-  }
-
-  _isWithinRange () {
-    return elementLines(this.el) <= this.state.elementMap.get(this.el).maxLines
-  }
-
-  initText () {
-    const { fullText, maxLines } = this.state.elementMap.get(this.el)
-
-    if (maxLines <= 0) {
-      this.optout = true
-      return this
-    }
-
-    this.optout = this._isWithinRange()
-    this.unprocessed = fullText
-    this.processed = ''
-
-    return this
-  }
-
-  snipSentences () {
-    return this._snipChunks(SEPARATOR_SENTENCE)
-  }
-
-  snipSubsentences () {
-    return this._snipChunks(SEPARATOR_SUBSENTENCE)
-  }
-
-  snipWords () {
-    return this._snipChunks(SEPARATOR_WORD)
-  }
-
-  addEllipsis () {
-    if (this.optout) {
-      return
-    }
-
-    this.el.textContent = `${this.processed.trim()}${ELLIPSIS}`
-  }
+    snipProgress.processed = `${snipProgress.processed}${chunk}${separator}`
+  })
 }
 
 export const snipByJS = (state, el) => {
-  const { fullText } = state.elementMap.get(el)
+  const { fullText, maxLines } = state.elementMap.get(el)
 
   el.textContent = fullText
   el.style = ''
 
-  return new ElementSnipper(el, state)
-    .initText()
-    .snipSentences()
-    .snipSubsentences()
-    .snipWords()
-    .addEllipsis()
+  if (maxLines <= 0 || elementLines(el) <= maxLines) {
+    return
+  }
+
+  const snipProgress = {
+    unprocessed: fullText,
+    processed: ''
+  }
+
+  snipChunks(snipProgress, el, maxLines, SEPARATOR_SENTENCE)
+  snipChunks(snipProgress, el, maxLines, SEPARATOR_SUBSENTENCE)
+  snipChunks(snipProgress, el, maxLines, SEPARATOR_WORD)
+
+  el.textContent = `${snipProgress.processed.trim()}${ELLIPSIS}`
 }
