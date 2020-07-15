@@ -12,7 +12,20 @@ Vue.js directive that clamps the content of a text element if it exceeds specifi
 
 ## Installation
 
-In preparation...
+First you install the package:
+
+    # to install with npm 
+    $ npm install vue-snip
+ 
+    # to install with yarn
+    $ yarn add vue-snip
+
+Then you use the plugin:
+
+    import Vue from 'vue'
+    import VueSnip from 'vue-snip'
+
+    Vue.use(VueSnip)
 
 ## Usage
 
