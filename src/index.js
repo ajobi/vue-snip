@@ -1,5 +1,6 @@
-import { setupDirective } from './directive'
 import { defaultOptions } from './defaultOptions.js'
+import { getSnipText } from './element/element.snip'
+import { getInserted, getUpdate, getUnbind } from './directive'
 
 export default {
   install (Vue, options) {
@@ -8,14 +9,19 @@ export default {
       ...options
     }
 
-    const {
-      directiveName,
-      inserted,
-      update,
-      unbind
-    } = setupDirective(options)
+    const elementMap = new WeakMap()
+    const state = {
+      elementMap,
+      options
+    }
 
-    Vue.directive(directiveName, {
+    const snipText = getSnipText(state)
+
+    const inserted = getInserted(state, snipText)
+    const update = getUpdate(state, snipText)
+    const unbind = getUnbind(state, snipText)
+
+    Vue.directive(options.directiveName, {
       inserted,
       update,
       unbind
