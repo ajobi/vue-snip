@@ -1,7 +1,7 @@
 import { elementLines } from '../element/element.lines.js'
 
 const ELLIPSIS = '...'
-const SEPARATORS = ['. ', ', ', ' ']
+const SEPARATORS = ['. ', ', ', ' ', '']
 
 export const snipByJS = (state, el) => {
   const { fullText, maxLines } = state.elementMap.get(el)
