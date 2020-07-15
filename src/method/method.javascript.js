@@ -1,6 +1,7 @@
 import { elementLines } from '../element/element.lines.js'
 
-const ELLIPSIS = '...'
+// U+200A = "hair space" unicode character
+const ELLIPSIS = '.\u200A.\u200A.'
 const SEPARATORS = ['. ', ', ', ' ', '']
 
 export const snipByJS = (state, el) => {
