@@ -1,11 +1,10 @@
 import { elementLines } from '../element/element.lines.js'
 
-// U+200A = "hair space" unicode character
-const ELLIPSIS = '.\u200A.\u200A.'
 const SEPARATORS = ['. ', ', ', ' ', '']
 
 export const snipByJS = (state, el) => {
   const { fullText, maxLines } = state.elementMap.get(el)
+  const { ellipsis } = state.options
 
   el.textContent = fullText
   el.style = ''
@@ -21,7 +20,7 @@ export const snipByJS = (state, el) => {
 
   SEPARATORS.forEach(separator => {
     snipProgress.unprocessed = snipProgress.unprocessed.split(separator).find(chunk => {
-      el.textContent = `${snipProgress.processed}${chunk}${ELLIPSIS}`
+      el.textContent = `${snipProgress.processed}${chunk}${ellipsis}`
 
       if (elementLines(el) > maxLines) {
         return true
@@ -31,5 +30,5 @@ export const snipByJS = (state, el) => {
     })
   })
 
-  el.textContent = `${snipProgress.processed.trim()}${ELLIPSIS}`
+  el.textContent = `${snipProgress.processed.trim()}${ellipsis}`
 }

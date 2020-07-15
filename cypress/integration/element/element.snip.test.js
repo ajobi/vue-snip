@@ -1,5 +1,6 @@
 import { getSnipText } from '../../../src/element/element.snip'
 import { elementLines } from '../../../src/element/element.lines'
+import { defaultOptions as options } from '../../../src/defaultOptions'
 
 const getMockState = (element, maxLines = 3, snipMethod = 'css') => {
   const elementMap = new WeakMap()
@@ -10,7 +11,8 @@ const getMockState = (element, maxLines = 3, snipMethod = 'css') => {
   })
 
   return {
-    elementMap
+    elementMap,
+    options
   }
 }
 

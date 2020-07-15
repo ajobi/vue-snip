@@ -1,4 +1,5 @@
 import { snipByJS } from '../../../src/method'
+import { defaultOptions as options } from '../../../src/defaultOptions'
 
 const getMockState = (element, maxLines = 3) => {
   const elementMap = new WeakMap()
@@ -8,7 +9,8 @@ const getMockState = (element, maxLines = 3) => {
   })
 
   return {
-    elementMap
+    elementMap,
+    options
   }
 }
 
