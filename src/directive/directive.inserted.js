@@ -1,4 +1,4 @@
-import { getResizeObserver } from '../element/element.observer.js'
+import { getResizeObserver } from '../utils/utils.observer'
 import { normalizeMaxLines, normalizeSnipMethod } from '../utils'
 
 export const getInserted = (state, snipText) => (el, { value, arg }) => {

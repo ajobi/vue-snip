@@ -1,4 +1,4 @@
-import { getResizeObserver } from '../../../src/element/element.observer'
+import { getResizeObserver } from '../../../src/utils/utils.observer'
 import { ResizeObserver as ResizeObserverPolyfill } from '@juggle/resize-observer'
 
 const optionsWithPolyfill = {
@@ -7,7 +7,7 @@ const optionsWithPolyfill = {
 
 describe('ResizeObserver polyfill', () => {
   beforeEach(() => {
-    cy.visit('element/observer')
+    cy.visit('utils/observer')
   })
 
   it('returns native observer if available', () => {
