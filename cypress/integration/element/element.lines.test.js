@@ -7,17 +7,26 @@ describe('elementLines', () => {
     })
 
     it('returns 0 on empty text', () => {
-      cy.get('p').then(paragraphs => {
-        expect(elementLines(paragraphs[0])).to.equal(0)
+      cy.get('[data-cy=paragraph1]').then(([paragraph]) => {
+        expect(elementLines(paragraph)).to.equal(0)
       })
     })
 
     it('returns correct values on wrapping texts', () => {
-      cy.get('p').then(paragraphs => {
-        expect(elementLines(paragraphs[1])).to.equal(1)
-        expect(elementLines(paragraphs[2])).to.equal(2)
-        expect(elementLines(paragraphs[3])).to.equal(3)
-        expect(elementLines(paragraphs[4])).to.equal(4)
+      cy.get('[data-cy=paragraph2]').then(([paragraph]) => {
+        expect(elementLines(paragraph)).to.equal(1)
+      })
+
+      cy.get('[data-cy=paragraph3]').then(([paragraph]) => {
+        expect(elementLines(paragraph)).to.equal(2)
+      })
+
+      cy.get('[data-cy=paragraph4]').then(([paragraph]) => {
+        expect(elementLines(paragraph)).to.equal(3)
+      })
+
+      cy.get('[data-cy=paragraph5]').then(([paragraph]) => {
+        expect(elementLines(paragraph)).to.equal(4)
       })
     })
   })
@@ -30,17 +39,26 @@ describe('elementLines', () => {
       })
 
       it('returns 0 on empty text', () => {
-        cy.get('p').then(paragraphs => {
-          expect(elementLines(paragraphs[0])).to.equal(0)
+        cy.get('[data-cy=paragraph1]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(0)
         })
       })
 
       it('returns correct values on wrapping texts', () => {
-        cy.get('p').then(paragraphs => {
-          expect(elementLines(paragraphs[1])).to.equal(1)
-          expect(elementLines(paragraphs[2])).to.equal(2)
-          expect(elementLines(paragraphs[3])).to.equal(3)
-          expect(elementLines(paragraphs[4])).to.equal(4)
+        cy.get('[data-cy=paragraph2]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(1)
+        })
+
+        cy.get('[data-cy=paragraph3]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(2)
+        })
+
+        cy.get('[data-cy=paragraph4]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(3)
+        })
+
+        cy.get('[data-cy=paragraph5]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(4)
         })
       })
     })
@@ -52,17 +70,26 @@ describe('elementLines', () => {
       })
 
       it('returns 0 on empty text', () => {
-        cy.get('p').then(paragraphs => {
-          expect(elementLines(paragraphs[0])).to.equal(0)
+        cy.get('[data-cy=paragraph1]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(0)
         })
       })
 
       it('returns correct values on wrapping texts', () => {
-        cy.get('p').then(paragraphs => {
-          expect(elementLines(paragraphs[1])).to.equal(1)
-          expect(elementLines(paragraphs[2])).to.equal(2)
-          expect(elementLines(paragraphs[3])).to.equal(3)
-          expect(elementLines(paragraphs[4])).to.equal(4)
+        cy.get('[data-cy=paragraph2]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(1)
+        })
+
+        cy.get('[data-cy=paragraph3]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(2)
+        })
+
+        cy.get('[data-cy=paragraph4]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(3)
+        })
+
+        cy.get('[data-cy=paragraph5]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(4)
         })
       })
     })
@@ -74,12 +101,24 @@ describe('elementLines', () => {
       })
 
       it('returns 0 on each text', () => {
-        cy.get('p').then(paragraphs => {
-          expect(elementLines(paragraphs[0])).to.equal(0)
-          expect(elementLines(paragraphs[1])).to.equal(0)
-          expect(elementLines(paragraphs[2])).to.equal(0)
-          expect(elementLines(paragraphs[3])).to.equal(0)
-          expect(elementLines(paragraphs[4])).to.equal(0)
+        cy.get('[data-cy=paragraph1]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(0)
+        })
+
+        cy.get('[data-cy=paragraph2]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(0)
+        })
+
+        cy.get('[data-cy=paragraph3]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(0)
+        })
+
+        cy.get('[data-cy=paragraph4]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(0)
+        })
+
+        cy.get('[data-cy=paragraph5]').then(([paragraph]) => {
+          expect(elementLines(paragraph)).to.equal(0)
         })
       })
     })
