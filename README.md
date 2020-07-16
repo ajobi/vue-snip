@@ -23,52 +23,52 @@ Each element is also immediately re-snipped when horizontally resized. This is d
 
 ## Installation
 
-````
+``` bash
 npm install vue-snip
-````
-````
+```
+``` bash
 yarn add vue-snip
-````
+```
 
 Before you start your app:
 
-````
+``` javascript
 import Vue from 'vue'
 import VueSnip from 'vue-snip'
 
 Vue.use(VueSnip)
-````
+```
 
 
 ## Usage
 
 The most basic usage looks like this:
 
-````
+``` html
 <template>
   <p v-snip> ... </p>
 </template>
-````
+```
 
 Most of the time, you would probably pass in at least the `maxLines` value:
 
-````
+``` html
 <template>
   <p v-snip="3"> ... </p>
 </template>
-````
+```
 
 If that's not enough, you can pass in the `method` too:
 
-````
+``` html
 <template>
   <p v-snip:js="3"> ... </p>
 </template>
-````
+```
 
-Both of these are also reactive, so you can do this:
+Both of these are also reactive, so you can do even this:
 
-````
+``` html
 <template>
   <p v-snip:[method]="maxLines"> ... </p>
 </template>
@@ -83,7 +83,7 @@ Both of these are also reactive, so you can do this:
     }
   }
 </script>
-````
+```
 
 ## Options
 
