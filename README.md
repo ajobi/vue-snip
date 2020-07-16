@@ -106,3 +106,9 @@ If you don't pass in any options, default options are used. Any option passed wi
 | `ellipsis` | `'.\u200A.\u200A.'` | In preparation... |
 | `resizeObserverPolyfill` | `null` | In preparation... |
 | `debugMode` | `false` | In preparation... |
+
+## Caveats
+
+TODO: Document flexbox...
+
+TODO: Document style attribute... 
