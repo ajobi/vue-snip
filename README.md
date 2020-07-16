@@ -50,7 +50,7 @@ The most basic usage looks like this:
 </template>
 ```
 
-Most of the time, you would probably pass in at least the `maxLines` value:
+Most of the time, you would probably pass in the explicit `maxLines` value:
 
 ``` html
 <template>
@@ -58,7 +58,7 @@ Most of the time, you would probably pass in at least the `maxLines` value:
 </template>
 ```
 
-If that's not enough, you can pass in the `method` too:
+On top of that, you can pass in the snipping `method` too:
 
 ``` html
 <template>
@@ -87,4 +87,25 @@ Both of these are also reactive, so you can do even this:
 
 ## Options
 
-In preparation...
+``` javascript
+import Vue from 'vue'
+import VueSnip from 'vue-snip'
+
+const options = {
+  // your setup
+}
+
+Vue.use(VueSnip, options)
+```
+
+If you don't pass in any options, default options are used. Any option passed will override the default value.
+
+| Name | Default Value | Description |
+| --- | --- | --- |
+| `directiveName` | 'snip' | In preparation... |
+| `snipMethod` | 'css' | In preparation... |
+| `maxLines` | 3 | In preparation... |
+| `separators` | ['. ', ', ', ' ', ''] | In preparation... |
+| `ellipsis` | '.\u200A.\u200A.' | In preparation... |
+| `resizeObserverPolyfill` | null | In preparation... |
+| `debugMode` | false | In preparation... |
