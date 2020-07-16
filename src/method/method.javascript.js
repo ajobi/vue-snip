@@ -1,10 +1,8 @@
 import { elementLines } from '../element/element.lines.js'
 
-const SEPARATORS = ['. ', ', ', ' ', '']
-
 export const snipByJS = (state, el) => {
   const { fullText, maxLines } = state.elementMap.get(el)
-  const { ellipsis } = state.options
+  const { ellipsis, separators } = state.options
 
   el.textContent = fullText
   el.style = ''
@@ -18,7 +16,7 @@ export const snipByJS = (state, el) => {
     processed: ''
   }
 
-  SEPARATORS.forEach(separator => {
+  separators.forEach(separator => {
     snipProgress.unprocessed = snipProgress.unprocessed.split(separator).find(chunk => {
       el.textContent = `${snipProgress.processed}${chunk}${ellipsis}`
 
