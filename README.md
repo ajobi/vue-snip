@@ -17,17 +17,16 @@ This library offers two snipping methods:
 - `CSS` method based on the `-webkit-line-clamp`
 - `JavaScript` method that is snipping the `innerText` until it does not exceed given number of lines
 
-Global default is the CSS method (automatically falls back to the JavaScript method for non-supporting browsers), but you can freely switch snipping methods on a per-element basis as needed. Per-element snipping setup is stored in a single `WeakMap`. 
+Global default is the CSS method (automatically falls back to the JavaScript method for non-supporting browsers), but you can freely switch snipping methods on a per-element basis as needed. 
 
-Each element is immediately re-snipped when horizontally resized. This is detected via the `ResizeObserver`. 
+Each element is also immediately re-snipped when horizontally resized. This is detected via the `ResizeObserver`. 
 
 ## Installation
 
 ````
-# install with npm 
 npm install vue-snip
-
-# or install with yarn
+````
+````
 yarn add vue-snip
 ````
 
@@ -43,12 +42,47 @@ Vue.use(VueSnip)
 
 ## Usage
 
-You can optionally pass the `:method` argument and the `"maxLines"` value to the directive:
+The most basic usage looks like this:
 
 ````
 <template>
-    <p v-snip:method="maxLines"> ... </p>
+  <p v-snip> ... </p>
 </template>
+````
+
+Most of the time, you would probably pass in at least the `maxLines` value:
+
+````
+<template>
+  <p v-snip="3"> ... </p>
+</template>
+````
+
+If that's not enough, you can pass in the `method` too:
+
+````
+<template>
+  <p v-snip:js="3"> ... </p>
+</template>
+````
+
+Both of these are also reactive, so you can do this:
+
+````
+<template>
+  <p v-snip:[method]="maxLines"> ... </p>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        method: 'js',
+        maxLines: 3
+      }
+    }
+  }
+</script>
 ````
 
 ## Options
