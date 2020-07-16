@@ -30,15 +30,12 @@ npm install vue-snip
 yarn add vue-snip
 ```
 
-Before you start your app:
-
 ``` javascript
 import Vue from 'vue'
 import VueSnip from 'vue-snip'
 
 Vue.use(VueSnip)
 ```
-
 
 ## Usage
 
@@ -102,10 +99,10 @@ If you don't pass in any options, default options are used. Any option passed wi
 
 | Name | Default Value | Description |
 | --- | --- | --- |
-| `directiveName` | 'snip' | In preparation... |
-| `snipMethod` | 'css' | In preparation... |
-| `maxLines` | 3 | In preparation... |
-| `separators` | ['. ', ', ', ' ', ''] | In preparation... |
-| `ellipsis` | '.\u200A.\u200A.' | In preparation... |
-| `resizeObserverPolyfill` | null | In preparation... |
-| `debugMode` | false | In preparation... |
+| `directiveName` | `'snip'` | In preparation... |
+| `snipMethod` | `'css'` | In preparation... |
+| `maxLines` | `3` | In preparation... |
+| `separators` | `['. ', ', ', ' ', '']` | In preparation... |
+| `ellipsis` | `'.\u200A.\u200A.'` | In preparation... |
+| `resizeObserverPolyfill` | `null` | In preparation... |
+| `debugMode` | `false` | In preparation... |
