@@ -124,3 +124,19 @@ For the directive to be able to properly determine the number of lines at any gi
 * making the element a `flex-item` (default for align-items is stretch)
 
 *Note: You can use the directive with flexbox, just make sure to change the default `align-items` / `align-self` value to `flex-start` or whatever fits your case.*
+
+## IE11 Support
+
+IE11 does not support `-webkit-line-clamp` (automatically falls back to the JS method), and `ResizeObserver API`. Therefore you need to include the polyfill (https://www.npmjs.com/package/@juggle/resize-observer is recommended)
+
+``` javascript
+import Vue from 'vue'
+import VueSnip from 'vue-snip'
+import { ResizeObserver } from '@juggle/resize-observer'
+
+const options = {
+  resizeObserver: ResizeObserver
+}
+
+Vue.use(VueSnip, options)
+```
