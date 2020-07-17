@@ -24,3 +24,13 @@ import './commands'
 Cypress.Screenshot.defaults({
   screenshotOnRunFailure: false
 })
+
+// https://github.com/quasarframework/quasar/issues/2233#issuecomment-656554190
+Cypress.on('uncaught:exception', (err) => {
+  if (err.message.includes('ResizeObserver')) {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false
+  }
+  return true
+})
