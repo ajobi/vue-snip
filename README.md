@@ -98,15 +98,15 @@ Vue.use(VueSnip, options)
 
 If you don't pass in any options, default options are used. Any option passed will override the default value.
 
-| Name | Default Value | Description |
+| Parameter | Default | Description |
 | --- | --- | --- |
-| `directiveName` | `'snip'` | In preparation... |
-| `snipMethod` | `'css'` | In preparation... |
-| `maxLines` | `3` | In preparation... |
-| `separators` | `['. ', ', ', ' ', '']` | In preparation... |
-| `ellipsis` | `'.\u200A.\u200A.'` | In preparation... |
-| `resizeObserverPolyfill` | `null` | In preparation... |
-| `debugMode` | `false` | In preparation... |
+| **directiveName** | `'snip'` | The name of the directive in your templates (v-`directiveName`) |
+| **snipMethod** | `'css'` | Global snipping method. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `css` or `js`. |
+| **maxLines** | `3` | Global max lines. Will be used for the element if no explicit `maxLines` value is passed in for that element. |
+| **separators** | `['. ', ', ', ' ', '']` | Only applies to js approach. Used internally to split the `innerText` into chunks and find the snipped text in an effective way. |
+| **ellipsis** | `'.\u200A.\u200A.'` | Only applies to js approach. A character or a group of characters displayed at the end of the snipped text. Note: You cannot change the ellipsis when using CSS method. |
+| **resizeObserverPolyfill** | `null` | Resize observer polyfill object. Used as a fallback when `window.ResizeObserver` is `undefined`. |
+| **debugMode** | `false` | Exposes directive state as the `window.__VueSnipState` |
 
 ## Caveats
 
