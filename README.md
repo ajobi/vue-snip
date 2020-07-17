@@ -17,7 +17,7 @@ This directive offers two snipping approaches:
 - **CSS approach** based on the `-webkit-line-clamp`.
 - **JavaScript approach** based on the cutting of `innerText` in a loop until it does not exceed the given number of lines anymore.
 
-*Note: CSS approach is faster (preferred), but does not work in older browsers / all situations (f.e. does not work when you need the text to flow around a floated element).*
+*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, or when you need the text to flow around a floated element).*
 
 Global default is the CSS approach (automatically falls back to the JavaScript approach in the non-supporting browsers), but you can freely switch snipping methods on a per-element basis as needed.
 
