@@ -3,14 +3,14 @@ import { defaultOptions } from '../defaultOptions'
 export const normalizeMaxLines = (state, maxLines) => {
   const parsedMaxLines = parseInt(maxLines)
 
-  if (!isNaN(parsedMaxLines)) {
+  if (!Number.isNaN(parsedMaxLines)) {
     return parsedMaxLines
   }
 
   const { maxLines: globalMaxLines } = state.options
   const parsedGlobalMaxLines = parseInt(globalMaxLines)
 
-  if (!isNaN(parsedGlobalMaxLines)) {
+  if (!Number.isNaN(parsedGlobalMaxLines)) {
     return parsedGlobalMaxLines
   }
 
