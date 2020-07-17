@@ -7,7 +7,7 @@ describe('Directive', () => {
     cy.visit('/directive')
   })
 
-  describe('Paragraph without value and parameters', () => {
+  describe('Without explicit value or parameters', () => {
     it('Does always use default maxLines', () => {
       cy.window().then(window => {
         cy.get('[data-cy=paragraph1]').then(([paragraph]) => {
@@ -37,7 +37,7 @@ describe('Directive', () => {
     })
   })
 
-  describe('Paragraph with value', () => {
+  describe('With explicit value', () => {
     it('Reflects the value changes', () => {
       cy.window().then(window => {
         cy.get('[data-cy=paragraph2]').then(([paragraph]) => {
@@ -53,7 +53,7 @@ describe('Directive', () => {
     })
   })
 
-  describe('Paragraph with argument', () => {
+  describe('With explicit argument', () => {
     it('Reflects the argument changes', () => {
       cy.window().then(window => {
         cy.get('[data-cy=paragraph3]').then(([paragraph]) => {
