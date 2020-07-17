@@ -3,7 +3,7 @@ describe('Directive Unbind', () => {
     cy.visit('/directive')
   })
 
-  it('Unbinds properly', () => {
+  it('Removes the elements from the map', () => {
     cy.window().then(window => {
       const { elementMap } = window.__VueSnipState
 
