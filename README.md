@@ -13,13 +13,17 @@ Vue.js directive that clamps the content of a text element if it exceeds specifi
 
 ## How it works
 
-This library offers two snipping approaches:
-- **CSS method** based on the `-webkit-line-clamp`
-- **JavaScript method** that is snipping the `innerText` until it does not exceed given number of lines
+This directive offers two snipping approaches:
+- **CSS approach** based on the `-webkit-line-clamp`.
+- **JavaScript approach** based on the cutting of `innerText` in a loop until it does not exceed the given number of lines anymore.
 
-Global default is the CSS method (automatically falls back to the JavaScript method for non-supporting browsers), but you can freely switch snipping methods on a per-element basis as needed. 
+*Note: CSS approach is faster (preferred), but does not work in older browsers / all situations (f.e. does not work when you need the text to flow around a floated element).*
 
-Each element is also immediately re-snipped when horizontally resized. This is detected via the `ResizeObserver`. 
+Global default is the CSS approach (automatically falls back to the JavaScript approach in the non-supporting browsers), but you can freely switch snipping methods on a per-element basis as needed.
+
+Elements are automatically re-snipped:
+* when horizontally resized (detected via the `ResizeObserver API`)
+* when directive's reactive `argument` or `value` changes
 
 ## Installation
 
@@ -85,14 +89,14 @@ Both of these are reactive, so you can do even this:
 
 ## Options
 
-Passing options is not required. If you don't pass in any options, default options are used. 
+Passing options is not required. If you don't pass in any options, the default options are used. If you pass options, they get merged with the defaults, so just define what you want to change (no need to redefine all properties).
 
 ``` javascript
 import Vue from 'vue'
 import VueSnip from 'vue-snip'
 
 const options = {
-  debugMode: true
+  // your setup
 }
 
 Vue.use(VueSnip, options)
@@ -103,7 +107,7 @@ The options object can have the following properties:
 | Property | Default | Description |
 | --- | --- | --- |
 | **directiveName** | `'snip'` | The name of the directive in your templates (v-`directiveName`) |
-| **snipMethod** | `'css'` | Global snipping method. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `css` or `js`. |
+| **snipMethod** | `'css'` | Global snipping method. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `'css'` or `'js'`. |
 | **maxLines** | `3` | Global max lines. Will be used for the element if no explicit `maxLines` value is passed in for that element. |
 | **separators** | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` into chunks and find the snipped text in an effective way. *Note: Only applies to js approach.* |
 | **ellipsis** | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Only applies to js approach. You cannot change the ellipsis when using CSS method.* |
@@ -112,7 +116,7 @@ The options object can have the following properties:
 
 ## IE11 Support
 
-IE11 does not support `-webkit-line-clamp` (automatically falls back to the JS method), and the `ResizeObserver API`. This API needs to be polyfilled (https://www.npmjs.com/package/@juggle/resize-observer is recommended)
+IE11 does not support `-webkit-line-clamp` (automatically falls back to the JS method), and the `ResizeObserver API`. This API needs to be polyfilled (recommended: https://www.npmjs.com/package/@juggle/resize-observer)
 
 ``` javascript
 import Vue from 'vue'
