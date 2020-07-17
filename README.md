@@ -103,8 +103,8 @@ If you don't pass in any options, default options are used. Any option passed wi
 | **directiveName** | `'snip'` | The name of the directive in your templates (v-`directiveName`) |
 | **snipMethod** | `'css'` | Global snipping method. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `css` or `js`. |
 | **maxLines** | `3` | Global max lines. Will be used for the element if no explicit `maxLines` value is passed in for that element. |
-| **separators** | `['. ', ', ', ' ', '']` | Only applies to js approach. Used internally to split the `innerText` into chunks and find the snipped text in an effective way. |
-| **ellipsis** | `'.\u200A.\u200A.'` | Only applies to js approach. A character or a group of characters displayed at the end of the snipped text. Note: You cannot change the ellipsis when using CSS method. |
+| **separators** | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` into chunks and find the snipped text in an effective way. *Note: Only applies to js approach.* |
+| **ellipsis** | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Only applies to js approach. You cannot change the ellipsis when using CSS method.* |
 | **resizeObserverPolyfill** | `null` | Resize observer polyfill object. Used as a fallback when `window.ResizeObserver` is `undefined`. |
 | **debugMode** | `false` | Exposes directive state as the `window.__VueSnipState` |
 
