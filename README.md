@@ -85,6 +85,8 @@ Both of these are reactive, so you can do even this:
 
 ## Options
 
+Passing options is not required. If you don't pass in any options, default options are used. 
+
 ``` javascript
 import Vue from 'vue'
 import VueSnip from 'vue-snip'
@@ -96,9 +98,9 @@ const options = {
 Vue.use(VueSnip, options)
 ```
 
-If you don't pass in any options, default options are used. Any option passed will override the default value.
+The options object can have the following properties:
 
-| Parameter | Default | Description |
+| Property | Default | Description |
 | --- | --- | --- |
 | **directiveName** | `'snip'` | The name of the directive in your templates (v-`directiveName`) |
 | **snipMethod** | `'css'` | Global snipping method. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `css` or `js`. |
