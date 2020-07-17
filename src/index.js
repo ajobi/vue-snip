@@ -15,6 +15,10 @@ export default {
       options
     }
 
+    if (options.debugMode) {
+      window.__VueSnipState = state
+    }
+
     const snipText = getSnipText(state)
 
     const inserted = getInserted(state, snipText)
