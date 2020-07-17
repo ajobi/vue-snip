@@ -11,11 +11,11 @@ Vue.js directive that clamps the content of a text element if it exceeds specifi
 ![](assets/illustration.png)
 
 
-### How it works
+## How it works
 
-This library offers two snipping methods:
-- `CSS` method based on the `-webkit-line-clamp`
-- `JavaScript` method that is snipping the `innerText` until it does not exceed given number of lines
+This library offers two snipping approaches:
+- **CSS method** based on the `-webkit-line-clamp`
+- **JavaScript method** that is snipping the `innerText` until it does not exceed given number of lines
 
 Global default is the CSS method (automatically falls back to the JavaScript method for non-supporting browsers), but you can freely switch snipping methods on a per-element basis as needed. 
 
@@ -24,9 +24,10 @@ Each element is also immediately re-snipped when horizontally resized. This is d
 ## Installation
 
 ``` bash
+# install with npm
 npm install vue-snip
-```
-``` bash
+
+# or with yarn
 yarn add vue-snip
 ```
 
@@ -63,7 +64,7 @@ On top of that, you can pass in the snipping `method` too:
 </template>
 ```
 
-Both of these are also reactive, so you can do even this:
+Both of these are reactive, so you can do even this:
 
 ``` html
 <template>
@@ -89,7 +90,7 @@ import Vue from 'vue'
 import VueSnip from 'vue-snip'
 
 const options = {
-  // your setup
+  debugMode: true
 }
 
 Vue.use(VueSnip, options)
