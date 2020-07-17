@@ -1,4 +1,3 @@
-import './polyfills'
 import { defaultOptions } from './defaultOptions.js'
 import { getSnipText } from './element/element.snip'
 import { getInserted, getUpdate, getUnbind } from './directive'
