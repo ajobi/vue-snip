@@ -5,7 +5,7 @@ export const snipByJS = (state, el) => {
   const { ellipsis, separators } = state.options
 
   el.textContent = fullText
-  el.style = ''
+  el.removeAttribute('style')
 
   if (maxLines <= 0 || elementLines(el) <= maxLines) {
     return
@@ -17,7 +17,7 @@ export const snipByJS = (state, el) => {
   }
 
   separators.forEach(separator => {
-    snipProgress.unprocessed = snipProgress.unprocessed.split(separator).find(chunk => {
+    snipProgress.unprocessed = snipProgress.unprocessed.split(separator).filter(chunk => {
       el.textContent = `${snipProgress.processed}${chunk}${ellipsis}`
 
       if (elementLines(el) > maxLines) {
@@ -25,7 +25,7 @@ export const snipByJS = (state, el) => {
       }
 
       snipProgress.processed = `${snipProgress.processed}${chunk}${separator}`
-    })
+    })[0]
   })
 
   el.textContent = `${snipProgress.processed.trim()}${ellipsis}`
