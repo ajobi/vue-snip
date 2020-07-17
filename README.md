@@ -110,6 +110,15 @@ If you don't pass in any options, default options are used. Any option passed wi
 
 ## Caveats
 
-TODO: Document flexbox...
+### Element style attribute
 
-TODO: Document style attribute... 
+The directive internally operates on the element's `style` attribute. You should not modify the `style` attribute of elements you are snipping. Use classes instead.
+
+### Element height
+
+For the directive to be able to properly determine the number of lines at any given time, the height of the element should reflect the height of the text. Be wary of any CSS steps that will affect the height of the element. Some of the common examples:
+* vertical paddings
+* fixed height / fixed min height
+* making the element a `flex-item` (default for align-items is stretch)
+
+*Note: You can use the directive with flexbox, just make sure to change the default `align-items` / `align-self` value to `flex-start` or whatever fits your case.*
