@@ -4,6 +4,5 @@ export const defaultOptions = {
   maxLines: 3,
   separators: ['. ', ', ', ' ', ''],
   ellipsis: '.\u200A.\u200A.',
-  resizeObserverPolyfill: null,
   debugMode: false
 }
