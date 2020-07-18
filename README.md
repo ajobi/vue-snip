@@ -97,7 +97,7 @@ Both of these are reactive, so you can do even this:
 
 ## Options
 
-Passing options is not required. If you don't pass in any options, the default options are used. If you pass options, they get merged with the defaults, so just define what you want to change (no need to redefine all properties).
+Passing options is not required - if you don't pass options, the default options are used. Passed options get merged with the defaults, so just define what you want to change (no need to redefine all properties).
 
 ``` javascript
 import Vue from 'vue'
@@ -110,7 +110,7 @@ const options = {
 Vue.use(VueSnip, options)
 ```
 
-The options object can have the following properties:
+#### The options object can have the following properties:
 
 | Property | Default | Description |
 | --- | --- | --- |
@@ -141,11 +141,11 @@ Vue.use(VueSnip, options)
 
 ## Caveats
 
-### Element style attribute
+#### Element style attribute
 
 The directive internally operates on the element's `style` attribute. You should not modify the `style` attribute of elements you are snipping. Use classes instead.
 
-### Element height
+#### Element height
 
 For the directive to be able to properly determine the number of lines at any given time, the height of the element should reflect the height of the text. Be wary of any CSS steps that will affect the height of the element. Some of the common examples:
 * vertical paddings
