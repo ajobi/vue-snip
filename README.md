@@ -18,7 +18,7 @@ Vue.js directive that clamps the content of a text element if it exceeds specifi
 
 ## How it works
 
-##### Two snipping approaches:
+#### Two snipping approaches:
 - **CSS** approach based on the `-webkit-line-clamp`.
 - **JavaScript** approach based on the progressive cutting of element's `innerText` in a loop.
 
@@ -26,7 +26,7 @@ Vue.js directive that clamps the content of a text element if it exceeds specifi
 
 Global default is the CSS approach (falls back to the JavaScript for the non-supporting browsers), but you can freely switch snipping approach on a per-element basis as needed.
 
-##### Element snipping:
+#### Element snipping:
 Directive uses the selected snipping approach to snip elements in several scenarios:
 
 * when inserted into the document
