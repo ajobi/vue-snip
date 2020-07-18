@@ -102,23 +102,16 @@ Vue.use(VueSnip, options)
 | **maxLines** | `3` | Global max lines. Will be used for the element if no explicit `maxLines` value is passed in for that element. |
 | **separators** | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` into chunks and find the snipped text in an effective way. *Note: Only applies to js approach.* |
 | **ellipsis** | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Only applies to js approach. You cannot change the ellipsis when using CSS method.* |
-| **resizeObserverPolyfill** | `null` | Resize observer polyfill object. Used as a fallback when `window.ResizeObserver` is `undefined`. |
 | **debugMode** | `false` | Exposes directive state as the `window.__VueSnipState` |
 
 ## IE11 Support
 
-IE11 does not support `-webkit-line-clamp` (falls back to the JS method), and the `ResizeObserver API`. This API needs to be polyfilled (recommended: https://www.npmjs.com/package/@juggle/resize-observer)
+IE11 does not support `-webkit-line-clamp` (falls back to the JS method), and the `ResizeObserver API`. This API needs to be polyfilled (recommended: https://www.npmjs.com/package/@juggle/resize-observer), otherwise the elements will not get re-snipped when they get resized.
 
 ``` javascript
-import Vue from 'vue'
-import VueSnip from 'vue-snip'
-import { ResizeObserver } from '@juggle/resize-observer'
-
-const options = {
-  resizeObserverPolyfill: ResizeObserver
-}
-
-Vue.use(VueSnip, options)
+import { ResizeObserver as Polyfill } from '@juggle/resize-observer';
+ 
+window.ResizeObserver = window.ResizeObserver || Polyfill;
 ```
 
 ## How it works
