@@ -82,5 +82,37 @@ describe('Vue Snip', () => {
         })
       })
     })
+
+    it('Uses fallback method instead of default method', () => {
+      cy.window().then(window => {
+        window.CSS = undefined
+        cy.get('[data-cy=visibilityToggle]').click().then(() => {
+          cy.get('[data-cy=visibilityToggle]').click().then(() => {
+            cy.get('[data-cy=paragraph1]').then(([paragraph]) => {
+              const elementState = window.__VueSnipState.elementMap.get(paragraph)
+              expect(elementState.snipMethod).to.equal('js')
+            })
+          })
+        })
+      })
+    })
+
+    it('Uses fallback method instead of the explicit method', () => {
+      cy.window().then(window => {
+        window.CSS = undefined
+        cy.get('[data-cy=visibilityToggle]').click().then(() => {
+          cy.get('[data-cy=visibilityToggle]').click().then(() => {
+            cy.get('[data-cy=paragraph3]').then(([paragraph]) => {
+              const elementState = window.__VueSnipState.elementMap.get(paragraph)
+              expect(elementState.snipMethod).to.equal('js')
+
+              cy.get('[data-cy=methodToggle]').click().then(() => {
+                expect(elementState.snipMethod).to.equal('js')
+              })
+            })
+          })
+        })
+      })
+    })
   })
 })
