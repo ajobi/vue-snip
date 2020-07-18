@@ -8,18 +8,23 @@
 
 Vue.js directive that clamps the content of a text element if it exceeds specified number of lines.
 
-![](assets/illustration.png)
+Key features:
+* no need to specify line heights
+* no dependencies (small and fast)
+* two snipping approaches (CSS / JavaScript) (on a per-element basis)
+* re-snipping on element resize and directive value / argument change
 
+![](assets/illustration.png)
 
 ## How it works
 
-This directive offers two snipping approaches:
+Two snipping approaches:
 - **CSS approach** based on the `-webkit-line-clamp`.
-- **JavaScript approach** based on the cutting of `innerText` in a loop until it does not exceed the given number of lines anymore.
+- **JavaScript approach** based on the progressive cutting of element's `innerText` in a loop.
 
 *Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, or when you need the text to flow around a floated element).*
 
-Global default is the CSS approach (automatically falls back to the JavaScript approach in the non-supporting browsers), but you can freely switch snipping methods on a per-element basis as needed.
+Global default is the CSS approach (automatically falls back to the JavaScript approach in the non-supporting browsers), but you can freely switch snipping approach on a per-element basis as needed.
 
 Elements are automatically re-snipped:
 * when horizontally resized (detected via the `ResizeObserver API`)
@@ -142,6 +147,6 @@ The directive internally operates on the element's `style` attribute. You should
 For the directive to be able to properly determine the number of lines at any given time, the height of the element should reflect the height of the text. Be wary of any CSS steps that will affect the height of the element. Some of the common examples:
 * vertical paddings
 * fixed height / fixed min height
-* making the element a `flex-item` (default for align-items is stretch)
+* making the element a flex-item (`align-items` defaults to `stretch`)
 
 *Note: You can use the directive with flexbox, just make sure to change the default `align-items` / `align-self` value to `flex-start` or whatever fits your case.*
