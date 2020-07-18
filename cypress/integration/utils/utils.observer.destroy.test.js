@@ -16,8 +16,11 @@ describe('addObserver', () => {
       addObserver(state, snipText, el)
       destroyObserver(state, el)
 
-      expect(state.elementMap.get(el).observer).eq(undefined)
-      expect(state.elementMap.get(el).observer).eq(undefined)
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(10).then(() => {
+        expect(state.elementMap.get(el).observer).eq(undefined)
+        expect(state.elementMap.get(el).observer).eq(undefined)
+      })
     })
   })
 })
