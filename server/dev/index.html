@@ -14,7 +14,7 @@
         <h4>Original Text</h4>
         <p>{{ displayText }}</p>
       </div>
-      <div class="card">
+      <div class="card" v-if="visible">
         <h4>Snipped Text ({{ maxLines }} lines - {{ method }})</h4>
         <p v-snip:[method]="maxLines">{{ displayText }}</p>
       </div>
@@ -22,6 +22,7 @@
         <button @click="maxLines++">+</button>
         <button @click="maxLines--">-</button>
         <button @click="method = method === 'css' ? 'js' : 'css'">Method</button>
+        <button @click="visible = !visible">Visible</button>
       </div>
     </div>
 
@@ -33,6 +34,7 @@
         data: () => ({
           maxLines: 3,
           method: 'css',
+          visible: true,
         }),
         computed: {
           displayText () {
