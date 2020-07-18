@@ -16,23 +16,6 @@ Vue.js directive that clamps the content of a text element if it exceeds specifi
 
 ![](assets/illustration.png)
 
-## How it works
-
-#### Two snipping approaches:
-- **CSS** approach based on the `-webkit-line-clamp`.
-- **JavaScript** approach based on the progressive cutting of element's `innerText` in a loop.
-
-*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, or when you need the text to flow around a floated element).*
-
-Global default is the CSS approach (falls back to the JavaScript for the non-supporting browsers), but you can freely switch snipping approach on a per-element basis as needed.
-
-#### Element snipping:
-Directive uses the selected snipping approach to snip elements in several scenarios:
-
-* when inserted into the document
-* when horizontally resized (detected via the `ResizeObserver API` - needs polyfill for IE11)
-* when directive's reactive data change
-
 ## Installation
 
 ``` bash
@@ -138,6 +121,22 @@ const options = {
 Vue.use(VueSnip, options)
 ```
 
+## How it works
+
+#### Two snipping approaches:
+- **CSS** approach based on the `-webkit-line-clamp`.
+- **JavaScript** approach based on the progressive cutting of element's `innerText` in a loop.
+
+*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, or when you need the text to flow around a floated element).*
+
+Global default is the CSS approach (falls back to the JavaScript for the non-supporting browsers), but you can freely switch snipping approach on a per-element basis as needed.
+
+#### Element snipping:
+Directive uses the selected snipping approach to snip elements in several scenarios:
+
+* when inserted into the document
+* when horizontally resized (detected via the `ResizeObserver API` - needs polyfill for IE11)
+* when directive's reactive data change
 
 ## Caveats
 
