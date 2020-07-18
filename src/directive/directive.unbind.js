@@ -1,7 +1,8 @@
+import { destroyObserver } from '../utils'
+
 export const getUnbind = (state) => (el) => {
   const { elementMap } = state
 
-  const { observer } = elementMap.get(el)
-  observer && observer.disconnect()
+  destroyObserver(state, el)
   elementMap.delete(el)
 }
