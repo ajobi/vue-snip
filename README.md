@@ -138,7 +138,7 @@ Directive uses the selected snipping approach to snip elements in several scenar
 * when horizontally resized (detected via the `ResizeObserver API` - needs polyfill for IE11)
 * when directive's reactive data change
 
-## Caveats
+### Caveats
 
 #### Element style attribute
 
