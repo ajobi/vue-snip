@@ -8,7 +8,7 @@
 
 Vue.js directive that clamps the content of a text element if it exceeds specified number of lines.
 
-Key features:
+#### Key features:
 * no need to specify line heights
 * no dependencies (small and fast)
 * two snipping approaches (CSS / JavaScript) (on a per-element basis)
@@ -19,12 +19,12 @@ Key features:
 ## How it works
 
 Two snipping approaches:
-- **CSS approach** based on the `-webkit-line-clamp`.
-- **JavaScript approach** based on the progressive cutting of element's `innerText` in a loop.
+- **CSS** approach based on the `-webkit-line-clamp`.
+- **JavaScript** approach based on the progressive cutting of element's `innerText` in a loop.
 
 *Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, or when you need the text to flow around a floated element).*
 
-Global default is the CSS approach (automatically falls back to the JavaScript approach in the non-supporting browsers), but you can freely switch snipping approach on a per-element basis as needed.
+Global default is the CSS approach (automatically falls back to the JavaScript approach for the non-supporting browsers), but you can freely switch snipping approach on a per-element basis as needed.
 
 Elements are automatically re-snipped:
 * when horizontally resized (detected via the `ResizeObserver API`)
@@ -121,7 +121,7 @@ The options object can have the following properties:
 
 ## IE11 Support
 
-IE11 does not support `-webkit-line-clamp` (automatically falls back to the JS method), and the `ResizeObserver API`. This API needs to be polyfilled (recommended: https://www.npmjs.com/package/@juggle/resize-observer)
+IE11 does not support `-webkit-line-clamp` (falls back to the JS method), and the `ResizeObserver API`. This API needs to be polyfilled (recommended: https://www.npmjs.com/package/@juggle/resize-observer)
 
 ``` javascript
 import Vue from 'vue'
@@ -129,7 +129,7 @@ import VueSnip from 'vue-snip'
 import { ResizeObserver } from '@juggle/resize-observer'
 
 const options = {
-  resizeObserver: ResizeObserver
+  resizeObserverPolyfill: ResizeObserver
 }
 
 Vue.use(VueSnip, options)
