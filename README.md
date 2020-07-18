@@ -12,23 +12,26 @@ Vue.js directive that clamps the content of a text element if it exceeds specifi
 * no need to specify line heights
 * no dependencies (small and fast)
 * two snipping approaches (CSS / JavaScript) (on a per-element basis)
-* re-snipping on element resize and directive value / argument change
+* re-snipping on element resize and reactive data change
 
 ![](assets/illustration.png)
 
 ## How it works
 
-Two snipping approaches:
+##### Two snipping approaches:
 - **CSS** approach based on the `-webkit-line-clamp`.
 - **JavaScript** approach based on the progressive cutting of element's `innerText` in a loop.
 
 *Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, or when you need the text to flow around a floated element).*
 
-Global default is the CSS approach (automatically falls back to the JavaScript approach for the non-supporting browsers), but you can freely switch snipping approach on a per-element basis as needed.
+Global default is the CSS approach (falls back to the JavaScript for the non-supporting browsers), but you can freely switch snipping approach on a per-element basis as needed.
 
-Elements are automatically re-snipped:
-* when horizontally resized (detected via the `ResizeObserver API`)
-* when directive's reactive `argument` or `value` changes
+##### Element snipping:
+Directive uses the selected snipping approach to snip elements in several scenarios:
+
+* when inserted into the document
+* when horizontally resized (detected via the `ResizeObserver API` - needs polyfill for IE11)
+* when directive's reactive data change
 
 ## Installation
 
