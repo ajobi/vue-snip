@@ -119,10 +119,10 @@ The directive internally operates on the element's `style` attribute. You should
 
 #### Element height
 
-For the directive to be able to properly determine the number of lines at any given time, the height of the element should reflect the height of the text. Be wary of any CSS steps that will affect the height of the element. Some of the common examples:
+For the directive to be able to determine the number of lines / hide the text overflow properly, the height of the element should be the same as the height of the text. Be wary of any CSS steps that will affect the height of the element. Some of the common examples:
 * vertical paddings
 * fixed height / fixed min height
-* making the element a flex-item (`align-items` defaults to `stretch`)
+* making the element a flex-item (flex-container's `align-items` defaults to `stretch`)
 
 *Note: You can still use the directive with flexbox, just make sure to change the default `align-items` / `align-self` value to `flex-start` or whatever fits your case.*
 
