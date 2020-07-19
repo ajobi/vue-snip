@@ -11,7 +11,7 @@ Vue.js directive that clamps the content of a text element if it exceeds specifi
 #### Key features:
 * no need to specify line heights
 * no dependencies (small and fast)
-* two snipping approaches (CSS / JavaScript) (also on a per-element basis)
+* two snipping approaches (CSS / JavaScript) picked on a per-element basis
 * re-snipping on element resize and reactive data change
 
 ![](assets/illustration.png)
@@ -104,22 +104,12 @@ Vue.use(VueSnip, options)
 | **ellipsis** | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Only applies to js approach. You cannot change the ellipsis when using the CSS method.* |
 | **debugMode** | `false` | Exposes directive state as the `window.__VueSnipState` |
 
-## IE11 Support
-
-IE11 does not support `-webkit-line-clamp` (falls back to the JS method), and the `ResizeObserver API`. This API needs to be polyfilled if you want to re-snip the elements on the resize in IE11 (they would still get snipped when inserted / on data change without the polyfill). Recommended: https://www.npmjs.com/package/@juggle/resize-observer
-
-``` javascript
-import { ResizeObserver as Polyfill } from '@juggle/resize-observer';
- 
-window.ResizeObserver = window.ResizeObserver || Polyfill;
-```
-
 ## How it works
 
 - **CSS** approach is based on the `-webkit-line-clamp`.
 - **JavaScript** approach is based on the progressive cutting of element's `innerText` in a loop.
 
-*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, or when you need the text to flow around a floated element). The idea is to allow you to freely switch them on a per-element basis.*
+*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, when you need the text to flow around a floated element, or when you want a custom ellipsis). The idea is to allow you to freely pick them on a per-element basis.*
 
 ### Caveats
 
@@ -134,4 +124,14 @@ For the directive to be able to properly determine the number of lines at any gi
 * fixed height / fixed min height
 * making the element a flex-item (`align-items` defaults to `stretch`)
 
-*Note: You can use the directive with flexbox, just make sure to change the default `align-items` / `align-self` value to `flex-start` or whatever fits your case.*
+*Note: You can still use the directive with flexbox, just make sure to change the default `align-items` / `align-self` value to `flex-start` or whatever fits your case.*
+
+## IE11 Support
+
+IE11 does not support `-webkit-line-clamp` (falls back to the JS method), and the `ResizeObserver API`. This API needs to be polyfilled if you want to re-snip the elements on the resize in IE11 (they would still get snipped when inserted / on data change without the polyfill). Recommended: [@juggle/resize-observer](https://www.npmjs.com/package/@juggle/resize-observer)
+
+``` javascript
+import { ResizeObserver as Polyfill } from '@juggle/resize-observer';
+ 
+window.ResizeObserver = window.ResizeObserver || Polyfill;
+```
