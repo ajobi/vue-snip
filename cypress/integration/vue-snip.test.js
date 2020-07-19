@@ -9,14 +9,46 @@ describe('Vue Snip', () => {
   })
 
   describe('Installation', () => {
-    it('Does not expose the state without debugMode', () => {
-      plugin.install({ directive: () => {} }, { debugMode: false })
-      expect(window.__VueSnipState).equal(undefined)
+    describe('Debug mode', () => {
+      it('Does not expose the state without debugMode', () => {
+        plugin.install({ directive: () => {} }, { debugMode: false })
+        expect(window.__VueSnipState).equal(undefined)
+      })
+
+      it('Exposes the state on debugMode', () => {
+        plugin.install({ directive: () => {} }, { debugMode: true })
+        expect(window.__VueSnipState).not.equal(undefined)
+      })
     })
 
-    it('Exposes the state on debugMode', () => {
-      plugin.install({ directive: () => {} }, { debugMode: true })
-      expect(window.__VueSnipState).not.equal(undefined)
+    describe('Snip function', () => {
+      it('Does not expose the snip function without exposeSnipFunction', () => {
+        const Vue = function () {}
+        Vue.directive = () => {}
+
+        plugin.install(Vue, { exposeSnipFunction: false })
+
+        expect((new Vue()).$snipText).eq(undefined)
+      })
+
+      it('Exposes the snip function with exposeSnipFunction', () => {
+        const Vue = function () {}
+        Vue.directive = () => {}
+
+        plugin.install(Vue, { exposeSnipFunction: true })
+
+        expect((new Vue())[`$${defaultOptions.snipFunctionName}`]).not.eq(undefined)
+      })
+
+      it('Uses the given snipFunctionName', () => {
+        const Vue = function () {}
+        Vue.directive = () => {}
+        const snipFunctionName = 'test'
+
+        plugin.install(Vue, { exposeSnipFunction: true, snipFunctionName: snipFunctionName })
+
+        expect((new Vue())[`$${snipFunctionName}`]).not.eq(undefined)
+      })
     })
   })
 
