@@ -11,7 +11,7 @@ Vue.js directive that clamps the content of a text element if it exceeds specifi
 #### Key features:
 * no need to specify line heights
 * no dependencies (small and fast)
-* two snipping approaches (CSS / JavaScript) (on a per-element basis)
+* two snipping approaches (CSS / JavaScript) (also on a per-element basis)
 * re-snipping on element resize and reactive data change
 
 ![](assets/illustration.png)
@@ -43,7 +43,7 @@ The most basic usage looks like this:
 </template>
 ```
 
-Most of the time, you would probably pass in the explicit `maxLines` value:
+Most of the time, you probably need to pass in the `maxLines` value:
 
 ``` html
 <template>
@@ -51,7 +51,7 @@ Most of the time, you would probably pass in the explicit `maxLines` value:
 </template>
 ```
 
-On top of that, you can pass in the snipping `method` too:
+You can also pass in the snipping `method` argument:
 
 ``` html
 <template>
@@ -80,7 +80,7 @@ Both of these are reactive, so you can do even this:
 
 ## Options
 
-Passing options is not required - if you don't pass options, the default options are used. Passed options get merged with the defaults, so just define what you want to change (no need to redefine all properties).
+Your options will get merged with the defaults, so just define what you want to change (no need to redefine all properties).
 
 ``` javascript
 import Vue from 'vue'
@@ -93,20 +93,20 @@ const options = {
 Vue.use(VueSnip, options)
 ```
 
-#### The options object can have the following properties:
+#### The options object:
 
 | Property | Default | Description |
 | --- | --- | --- |
 | **directiveName** | `'snip'` | The name of the directive in your templates (v-`directiveName`) |
 | **snipMethod** | `'css'` | Global snipping method. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `'css'` or `'js'`. |
 | **maxLines** | `3` | Global max lines. Will be used for the element if no explicit `maxLines` value is passed in for that element. |
-| **separators** | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` into chunks and find the snipped text in an effective way. *Note: Only applies to js approach.* |
-| **ellipsis** | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Only applies to js approach. You cannot change the ellipsis when using CSS method.* |
+| **separators** | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` of the element into chunks and find the snipped text in an effective way. *Note: Only applies to js approach.* |
+| **ellipsis** | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Only applies to js approach. You cannot change the ellipsis when using the CSS method.* |
 | **debugMode** | `false` | Exposes directive state as the `window.__VueSnipState` |
 
 ## IE11 Support
 
-IE11 does not support `-webkit-line-clamp` (falls back to the JS method), and the `ResizeObserver API`. This API needs to be polyfilled (recommended: https://www.npmjs.com/package/@juggle/resize-observer), otherwise the elements will not get re-snipped when they get resized.
+IE11 does not support `-webkit-line-clamp` (falls back to the JS method), and the `ResizeObserver API`. This API needs to be polyfilled if you want to re-snip the elements on the resize in IE11 (they would still get snipped when inserted / on data change without the polyfill). Recommended: https://www.npmjs.com/package/@juggle/resize-observer
 
 ``` javascript
 import { ResizeObserver as Polyfill } from '@juggle/resize-observer';
@@ -116,20 +116,10 @@ window.ResizeObserver = window.ResizeObserver || Polyfill;
 
 ## How it works
 
-#### Two snipping approaches:
-- **CSS** approach based on the `-webkit-line-clamp`.
-- **JavaScript** approach based on the progressive cutting of element's `innerText` in a loop.
+- **CSS** approach is based on the `-webkit-line-clamp`.
+- **JavaScript** approach is based on the progressive cutting of element's `innerText` in a loop.
 
-*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, or when you need the text to flow around a floated element).*
-
-Global default is the CSS approach (falls back to the JavaScript for the non-supporting browsers), but you can freely switch snipping approach on a per-element basis as needed.
-
-#### Element snipping:
-Directive uses the selected snipping approach to snip elements in several scenarios:
-
-* when inserted into the document
-* when horizontally resized (detected via the `ResizeObserver API` - needs polyfill for IE11)
-* when directive's reactive data change
+*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, or when you need the text to flow around a floated element). The idea is to allow you to freely switch them on a per-element basis.*
 
 ### Caveats
 
