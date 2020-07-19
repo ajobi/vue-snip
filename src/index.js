@@ -15,12 +15,7 @@ export default {
       options
     }
 
-    if (options.debugMode) {
-      window.__VueSnipState = state
-    }
-
     const snipText = getSnipText(state)
-
     const inserted = getInserted(state, snipText)
     const update = getUpdate(state, snipText)
     const unbind = getUnbind(state, snipText)
@@ -30,5 +25,13 @@ export default {
       update,
       unbind
     })
+
+    if (options.exposeSnipping) {
+      Vue.prototype.$snipText = snipText
+    }
+
+    if (options.debugMode) {
+      window.__VueSnipState = state
+    }
   }
 }
