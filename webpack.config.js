@@ -1,6 +1,6 @@
 const path = require('path')
 
-module.exports = () => {
+module.exports = (env, args) => {
   const testDevServer = process.env.NODE_ENV === 'test'
 
   return {
@@ -21,7 +21,7 @@ module.exports = () => {
       ]
     },
     devServer: {
-      contentBase: testDevServer ? 'server/test' : 'server/dev',
+      contentBase: testDevServer ? 'server/test' : args.demo ? 'docs' : 'server/dev',
       port: testDevServer ? 9001 : 9000,
       open: !testDevServer
     }

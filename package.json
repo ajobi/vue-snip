@@ -8,6 +8,7 @@
     "prepare": "yarn build",
     "lint": "eslint ./",
     "dev": "NODE_ENV=development webpack-dev-server",
+    "demo": "NODE_ENV=development webpack-dev-server --demo",
     "test:open": "NODE_ENV=test start-server-and-test 'webpack-dev-server' http://localhost:9001 'cypress open'",
     "test:run": "NODE_ENV=test start-server-and-test 'webpack-dev-server' http://localhost:9001 'cypress run'",
     "test:coverage": "npx nyc report --reporter=text --reporter=text-summary",
