@@ -78,6 +78,30 @@ Both of these are reactive, so you can do even this:
 </script>
 ```
 
+Elements are automatically re-snipped when they get resized or when reactive data changes. If you need to re-snip an element in some different case, you can expose the snipping function to your Vue instances via the `exposeSnipFunction` options property and snip the element manually as needed:
+
+``` html
+<template>
+  <p v-snip:js="3" :class={ 'big-font-size': bigFontSize } ref="paragraph"> ... </p>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        bigFontSize: false,
+      }
+    }
+    mounted () {
+      setTimeout(() => {
+        this.bigFontSize = true
+        this.$nextTick(() => this.$snipText(this.$refs.paragraph))
+      }, 2000)
+    }
+  }
+</script>
+```
+
 ## Options
 
 Your options will get merged with the defaults, so just define what you want to change (no need to redefine all properties).
@@ -125,6 +149,7 @@ For the directive to be able to determine the number of lines / hide the text ov
 * vertical paddings
 * fixed height / fixed min height
 * making the element a flex-item (flex-container's `align-items` defaults to `stretch`)
+* making the element height grow with the `flex-grow` in the column flex layout.
 
 *Note: You can still use the directive with flexbox, just make sure to change the default `align-items` / `align-self` value to `flex-start` or whatever fits your case.*
 
