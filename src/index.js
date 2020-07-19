@@ -26,8 +26,8 @@ export default {
       unbind
     })
 
-    if (options.exposeSnipping) {
-      Vue.prototype.$snipText = snipText
+    if (options.exposeSnipFunction) {
+      Vue.prototype[`$${options.snipFunctionName}`] = snipText
     }
 
     if (options.debugMode) {
