@@ -6,7 +6,7 @@
 ![GitHub](https://img.shields.io/github/license/ajobi/vue-snip)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/vue-snip)
 
-Vue.js directive that clamps the content of a text element if it exceeds specified number of lines.
+Vue.js directive that clamps the content of a text element if it exceeds the specified number of lines.
 
 #### Key features:
 * no need to specify line heights
@@ -59,7 +59,7 @@ You can also pass in the snipping `method` argument:
 </template>
 ```
 
-Both of these are reactive, so you can do even this:
+Both of these are reactive so you can do even this:
 
 ``` html
 <template>
@@ -124,8 +124,8 @@ Vue.use(VueSnip, options)
 | **directiveName** | `'snip'` | The name of the directive in your templates. Gets prefixed with `v-` (f.e. `v-snip`). |
 | **snipMethod** | `'css'` | Global snipping approach. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `'css'` or `'js'`. |
 | **maxLines** | `3` | Global max lines. Will be used for the element if no explicit `maxLines` value is passed in for that element. |
-| **separators** | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` of the element into chunks and find the snipped text in an effective way. *Note: Only applies to js approach.* |
-| **ellipsis** | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Only applies to js approach. You cannot change the ellipsis when using the CSS method.* |
+| **separators** | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` of the element into chunks and find the snipped text in an effective way. *Note: Property only applies to the JS approach.* |
+| **ellipsis** | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Property only applies to the JS approach. You cannot change the ellipsis when using the CSS method.* |
 | **debugMode** | `false` | Exposes directive state as the `window.__VueSnipState` |
 | **exposeSnipFunction** | `false` | Exposes the internal snip function ((el: Element) => void) as the instance property via `Vue.prototype`. |
 | **snipFunctionName** | `'snipText'` | The name of the exposed instance property. Gets prefixed with `$` (f.e. `this.$snipText`). |
@@ -133,7 +133,7 @@ Vue.use(VueSnip, options)
 ## How it works
 
 - **CSS** approach is based on the `-webkit-line-clamp`.
-- **JavaScript** approach is based on the progressive cutting of element's `innerText` in a loop.
+- **JavaScript** approach is based on the progressive cutting of the element's `innerText` in a loop.
 
 *Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, when you need the text to flow around a floated element, or when you want a custom ellipsis). The idea is to allow you to freely pick the approach on a per-element basis.*
 
@@ -145,10 +145,10 @@ The directive internally operates on the element's `style` attribute. You should
 
 #### Element height
 
-For the directive to be able to determine the number of lines / hide the text overflow properly, the height of the element should be the same as the height of the text. Be wary of any CSS steps that will affect the height of the element. Some of the common examples:
+For the directive to be able to determine the number of lines / hide the text-overflow properly, the height of the element should be the same as the height of the text. Be wary of any CSS steps that will affect the height of the element. Some of the common examples:
 * vertical paddings
-* fixed height / fixed min height
-* making the element a flex-item (flex-container's `align-items` defaults to `stretch`)
+* fixed height / fixed min-height
+* making the element a flex-item (flex container's `align-items` defaults to `stretch`)
 * making the element height grow with the `flex-grow` in the column flex layout.
 
 *Note: You can still use the directive with flexbox, just make sure to change the default `align-items` / `align-self` value to `flex-start` or whatever fits your case.*
