@@ -109,7 +109,7 @@ Vue.use(VueSnip, options)
 - **CSS** approach is based on the `-webkit-line-clamp`.
 - **JavaScript** approach is based on the progressive cutting of element's `innerText` in a loop.
 
-*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, when you need the text to flow around a floated element, or when you want a custom ellipsis). The idea is to allow you to freely pick them on a per-element basis.*
+*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, when you need the text to flow around a floated element, or when you want a custom ellipsis). The idea is to allow you to freely pick the approach on a per-element basis.*
 
 ### Caveats
 
@@ -119,10 +119,10 @@ The directive internally operates on the element's `style` attribute. You should
 
 #### Element height
 
-For the directive to be able to properly determine the number of lines at any given time, the height of the element should reflect the height of the text. Be wary of any CSS steps that will affect the height of the element. Some of the common examples:
+For the directive to be able to determine the number of lines / hide the text overflow properly, the height of the element should be the same as the height of the text. Be wary of any CSS steps that will affect the height of the element. Some of the common examples:
 * vertical paddings
 * fixed height / fixed min height
-* making the element a flex-item (`align-items` defaults to `stretch`)
+* making the element a flex-item (flex-container's `align-items` defaults to `stretch`)
 
 *Note: You can still use the directive with flexbox, just make sure to change the default `align-items` / `align-self` value to `flex-start` or whatever fits your case.*
 
