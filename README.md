@@ -78,6 +78,30 @@ Both of these are reactive, so you can do even this:
 </script>
 ```
 
+Elements are automatically re-snipped when they get horizontally resized or when reactive data changes. If you need to re-snip an element in some different case, you can expose the snipping function to your Vue instances via the `exposeSnipFunction` options property and snip the element manually as needed:
+
+``` html
+<template>
+  <p v-snip:js="3" :class={ 'big-font-size': bigFontSize } ref="paragraph"> ... </p>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        bigFontSize: false,
+      }
+    }
+    mounted () {
+      setTimeout(() => {
+        this.bigFontSize = true
+        this.$nextTick(() => this.$snipText(this.$refs.paragraph))
+      }, 2000)
+    }
+  }
+</script>
+```
+
 ## Options
 
 Your options will get merged with the defaults, so just define what you want to change (no need to redefine all properties).
@@ -97,12 +121,14 @@ Vue.use(VueSnip, options)
 
 | Property | Default | Description |
 | --- | --- | --- |
-| **directiveName** | `'snip'` | The name of the directive in your templates (v-`directiveName`) |
-| **snipMethod** | `'css'` | Global snipping method. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `'css'` or `'js'`. |
+| **directiveName** | `'snip'` | The name of the directive in your templates. Gets prefixed with `v-` (f.e. `v-snip`). |
+| **snipMethod** | `'css'` | Global snipping approach. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `'css'` or `'js'`. |
 | **maxLines** | `3` | Global max lines. Will be used for the element if no explicit `maxLines` value is passed in for that element. |
 | **separators** | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` of the element into chunks and find the snipped text in an effective way. *Note: Only applies to js approach.* |
 | **ellipsis** | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Only applies to js approach. You cannot change the ellipsis when using the CSS method.* |
 | **debugMode** | `false` | Exposes directive state as the `window.__VueSnipState` |
+| **exposeSnipFunction** | `false` | Exposes the internal snip function ((el: Element) => void) as the instance property via `Vue.prototype`. |
+| **snipFunctionName** | `'snipText'` | The name of the exposed instance property. Gets prefixed with `$` (f.e. `this.$snipText`). |
 
 ## How it works
 
@@ -123,6 +149,7 @@ For the directive to be able to determine the number of lines / hide the text ov
 * vertical paddings
 * fixed height / fixed min height
 * making the element a flex-item (flex-container's `align-items` defaults to `stretch`)
+* making the element height grow with the `flex-grow` in the column flex layout.
 
 *Note: You can still use the directive with flexbox, just make sure to change the default `align-items` / `align-self` value to `flex-start` or whatever fits your case.*
 
