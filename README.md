@@ -109,7 +109,7 @@ Vue.use(VueSnip, options)
 - **CSS** approach is based on the `-webkit-line-clamp`.
 - **JavaScript** approach is based on the progressive cutting of element's `innerText` in a loop.
 
-*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, when you need the text to flow around a floated element, or when you want a custom ellipsis). The idea is to allow you to freely pick them on a per-element basis.*
+*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, when you need the text to flow around a floated element, or when you want a custom ellipsis). The idea is to allow you to freely pick the approach on a per-element basis.*
 
 ### Caveats
 
