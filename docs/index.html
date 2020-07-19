@@ -10,12 +10,14 @@
   <body>
     <div id="playground">
       <h1>Demo</h1>
-      <div class="card">
+      <div class="card clearfix">
         <h4>Original Text</h4>
+        <div v-if="floatElement" class="float-element"></div>
         <p>{{ displayText }}</p>
       </div>
-      <div class="card" v-if="visible">
+      <div class="card clearfix" v-if="visible">
         <h4>Snipped Text ({{ maxLines }} lines - {{ method }})</h4>
+        <div v-if="floatElement" class="float-element"></div>
         <p v-snip:[method]="maxLines">{{ displayText }}</p>
       </div>
       <div class="controls">
@@ -23,6 +25,7 @@
         <button @click="maxLines--">-</button>
         <button @click="method = method === 'css' ? 'js' : 'css'">Method</button>
         <button @click="visible = !visible">Visible</button>
+        <button @click="floatElement = !floatElement">Float Element</button>
       </div>
     </div>
 
@@ -31,13 +34,16 @@
 
       new Vue({
         el: '#playground',
-        data: () => ({
-          maxLines: 3,
-          method: 'css',
-          visible: true,
-        }),
+        data: function() {
+          return {
+            maxLines: 3,
+            method: 'css',
+            visible: true,
+            floatElement: false
+          }
+        },
         computed: {
-          displayText () {
+          displayText: function () {
             return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.'
           }
         },

@@ -31,3 +31,18 @@ button {
   position: fixed;
   bottom: 100px;
 }
+
+.float-element {
+  width: 90px;
+  height: 90px;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  background-color: #DDD;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
