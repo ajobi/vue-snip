@@ -10,7 +10,7 @@ export const getUpdate = (state, snipText) => (el, { value, arg }) => {
   elState.snipMethod = normalizeSnipMethod(state, arg)
 
   const needsObserver = elState.snipMethod === 'js'
-  needsObserver && ResizeObserver ? addObserver(state, snipText, el) : destroyObserver(state, el)
+  needsObserver && typeof ResizeObserver !== 'undefined' ? addObserver(state, snipText, el) : destroyObserver(state, el)
 
   const needsSnipping = isMaxLinesChange || isJStoCSSChange
   needsSnipping && snipText(el)

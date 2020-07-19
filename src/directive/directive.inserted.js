@@ -12,5 +12,5 @@ export const getInserted = (state, snipText) => (el, { value, arg }) => {
   elementMap.set(el, elState)
 
   const needsObserver = elState.snipMethod === 'js'
-  needsObserver && ResizeObserver ? addObserver(state, snipText, el) : snipText(el)
+  needsObserver && typeof ResizeObserver !== 'undefined' ? addObserver(state, snipText, el) : snipText(el)
 }
