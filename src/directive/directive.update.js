@@ -1,15 +1,15 @@
 import { addObserver, normalizeMaxLines, normalizeSnipMethod, destroyObserver } from '../utils'
 
 export const getUpdate = (state, snipText) => (el, { value, arg }) => {
-  const { elementMap } = state
+  const elState = state.elementMap.get(el)
 
-  const isJStoCSSChange = arg !== elementMap.get(el).snipMethod && arg === 'css'
-  const isMaxLinesChange = value !== elementMap.get(el).maxLines
+  const isJStoCSSChange = arg !== elState.snipMethod && arg === 'css'
+  const isMaxLinesChange = value !== elState.maxLines
 
-  elementMap.get(el).maxLines = normalizeMaxLines(state, value)
-  elementMap.get(el).snipMethod = normalizeSnipMethod(state, arg)
+  elState.maxLines = normalizeMaxLines(state, value)
+  elState.snipMethod = normalizeSnipMethod(state, arg)
 
-  const needsObserver = elementMap.get(el).snipMethod === 'js'
+  const needsObserver = elState.snipMethod === 'js'
   needsObserver && ResizeObserver ? addObserver(state, snipText, el) : destroyObserver(state, el)
 
   const needsSnipping = isMaxLinesChange || isJStoCSSChange
