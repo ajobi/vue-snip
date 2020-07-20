@@ -3,49 +3,64 @@
   <head>
     <meta charset="UTF-8">
     <title>vue-snip</title>
+    <link rel="stylesheet" type="text/css" href="spectre/spectre.css">
+    <link rel="stylesheet" type="text/css" href="spectre/spectre-exp.css">
     <link rel="stylesheet" type="text/css" href="index.css">
     <script src="vue.js"></script>
     <script src="main.js"></script>
   </head>
   <body>
-    <div id="playground">
-      <h1>Demo</h1>
+    <article id="demo">
+      <h1 class="h1">vue-snip</h1>
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label class="form-label col-4">Max lines:</label> <input type="text" v-model="maxLines" class="form-input col-8">
+        </div>
+        <div class="form-group">
+          <label class="form-label col-4">Snip method:</label> <input type="text" v-model="method" class="form-input col-8">
+        </div>
+        <div class="form-group">
+          <label class="form-label col-4">Card width:</label> <div class="col-8 tooltip"><input class="slider" type="range" min="0" max="100" value="100"></div>
+        </div>
+        <button @click="snip = !snip" class="btn">{{ snip ? 'Unsnip' : 'Snip' }}</button>
+        <button @click="floatElement = !floatElement" class="btn">{{ floatElement ? 'Remove float' : 'Add float' }}</button>
+        <pre class="code"><code>{{ code }}</code></pre>
+      </div>
       <div class="card clearfix">
-        <h4>Original Text</h4>
-        <div v-if="floatElement" class="float-element"></div>
-        <p>{{ displayText }}</p>
+        <div class="card-header">
+          <h5>What is Vue.js?</h5>
+        </div>
+        <div class="card-body">
+          <div v-if="floatElement" class="float-element"></div>
+          <p v-if="snip" v-snip:[method]="maxLines" ref="paragraph">{{ displayText }}</p>
+          <p v-else>{{ displayText }}</p>
+        </div>
       </div>
-      <div class="card clearfix" v-if="visible">
-        <h4>Snipped Text ({{ maxLines }} lines - {{ method }})</h4>
-        <div v-if="floatElement" class="float-element"></div>
-        <p v-snip:[method]="maxLines">{{ displayText }}</p>
-      </div>
-      <div class="controls">
-        <button @click="maxLines++">+</button>
-        <button @click="maxLines--">-</button>
-        <button @click="method = method === 'css' ? 'js' : 'css'">Method</button>
-        <button @click="visible = !visible">Visible</button>
-        <button @click="floatElement = !floatElement">Float Element</button>
-      </div>
-    </div>
+    </article>
 
     <script>
       Vue.use(VueSnip.default, { debugMode: true })
 
       new Vue({
-        el: '#playground',
+        el: '#demo',
         data: function() {
           return {
+            snip: true,
             maxLines: 3,
             method: 'css',
-            visible: true,
-            floatElement: false
+            floatElement: false,
           }
         },
         computed: {
           displayText: function () {
-            return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.'
-          }
+            return 'Vue (pronounced /vjuː/, like view) is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries.'
+          },
+          code: function () {
+            return `<template>
+  <p v-snip:${this.method}="${this.maxLines}">{{ text }}</p>
+</template>
+`
+          },
         },
       });
     </script>

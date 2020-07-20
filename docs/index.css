@@ -1,40 +1,18 @@
-#playground {
+body {
+  margin: 15px;
+}
+
+#demo {
   max-width: 500px;
   width: 100%;
   margin: auto;
-}
-
-h1 {
-  text-align: center;
-}
-
-p {
-  margin: 0;
-}
-
-h4 {
-  margin: 0 0 20px 0;
-}
-
-button {
-  padding: 5px 20px;
-}
-
-.card {
-  padding: 20px;
-  border: 1px solid #DDD;
-  border-radius: 8px;
-  margin: 20px 0;
-}
-
-.controls {
-  position: fixed;
-  bottom: 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 .float-element {
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   float: right;
   margin-left: 10px;
   margin-bottom: 10px;
