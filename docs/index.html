@@ -20,7 +20,10 @@
         </div>
         <div class="form-group">
           <label for="input-method" class="form-label col-5">Snip method:</label>
-          <input id="input-method" type="text" v-model="method" class="form-input col-7">
+          <select id="input-method" v-model="method" class="form-select col-7">
+            <option>css</option>
+            <option>js</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="input-cardwidth" class="form-label col-5">Card width:</label>
