@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
           <label for="input-cardwidth" class="form-label col-5">Card width:</label>
-          <div :data-tooltip="`${width}px`" class="col-7 tooltip">
+          <div :data-tooltip="width + 'px'" class="col-7 tooltip">
             <input id="input-cardwidth" class="slider" type="range" min="300" max="500" v-model="width">
           </div>
         </div>
@@ -43,7 +43,7 @@
         </div>
         <pre class="code"><code>{{ code }}</code></pre>
       </div>
-      <div class="card clearfix" :style="{ width: `${width}px`}">
+      <div class="card clearfix" :style="{ width: width + 'px'}">
         <div class="card-header">
           <h5>What is Vue.js?</h5>
         </div>
@@ -80,15 +80,15 @@
               directive = ' v-snip'
 
               if (this.method !== '') {
-                directive = `${directive}:${this.method}`
+                directive = directive + ':' + this.method
               }
 
               if (this.maxLines !== '') {
-                directive = `${directive}="${this.maxLines}"`
+                directive = directive + '=' + this.maxLines
               }
             }
 
-            return `<p${directive}>{{ text }}</p>`
+            return '<p' + directive + '>{{ text }}</p>'
           },
         },
       });
