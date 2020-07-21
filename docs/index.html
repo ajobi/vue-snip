@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>vue-snip</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
     <link rel="stylesheet" type="text/css" href="spectre/spectre.min.css">
     <link rel="stylesheet" type="text/css" href="spectre/spectre-exp.min.css">
     <link rel="stylesheet" type="text/css" href="index.css">
@@ -14,28 +15,28 @@
       <h1 class="h1">vue-snip</h1>
       <div class="form-horizontal">
         <div class="form-group">
-          <label class="form-label col-5">Max lines:</label>
-          <input type="number" v-model="maxLines" class="form-input col-7">
+          <label for="input-maxlines" class="form-label col-5">Max lines:</label>
+          <input id="input-maxlines" type="number" v-model="maxLines" class="form-input col-7">
         </div>
         <div class="form-group">
-          <label class="form-label col-5">Snip method:</label>
-          <input type="text" v-model="method" class="form-input col-7">
+          <label for="input-method" class="form-label col-5">Snip method:</label>
+          <input id="input-method" type="text" v-model="method" class="form-input col-7">
         </div>
         <div class="form-group">
-          <label class="form-label col-5">Card width:</label>
+          <label for="input-cardwidth" class="form-label col-5">Card width:</label>
           <div :data-tooltip="`${width}px`" class="col-7 tooltip">
-            <input class="slider" type="range" min="300" max="500" v-model="width">
+            <input id="input-cardwidth" class="slider" type="range" min="300" max="500" v-model="width">
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label col-5">Other options: </label>
+          <div class="form-label col-5">Other options: </div>
           <div class="col-7">
-            <label class="form-checkbox">
-              <input type="checkbox" v-model="snip">
+            <label for="input-snip" class="form-checkbox">
+              <input id="input-snip" type="checkbox" v-model="snip">
               <i class="form-icon"></i> Snip Text
             </label>
-            <label class="form-checkbox">
-              <input type="checkbox" v-model="floatElement">
+            <label for="input-float" class="form-checkbox">
+              <input id="input-float" type="checkbox" v-model="floatElement">
               <i class="form-icon"></i> Show floated element
             </label>
           </div>
@@ -55,7 +56,7 @@
     </article>
 
     <script>
-      Vue.use(VueSnip.default, { debugMode: true })
+      Vue.use(VueSnip.default)
 
       new Vue({
         el: '#demo',
