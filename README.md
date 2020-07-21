@@ -16,6 +16,8 @@ Vue.js directive that clamps the content of a text element if it exceeds the spe
 
 ![](assets/illustration.png)
 
+To get a hands-on experience try the [Interactive Demo](https://ajobi.github.io/vue-snip/).
+
 ## Installation
 
 ``` bash
