@@ -14,19 +14,35 @@
       <h1 class="h1">vue-snip</h1>
       <div class="form-horizontal">
         <div class="form-group">
-          <label class="form-label col-4">Max lines:</label> <input type="text" v-model="maxLines" class="form-input col-8">
+          <label class="form-label col-5">Max lines:</label>
+          <input type="number" v-model="maxLines" class="form-input col-7">
         </div>
         <div class="form-group">
-          <label class="form-label col-4">Snip method:</label> <input type="text" v-model="method" class="form-input col-8">
+          <label class="form-label col-5">Snip method:</label>
+          <input type="text" v-model="method" class="form-input col-7">
         </div>
         <div class="form-group">
-          <label class="form-label col-4">Card width:</label> <div class="col-8 tooltip"><input class="slider" type="range" min="0" max="100" value="100"></div>
+          <label class="form-label col-5">Card width:</label>
+          <div :data-tooltip="`${width}px`" class="col-7 tooltip">
+            <input class="slider" type="range" min="300" max="500" v-model="width">
+          </div>
         </div>
-        <button @click="snip = !snip" class="btn">{{ snip ? 'Unsnip' : 'Snip' }}</button>
-        <button @click="floatElement = !floatElement" class="btn">{{ floatElement ? 'Remove float' : 'Add float' }}</button>
+        <div class="form-group">
+          <label class="form-label col-5">Other options: </label>
+          <div class="col-7">
+            <label class="form-checkbox">
+              <input type="checkbox" v-model="snip">
+              <i class="form-icon"></i> Snip Text
+            </label>
+            <label class="form-checkbox">
+              <input type="checkbox" v-model="floatElement">
+              <i class="form-icon"></i> Show floated element
+            </label>
+          </div>
+        </div>
         <pre class="code"><code>{{ code }}</code></pre>
       </div>
-      <div class="card clearfix">
+      <div class="card clearfix" :style="{ width: `${width}px`}">
         <div class="card-header">
           <h5>What is Vue.js?</h5>
         </div>
@@ -49,17 +65,15 @@
             maxLines: 3,
             method: 'css',
             floatElement: false,
+            width: 500,
           }
         },
         computed: {
           displayText: function () {
-            return 'Vue (pronounced /vjuː/, like view) is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries.'
+            return 'Vue (pronounced /vjuː/, like view) is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects.'
           },
           code: function () {
-            return `<template>
-  <p v-snip:${this.method}="${this.maxLines}">{{ text }}</p>
-</template>
-`
+            return `<p v-snip:${this.method}="${this.maxLines}">{{ text }}</p>`
           },
         },
       });

@@ -10,6 +10,10 @@ body {
   flex-direction: column;
 }
 
+.card p {
+  margin-bottom: 0;
+}
+
 .float-element {
   width: 100px;
   height: 100px;
@@ -23,4 +27,8 @@ body {
   content: "";
   clear: both;
   display: table;
+}
+
+.slider {
+  height: 1.8rem;
 }
