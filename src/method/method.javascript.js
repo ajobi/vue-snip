@@ -18,7 +18,7 @@ export const snipByJS = (state, el) => {
 
   separators.forEach(separator => {
     for (const chunk of snipProgress.unprocessed.split(separator)) {
-      el.textContent = `${snipProgress.processed}${chunk}${ellipsis}`
+      el.textContent = `${snipProgress.processed}${chunk}${separator}${ellipsis}`
 
       if (elementLines(el) > maxLines) {
         snipProgress.unprocessed = chunk
