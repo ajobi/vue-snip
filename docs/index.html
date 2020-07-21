@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>vue-snip</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
-    <link rel="stylesheet" type="text/css" href="spectre/spectre.min.css">
-    <link rel="stylesheet" type="text/css" href="spectre/spectre-exp.min.css">
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+    <link rel="stylesheet" type="text/css" href="assets/css/spectre.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/spectre-exp.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
     <script src="vue.js"></script>
     <script src="main.js"></script>
   </head>
@@ -48,7 +48,7 @@
           <h5>What is Vue.js?</h5>
         </div>
         <div class="card-body">
-          <div v-if="floatElement" class="float-element"></div>
+          <div v-if="floatElement" class="float-element bg-gray"></div>
           <p v-if="snip" v-snip:[method]="maxLines" ref="paragraph">{{ displayText }}</p>
           <p v-else>{{ displayText }}</p>
         </div>

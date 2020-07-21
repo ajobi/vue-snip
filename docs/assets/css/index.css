@@ -20,7 +20,6 @@ body {
   float: right;
   margin-left: 10px;
   margin-bottom: 10px;
-  background-color: #DDD;
 }
 
 .clearfix::after {
