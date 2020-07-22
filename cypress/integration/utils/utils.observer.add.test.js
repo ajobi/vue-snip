@@ -14,14 +14,12 @@ describe('addObserver', () => {
       const state = { elementMap }
 
       expect(state.elementMap.get(el).observer).eq(undefined)
-      expect(state.elementMap.get(el).prevWidth).eq(undefined)
 
       addObserver(state, snipText, el)
 
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(10).then(() => {
         expect(state.elementMap.get(el).observer).not.eq(undefined)
-        expect(state.elementMap.get(el).prevWidth).not.eq(undefined)
       })
     })
   })
