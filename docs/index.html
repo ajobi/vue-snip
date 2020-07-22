@@ -24,7 +24,7 @@
           <input id="input-maxlines" type="number" v-model="maxLines" class="form-input col-7" :disabled="!snip">
         </div>
         <div class="form-group">
-          <label for="input-method" class="form-label col-5">Snip method:</label>
+          <label for="input-method" class="form-label col-5">Snipping method:</label>
           <select id="input-method" v-model="method" class="form-select col-7" :disabled="!snip">
             <option>css</option>
             <option>js</option>
@@ -60,6 +60,9 @@
           <p v-if="snip" v-snip:[method]="maxLines" ref="paragraph">{{ displayText }}</p>
           <p v-else>{{ displayText }}</p>
         </div>
+        <div class="card-footer" v-if="tip">
+          <span class="toast toast-primary" ><i>{{ tip }}</i></span>
+        </div>
       </div>
     </article>
     <script>
@@ -80,6 +83,28 @@
         computed: {
           displayText: function () {
             return 'Vue (pronounced /vjuː/, like view) is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries.'
+          },
+          tip: function () {
+            if (!this.snip) {
+              return null
+            }
+
+            const isCSSUnsupported = !(typeof CSS !== 'undefined' &&
+              CSS.supports('display', '-webkit-box') &&
+              CSS.supports('-webkit-line-clamp', '3') &&
+              CSS.supports('-webkit-box-orient', 'vertical'))
+
+            if (this.method === 'css' && isCSSUnsupported) {
+              return 'Warning: The CSS method is not supported in this browser and automatically falls back to the JS method.'
+            }
+
+            if (this.method === 'css' && this.floatElement) {
+              return 'Tip: The CSS method cannot make the text flow around the floated element. Switch to the JS method for the desired effect.'
+            }
+
+            if (this.method === 'js' && !this.floatElement && !isCSSUnsupported) {
+              return "Tip: The CSS method is more performant. If you don't use any floated elements, you probably don't need the JS method."
+            }
           },
           code: function () {
             let directive = ''
