@@ -80,7 +80,7 @@ Both of these are reactive so you can do even this:
 </script>
 ```
 
-Elements are automatically re-snipped when they get horizontally resized or when reactive data changes. If you need to re-snip an element in some different case, you can expose the snipping function to your Vue instances via the `exposeSnipFunction` options property and snip the element manually as needed:
+Elements are automatically re-snipped when they get resized or when reactive data changes. If you need to re-snip an element in some different case, you can expose the snipping function to your Vue instances via the `exposeSnipFunction` options property and snip the element manually as needed:
 
 ``` html
 <template>
