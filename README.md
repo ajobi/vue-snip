@@ -123,14 +123,14 @@ Vue.use(VueSnip, options)
 
 | Property | Default | Description |
 | --- | --- | --- |
-| **directiveName** | `'snip'` | The name of the directive in your templates. Gets prefixed with `v-` (f.e. `v-snip`). |
-| **snipMethod** | `'css'` | Global snipping approach. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `'css'` or `'js'`. |
-| **maxLines** | `3` | Global max lines. Will be used for the element if no explicit `maxLines` value is passed in for that element. |
-| **separators** | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` of the element into chunks and find the snipped text in an effective way. *Note: Property only applies to the JS approach.* |
-| **ellipsis** | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Property only applies to the JS approach. You cannot change the ellipsis when using the CSS method.* |
-| **debugMode** | `false` | Exposes directive state as the `window.__VueSnipState` |
-| **exposeSnipFunction** | `false` | Exposes the internal snip function ((el: Element) => void) as the instance property via `Vue.prototype`. |
-| **snipFunctionName** | `'snipText'` | The name of the exposed instance property. Gets prefixed with `$` (f.e. `this.$snipText`). |
+| directiveName | `'snip'` | The name of the directive in your templates. Gets prefixed with `v-` (f.e. `v-snip`). |
+| snipMethod | `'css'` | Global snipping approach. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `'css'` or `'js'`. |
+| maxLines | `3` | Global max lines. Will be used for the element if no explicit `maxLines` value is passed in for that element. |
+| separators | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` of the element into chunks and find the snipped text in an effective way. *Note: Property only applies to the JS approach.* |
+| ellipsis | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Property only applies to the JS approach. You cannot change the ellipsis when using the CSS method.* |
+| debugMode | `false` | Exposes directive state as the `window.__VueSnipState` |
+| exposeSnipFunction | `false` | Exposes the internal snip function ((el: Element) => void) as the instance property via `Vue.prototype`. |
+| snipFunctionName | `'snipText'` | The name of the exposed instance property. Gets prefixed with `$` (f.e. `this.$snipText`). |
 
 ## How it works
 
