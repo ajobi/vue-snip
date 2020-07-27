@@ -4,10 +4,13 @@ module.exports = (env, args) => {
   const testDevServer = process.env.NODE_ENV === 'test'
 
   return {
-    entry: './src/index.js',
+    entry: {
+      'dist/main': './src/index.js',
+      'docs/main': './src/index.js'
+    },
     output: {
-      filename: 'main.js',
-      path: path.resolve(__dirname, 'dist'),
+      filename: '[name].js',
+      path: path.resolve(__dirname, './'),
       library: 'VueSnip',
       libraryTarget: 'umd'
     },
