@@ -1,16 +1,14 @@
 const path = require('path')
+const FileManagerPlugin = require('filemanager-webpack-plugin')
 
 module.exports = (env, args) => {
   const testDevServer = process.env.NODE_ENV === 'test'
 
   return {
-    entry: {
-      'dist/main': './src/index.js',
-      'docs/main': './src/index.js'
-    },
+    entry: './src/index.js',
     output: {
-      filename: '[name].js',
-      path: path.resolve(__dirname, './'),
+      filename: 'main.js',
+      path: path.resolve(__dirname, 'dist'),
       library: 'VueSnip',
       libraryTarget: 'umd'
     },
@@ -23,6 +21,18 @@ module.exports = (env, args) => {
         }
       ]
     },
+    plugins: [
+      new FileManagerPlugin({
+        onEnd: {
+          copy: [
+            {
+              source: './dist',
+              destination: './docs'
+            }
+          ]
+        }
+      })
+    ],
     devServer: {
       contentBase: testDevServer ? 'server/test' : args.demo ? 'docs' : 'server/dev',
       port: testDevServer ? 9001 : 9000,
