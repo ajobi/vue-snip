@@ -74,7 +74,7 @@
         data: function() {
           return {
             snip: true,
-            maxLines: 5,
+            maxLines: 7,
             method: 'css',
             floatElement: false,
             width: 500,
@@ -99,11 +99,11 @@
             }
 
             if (this.method === 'css' && this.floatElement) {
-              return 'Tip: The CSS method cannot make the text flow around the floated element. Switch to the JS method for the desired effect.'
+              return 'Tip: The CSS method cannot make the text flow around the floated element. Switch to the JS method for a better effect.'
             }
 
             if (this.method === 'js' && !this.floatElement && !isCSSUnsupported) {
-              return "Tip: The CSS method is more performant. If you don't use any floated elements, you probably don't need the JS method."
+              return "Tip: You might be better off with the more performant CSS method if you don't use floats (or don't have other use case where the JS method would be required)."
             }
           },
           code: function () {
