@@ -20,10 +20,12 @@ export default {
     const update = getUpdate(state, snipText)
     const unbind = getUnbind(state, snipText)
 
+    const isVue3 = Vue.version[0] > 2
+
     Vue.directive(options.directiveName, {
-      inserted,
-      update,
-      unbind
+      [isVue3 ? 'mounted' : 'inserted']: inserted,
+      [isVue3 ? 'updated' : 'update']: update,
+      [isVue3 ? 'unmounted' : 'unbind']: unbind
     })
 
     if (options.exposeSnipFunction) {

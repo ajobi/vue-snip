@@ -31,13 +31,15 @@
 
       new Vue({
         el: '#playground',
-        data: () => ({
-          maxLines: 3,
-          method: 'css',
-          visible: true,
-        }),
+        data: function () {
+          return {
+            maxLines: 3,
+            method: 'css',
+            visible: true,
+          }
+        },
         computed: {
-          displayText () {
+          displayText: function () {
             return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.'
           }
         },
