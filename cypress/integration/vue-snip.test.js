@@ -3,10 +3,10 @@ import plugin from '../../src/index.js'
 
 const { maxLines, snipMethod } = defaultOptions
 
-const getVue = () => {
+const getVue = (version, directive) => {
   const Vue = function () {}
-  Vue.directive = () => {}
-  Vue.version = '2.6.11'
+  Vue.directive = directive || (() => {})
+  Vue.version = version || '2.0.0'
 
   return Vue
 }
@@ -150,6 +150,38 @@ describe('Vue Snip', () => {
           })
         })
       })
+    })
+  })
+
+  describe('Compatibility', () => {
+    it('Is compatible with Vue 2', () => {
+      let directiveResult = null
+
+      plugin.install(getVue('2.0.0', (directiveName, directiveOptions) => {
+        directiveResult = directiveOptions
+      }))
+
+      expect(directiveResult.mounted).equal(undefined)
+      expect(directiveResult.updated).equal(undefined)
+      expect(directiveResult.unmounted).equal(undefined)
+      expect(directiveResult.inserted).not.equal(undefined)
+      expect(directiveResult.update).not.equal(undefined)
+      expect(directiveResult.unbind).not.equal(undefined)
+    })
+
+    it('Is compatible with Vue 3', () => {
+      let directiveResult = null
+
+      plugin.install(getVue('3.0.0', (directiveName, directiveOptions) => {
+        directiveResult = directiveOptions
+      }))
+
+      expect(directiveResult.mounted).not.equal(undefined)
+      expect(directiveResult.updated).not.equal(undefined)
+      expect(directiveResult.unmounted).not.equal(undefined)
+      expect(directiveResult.inserted).equal(undefined)
+      expect(directiveResult.update).equal(undefined)
+      expect(directiveResult.unbind).equal(undefined)
     })
   })
 })
