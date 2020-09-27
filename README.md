@@ -6,13 +6,14 @@
 ![GitHub](https://img.shields.io/github/license/ajobi/vue-snip)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/vue-snip)
 
-Vue.js directive that clamps the content of a text element if it exceeds the specified number of lines.
+Vue.js directive that clamps the content of a text element if it exceeds the specified number of lines. Supports Vue.js 2 as well as Vue.js 3.
 
 #### Key features:
 * two snipping approaches (CSS / JavaScript) picked on a per-element basis
 * no need to specify line heights
 * re-snipping on element resize and reactive data change
 * no dependencies (small and fast)
+
 
 ![](assets/illustration.png)
 
