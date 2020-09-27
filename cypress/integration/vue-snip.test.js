@@ -3,6 +3,14 @@ import plugin from '../../src/index.js'
 
 const { maxLines, snipMethod } = defaultOptions
 
+const getVue = () => {
+  const Vue = function () {}
+  Vue.directive = () => {}
+  Vue.version = '2.6.11'
+
+  return Vue
+}
+
 describe('Vue Snip', () => {
   beforeEach(() => {
     cy.visit('/directive')
@@ -11,20 +19,19 @@ describe('Vue Snip', () => {
   describe('Installation', () => {
     describe('Debug mode', () => {
       it('Does not expose the state without debugMode', () => {
-        plugin.install({ directive: () => {} }, { debugMode: false })
+        plugin.install(getVue(), { debugMode: false })
         expect(window.__VueSnipState).equal(undefined)
       })
 
       it('Exposes the state on debugMode', () => {
-        plugin.install({ directive: () => {} }, { debugMode: true })
+        plugin.install(getVue(), { debugMode: true })
         expect(window.__VueSnipState).not.equal(undefined)
       })
     })
 
     describe('Snip function', () => {
       it('Does not expose the snip function without exposeSnipFunction', () => {
-        const Vue = function () {}
-        Vue.directive = () => {}
+        const Vue = getVue()
 
         plugin.install(Vue, { exposeSnipFunction: false })
 
@@ -32,8 +39,7 @@ describe('Vue Snip', () => {
       })
 
       it('Exposes the snip function with exposeSnipFunction', () => {
-        const Vue = function () {}
-        Vue.directive = () => {}
+        const Vue = getVue()
 
         plugin.install(Vue, { exposeSnipFunction: true })
 
@@ -41,8 +47,7 @@ describe('Vue Snip', () => {
       })
 
       it('Uses the given snipFunctionName', () => {
-        const Vue = function () {}
-        Vue.directive = () => {}
+        const Vue = getVue()
         const snipFunctionName = 'test'
 
         plugin.install(Vue, { exposeSnipFunction: true, snipFunctionName: snipFunctionName })
