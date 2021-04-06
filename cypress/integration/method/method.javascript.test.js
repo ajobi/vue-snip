@@ -58,4 +58,14 @@ describe('snipByJS', () => {
       expect(paragraph.innerText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aut, consectetur earum eius error expedita fuga illum iste iure minima nobis, odio praesentium quae quas ullam veniam, voluptates? Distinctio ex hic maiores obcaecati quibusdam quod repudiandae temporibus. Amet consequatur iste nisi quos! Alias atque beatae consectetur dolor doloremque earum eos expedita fugiat pariatur possimus provident quod quos, repudiandae similique sit unde ut veritatis voluptates voluptatibus voluptatum? Assumenda culpa cum eligendi, eos itaque mollitia nostrum possimus praesentium quod rerum totam.')
     })
   })
+
+  it('Maintains the original style attributes', () => {
+    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+      const originalColor = paragraph.style.color
+
+      snipByJS(getMockState(paragraph, 2), paragraph)
+
+      expect(paragraph.style.color).to.equal(originalColor)
+    })
+  })
 })

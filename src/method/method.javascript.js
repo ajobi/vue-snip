@@ -5,7 +5,10 @@ export const snipByJS = (state, el) => {
   const { ellipsis, separators } = state.options
 
   el.textContent = fullText
-  el.removeAttribute('style')
+  el.style.display = null
+  el.style.webkitLineClamp = null
+  el.style.webkitBoxOrient = null
+  el.style.overflow = null
 
   if (maxLines <= 0 || elementLines(el) <= maxLines) {
     return

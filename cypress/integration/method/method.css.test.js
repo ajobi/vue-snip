@@ -63,4 +63,14 @@ describe('snipByCSS', () => {
       expect(elementLines(paragraph)).to.equal(oldLines)
     })
   })
+
+  it('Maintains the original style attributes', () => {
+    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+      const originalColor = paragraph.style.color
+
+      snipByCSS(getMockState(paragraph, 2), paragraph)
+
+      expect(paragraph.style.color).to.equal(originalColor)
+    })
+  })
 })
