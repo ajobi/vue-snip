@@ -142,12 +142,6 @@ Vue.use(VueSnip, options)
 
 ### Caveats
 
-#### Element style attribute
-
-The directive internally operates on the element's `style` attribute. You should not modify the `style` attribute of elements you are snipping. Use classes instead.
-
-#### Element height
-
 For the directive to be able to determine the number of lines / hide the text-overflow properly, the height of the element should be the same as the height of the text. Be wary of any CSS steps that will affect the height of the element. Some of the common examples:
 * vertical paddings
 * fixed height / fixed min-height
