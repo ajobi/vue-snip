@@ -55,6 +55,8 @@
     "truncate-text",
     "multiline-text",
     "vue",
+    "vue2",
+    "vue3",
     "vuejs",
     "vue-directive",
     "vue-plugin"
