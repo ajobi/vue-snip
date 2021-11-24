@@ -1,8 +1,16 @@
 import esbuild from 'rollup-plugin-esbuild'
+import { getBabelOutputPlugin } from '@rollup/plugin-babel'
 import pkg from './package.json'
+const path = require('path')
 
 export const input = 'src/index.js'
-export const buildPlugins = [esbuild({ minify: true })]
+export const buildPlugins = [
+  getBabelOutputPlugin({
+    configFile: path.resolve(__dirname, '.babelrc'),
+    allowAllFormats: true
+  }),
+  esbuild({ minify: true })
+]
 
 export default [
   {
