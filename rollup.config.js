@@ -6,14 +6,7 @@ export const input = 'src/index.js'
 export const buildPlugins = [
   babel({
     babelHelpers: 'bundled',
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          targets: { ie: '11' }
-        }
-      ]
-    ]
+    presets: [['@babel/preset-env', { targets: { ie: '11' } }]]
   }),
   esbuild({ minify: true })
 ]
