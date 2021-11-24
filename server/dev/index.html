@@ -5,7 +5,7 @@
     <title>vue-snip</title>
     <link rel="stylesheet" type="text/css" href="index.css">
     <script src="vue.js"></script>
-    <script src="http://localhost:9000/main.js"></script>
+    <script src="main.js"></script>
   </head>
   <body>
     <div id="playground">
@@ -27,7 +27,7 @@
     </div>
 
     <script>
-      Vue.use(VueSnip.default, { debugMode: true })
+      Vue.use(VueSnip, { debugMode: true })
 
       new Vue({
         el: '#playground',

@@ -3,3 +3,6 @@ node_modules
 dist
 coverage
 .nyc_output
+
+# server bundles
+server/dev/main.js

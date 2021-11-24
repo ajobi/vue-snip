@@ -1,8 +1,8 @@
 import esbuild from 'rollup-plugin-esbuild'
 import pkg from './package.json'
 
-const input = 'src/index.js'
-const buildPlugins = [esbuild({ minify: true })]
+export const input = 'src/index.js'
+export const buildPlugins = [esbuild({ minify: true })]
 
 export default [
   {
