@@ -1,11 +1,21 @@
 import serve from 'rollup-plugin-serve'
 import { input, buildPlugins } from './rollup.config'
 
-export default (args) => {
-  const isTest = process.env.NODE_ENV === 'test'
-  const isDemo = args.demo
-  const contentBase = isTest ? 'server/test' : isDemo ? 'docs' : 'server/dev'
-  const port = isTest ? 9001 : isDemo ? 9002 : 9000
+export default () => {
+  const portMap = {
+    dev: 9000,
+    demo: 9002,
+    test: 9001
+  }
+
+  const contentBaseMap = {
+    dev: 'server/dev',
+    demo: 'docs',
+    test: 'server/test'
+  }
+
+  const contentBase = contentBaseMap[process.env.NODE_ENV]
+  const port = portMap[process.env.NODE_ENV]
 
   return [
     {
@@ -17,9 +27,7 @@ export default (args) => {
           name: 'VueSnip'
         }
       ],
-      plugins: [...buildPlugins, serve({
-        port, contentBase
-      })]
+      plugins: [...buildPlugins, serve({ port, contentBase })]
     }
   ]
 }
