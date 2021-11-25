@@ -1,5 +1,4 @@
 import esbuild from 'rollup-plugin-esbuild'
-import { babel } from '@rollup/plugin-babel'
 import serve from 'rollup-plugin-serve'
 import pkg from './package.json'
 
@@ -7,10 +6,6 @@ const input = 'src/index.js'
 
 export default () => {
   const plugins = [
-    babel({
-      babelHelpers: 'bundled',
-      presets: [['@babel/preset-env', { targets: { ie: '11' } }]]
-    }),
     esbuild({ minify: true })
   ]
 
