@@ -21,10 +21,6 @@ import './commands'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-Cypress.Screenshot.defaults({
-  screenshotOnRunFailure: false
-})
-
 // https://github.com/quasarframework/quasar/issues/2233#issuecomment-656554190
 Cypress.on('uncaught:exception', (err) => {
   if (err.message.includes('ResizeObserver')) {
