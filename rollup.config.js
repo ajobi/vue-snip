@@ -1,7 +1,7 @@
 import esbuild from 'rollup-plugin-esbuild'
 import { babel } from '@rollup/plugin-babel'
-import pkg from './package.json'
 import serve from 'rollup-plugin-serve'
+import pkg from './package.json'
 
 const input = 'src/index.js'
 
@@ -15,7 +15,7 @@ export default () => {
   ]
 
   if (process.env.NODE_ENV === 'development') {
-    plugins.push(serve({ port: 3000, contentBase: 'docs' }))
+    plugins.push(serve({ port: 3000, contentBase: 'docs', open: true }))
   }
 
   return [
