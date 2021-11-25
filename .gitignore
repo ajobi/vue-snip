@@ -7,3 +7,4 @@ instrumented
 
 # server bundles
 server/dev/main.js
+cypress/tests/main.js

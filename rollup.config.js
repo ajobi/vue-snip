@@ -38,6 +38,11 @@ export default [
         file: pkg.main.replace('dist', 'docs'),
         format: 'umd',
         name: 'VueSnip'
+      },
+      {
+        file: pkg.main.replace('dist', 'cypress/tests'),
+        format: 'umd',
+        name: 'VueSnip'
       }
     ],
     plugins: buildPlugins

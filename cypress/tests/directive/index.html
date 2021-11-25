@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="vue.js"></script>
-    <script src="http://localhost:9001/main.js"></script>
+    <script src="../vue.js"></script>
+    <script src="../main.js"></script>
   </head>
   <body>
     <div id="playground" style="max-width: 600px">
@@ -21,7 +21,7 @@
     </div>
 
     <script>
-      Vue.use(VueSnip.default, { debugMode: true })
+      Vue.use(VueSnip, { debugMode: true })
 
       new Vue({
         el: '#playground',

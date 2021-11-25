@@ -15,7 +15,7 @@ const getMockState = (element, maxLines = 3) => {
 
 describe('snipByCSS', () => {
   beforeEach(() => {
-    cy.visit('method')
+    cy.visit('./cypress/tests/method/index.html')
   })
 
   it('Snips on negative max lines', () => {

@@ -18,7 +18,7 @@ const getMockState = (element, maxLines = 3, snipMethod = 'css') => {
 
 describe('snipText', () => {
   beforeEach(() => {
-    cy.visit('element/snip')
+    cy.visit('./cypress/tests/element/snip/index.html')
   })
 
   it('Does snip with CSS method', () => {

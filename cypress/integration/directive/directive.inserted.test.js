@@ -2,7 +2,7 @@ import { elementLines } from '../../../instrumented/element/element.lines'
 
 describe('Directive Inserted', () => {
   beforeEach(() => {
-    cy.visit('/directive')
+    cy.visit('./cypress/tests/directive/index.html')
   })
 
   it('Adds the element to the map', () => {

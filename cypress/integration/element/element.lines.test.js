@@ -3,7 +3,7 @@ import { elementLines } from '../../../instrumented/element/element.lines'
 describe('elementLines', () => {
   describe('with implicit lineheight', () => {
     beforeEach(() => {
-      cy.visit('element/lines')
+      cy.visit('./cypress/tests/element/lines/index.html')
     })
 
     it('returns 0 on empty text', () => {
@@ -34,7 +34,7 @@ describe('elementLines', () => {
   describe('with explicit lineheight', () => {
     describe('with higher than fontsize lineheight', () => {
       beforeEach(() => {
-        cy.visit('element/lines')
+        cy.visit('./cypress/tests/element/lines/index.html')
         cy.get('p').invoke('attr', 'style', 'line-height: 3rem')
       })
 
@@ -65,7 +65,7 @@ describe('elementLines', () => {
 
     describe('with smaller than fontsize lineheight', () => {
       beforeEach(() => {
-        cy.visit('element/lines')
+        cy.visit('./cypress/tests/element/lines/index.html')
         cy.get('p').invoke('attr', 'style', 'line-height: 0.1rem')
       })
 
@@ -96,7 +96,7 @@ describe('elementLines', () => {
 
     describe('with 0 lineheight', () => {
       beforeEach(() => {
-        cy.visit('element/lines')
+        cy.visit('./cypress/tests/element/lines/index.html')
         cy.get('p').invoke('attr', 'style', 'line-height: 0')
       })
 

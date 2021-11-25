@@ -2,7 +2,7 @@ import { elementLines } from '../../../instrumented/element/element.lines'
 
 describe('Directive Update', () => {
   beforeEach(() => {
-    cy.visit('/directive')
+    cy.visit('./cypress/tests/directive/index.html')
   })
 
   it('Updates the map record of the element', () => {
