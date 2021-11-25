@@ -1,3 +1,9 @@
 node_modules
 dist
-dev/**/vue.js
+
+instrumented
+cypress/tests/main.js
+cypress/tests/vue.js
+docs/vue.min.js
+docs/main.js
+docs/polyfill
