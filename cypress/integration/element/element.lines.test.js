@@ -1,4 +1,4 @@
-import { elementLines } from '../../../src/element/element.lines'
+import { elementLines } from '../../../instrumented/element/element.lines'
 
 describe('elementLines', () => {
   describe('with implicit lineheight', () => {

@@ -1,4 +1,4 @@
-import { normalizeMaxLines } from '../../../src/utils'
+import { normalizeMaxLines } from '../../../instrumented/utils'
 
 const getMockState = (maxLines) => ({
   options: {

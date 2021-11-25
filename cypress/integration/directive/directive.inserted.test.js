@@ -1,4 +1,4 @@
-import { elementLines } from '../../../src/element/element.lines'
+import { elementLines } from '../../../instrumented/element/element.lines'
 
 describe('Directive Inserted', () => {
   beforeEach(() => {
@@ -17,9 +17,9 @@ describe('Directive Inserted', () => {
   it('Snips the element', () => {
     cy.get('[data-cy=paragraph1]').then(([paragraph]) => {
       // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(10, () => {
-        expect(elementLines(paragraph)).equal(3)
-      })
+      // cy.wait(10, () => {
+      expect(elementLines(paragraph)).equal(3)
+      // })
     })
   })
 })

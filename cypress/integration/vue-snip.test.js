@@ -1,5 +1,5 @@
-import { defaultOptions } from '../../src/defaultOptions'
-import plugin from '../../src/index.js'
+import { defaultOptions } from '../../instrumented/defaultOptions'
+import plugin from '../../instrumented/index.js'
 
 const { maxLines, snipMethod } = defaultOptions
 

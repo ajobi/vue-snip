@@ -1,6 +1,6 @@
-import { getSnipText } from '../../../src/element/element.snip'
-import { elementLines } from '../../../src/element/element.lines'
-import { defaultOptions as options } from '../../../src/defaultOptions'
+import { getSnipText } from '../../../instrumented/element/element.snip'
+import { elementLines } from '../../../instrumented/element/element.lines'
+import { defaultOptions as options } from '../../../instrumented/defaultOptions'
 
 const getMockState = (element, maxLines = 3, snipMethod = 'css') => {
   const elementMap = new WeakMap()

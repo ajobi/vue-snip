@@ -1,11 +1,11 @@
-import { elementLines } from '../../../src/element/element.lines'
-import { snipByCSS } from '../../../src/method'
+import { elementLines } from '../../../instrumented/element/element.lines'
+import { snipByCSS } from '../../../instrumented/method'
 
 const getMockState = (element, maxLines = 3) => {
   const elementMap = new WeakMap()
   elementMap.set(element, {
     fullText: element.textContent,
-    maxLines: maxLines,
+    maxLines: maxLines
   })
 
   return {

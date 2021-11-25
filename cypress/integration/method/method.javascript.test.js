@@ -1,5 +1,5 @@
-import { snipByJS } from '../../../src/method'
-import { defaultOptions as options } from '../../../src/defaultOptions'
+import { snipByJS } from '../../../instrumented/method'
+import { defaultOptions as options } from '../../../instrumented/defaultOptions'
 
 const getMockState = (element, maxLines = 3) => {
   const elementMap = new WeakMap()
