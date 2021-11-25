@@ -3,6 +3,7 @@ node_modules
 dist
 coverage
 .nyc_output
+instrumented
 
 # server bundles
 server/dev/main.js

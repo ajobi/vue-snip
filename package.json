@@ -11,6 +11,7 @@
     "dev:demo": "NODE_ENV=demo rollup -c rollup.server.js",
     "test:open": "NODE_ENV=test start-server-and-test 'webpack-dev-server' http://localhost:9001 'cypress open'",
     "test:run": "NODE_ENV=test start-server-and-test 'webpack-dev-server' http://localhost:9001 'cypress run'",
+    "instrument": "nyc instrument src instrumented",
     "test:coverage": "npx nyc report --reporter=text --reporter=text-summary",
     "test": "yarn test:run && yarn test:coverage",
     "coveralls": "npx nyc report --reporter=text-lcov | coveralls"
