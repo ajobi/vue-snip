@@ -9,7 +9,7 @@
     "build": "rollup -c",
     "dev": "NODE_ENV=development rollup -c",
     "test:open": "yarn instrument && yarn build && cypress open",
-    "test:run": "yarn instrument && yarn build && cypress run",
+    "test:run": "yarn instrument && yarn build && cypress run --browser chrome",
     "test": "yarn test:run && yarn coverage",
     "instrument": "nyc instrument src instrumented",
     "coverage": "npx nyc report --reporter=text --reporter=text-summary",
