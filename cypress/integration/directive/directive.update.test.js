@@ -25,10 +25,7 @@ describe('Directive Update', () => {
 
   it('Snips the element', () => {
     cy.get('[data-cy=paragraph4]').then(([paragraph]) => {
-      // eslint-disable-next-line cypress/no-unnecessary-waiting
-      // cy.wait(10, () => {
       expect(elementLines(paragraph)).equal(3)
-      // })
 
       cy.get('[data-cy=linesPlus]').click().then(() => {
         expect(elementLines(paragraph)).equal(4)

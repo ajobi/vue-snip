@@ -1,4 +1,4 @@
-import { addObserver } from '../../../instrumented/utils'
+import { addObserver, destroyObserver } from '../../../instrumented/utils'
 
 describe('addObserver', () => {
   beforeEach(() => {
@@ -17,10 +17,8 @@ describe('addObserver', () => {
 
       addObserver(state, snipText, el)
 
-      // eslint-disable-next-line cypress/no-unnecessary-waiting
-      // cy.wait(10).then(() => {
       expect(state.elementMap.get(el).observer).not.eq(undefined)
-      // })
+      destroyObserver(state, el)
     })
   })
 })
