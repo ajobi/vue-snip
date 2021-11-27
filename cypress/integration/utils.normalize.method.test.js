@@ -1,4 +1,4 @@
-import { normalizeSnipMethod } from '../../../instrumented/utils'
+import { normalizeSnipMethod } from '../../instrumented/utils'
 
 const getMockState = (snipMethod) => ({
   options: {

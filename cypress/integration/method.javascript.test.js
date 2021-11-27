@@ -1,5 +1,5 @@
-import { snipByJS } from '../../../instrumented/method'
-import { defaultOptions as options } from '../../../instrumented/defaultOptions'
+import { snipByJS } from '../../instrumented/method'
+import { defaultOptions as options } from '../../instrumented/defaultOptions'
 
 const getMockState = (element, maxLines = 3) => {
   const elementMap = new WeakMap()
@@ -16,7 +16,7 @@ const getMockState = (element, maxLines = 3) => {
 
 describe('snipByJS', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/method/index.html')
+    cy.visit('./cypress/tests/method.html')
   })
 
   it('Snips on negative max lines', () => {

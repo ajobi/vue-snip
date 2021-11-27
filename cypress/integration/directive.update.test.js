@@ -1,8 +1,8 @@
-import { elementLines } from '../../../instrumented/element/element.lines'
+import { elementLines } from '../../instrumented/element/element.lines'
 
 describe('Directive Update', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/directive/index.html')
+    cy.visit('./cypress/tests/directive.html')
   })
 
   it('Updates the map record of the element', () => {

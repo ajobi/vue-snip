@@ -1,6 +1,6 @@
-import { getSnipText } from '../../../instrumented/element/element.snip'
-import { elementLines } from '../../../instrumented/element/element.lines'
-import { defaultOptions as options } from '../../../instrumented/defaultOptions'
+import { getSnipText } from '../../instrumented/element/element.snip'
+import { elementLines } from '../../instrumented/element/element.lines'
+import { defaultOptions as options } from '../../instrumented/defaultOptions'
 
 const getMockState = (element, maxLines = 3, snipMethod = 'css') => {
   const elementMap = new WeakMap()
@@ -18,7 +18,7 @@ const getMockState = (element, maxLines = 3, snipMethod = 'css') => {
 
 describe('snipText', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/element/snip/index.html')
+    cy.visit('./cypress/tests/element.snip.html')
   })
 
   it('Does snip with CSS method', () => {

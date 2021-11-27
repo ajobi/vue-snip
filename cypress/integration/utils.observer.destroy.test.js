@@ -1,8 +1,8 @@
-import { addObserver, destroyObserver } from '../../../instrumented/utils'
+import { addObserver, destroyObserver } from '../../instrumented/utils'
 
 describe('addObserver', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/utils/observer/index.html')
+    cy.visit('./cypress/tests/utils.observer.html')
   })
 
   it('Removes the observer from the element state', () => {
