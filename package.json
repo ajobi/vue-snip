@@ -11,7 +11,7 @@
     "es-check": "es-check es5 dist/*.js",
     "test:open": "yarn instrument && yarn build && cypress open",
     "test:run": "yarn instrument && yarn build && cypress run --browser chrome",
-    "test": "yarn test:run && yarn coverage",
+    "test": "yarn test:run && yarn coverage && yarn es-check",
     "instrument": "nyc instrument src instrumented",
     "coverage": "npx nyc report --reporter=text --reporter=text-summary",
     "coveralls": "npx nyc report --reporter=text-lcov | coveralls"
