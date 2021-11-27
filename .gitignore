@@ -4,5 +4,3 @@ dist
 coverage
 .nyc_output
 instrumented
-
-cypress/tests/main.js
