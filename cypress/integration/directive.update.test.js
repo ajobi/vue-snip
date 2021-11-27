@@ -43,6 +43,9 @@ describe('Directive Update', () => {
 
       update(paragraph, { value: 4, arg: 'css' })
       expect(elementLines(paragraph)).equal(4)
+
+      update(paragraph, { value: 4, arg: 'css' })
+      expect(elementLines(paragraph)).equal(4)
     })
   })
 })
