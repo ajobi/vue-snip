@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <div id="playground" style="max-width: 600px">
+      <div v-if="visible">
+        <p v-snip data-cy="paragraph1">{{ displayText }}</p>
+        <p v-snip="maxLines" data-cy="paragraph2">{{ displayText }}</p>
+        <p v-snip:[method] data-cy="paragraph3">{{ displayText }}</p>
+        <p v-snip:[method]="maxLines" data-cy="paragraph4">{{ displayText }}</p>
+      </div>
+      <button @click="maxLines++" data-cy="linesPlus">+</button>
+      <button @click="maxLines--" data-cy="linesMinus">-</button>
+      <button @click="method = method === 'css' ? 'js' : 'css'" data-cy="methodToggle">Method</button>
+      <button @click="visible = !visible" data-cy="visibilityToggle">Visible</button>
+    </div>
+
+    <script>
+      Vue.use(VueSnip, { debugMode: true })
+
+      new Vue({
+        el: '#playground',
+        data: () => ({
+          maxLines: 3,
+          method: 'css',
+          visible: true,
+        }),
+        computed: {
+          displayText () {
+            return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias asperiores consectetur delectus dolore dolorem doloremque eveniet ex facilis fuga impedit itaque iure libero magnam necessitatibus, nemo nihil nostrum perspiciatis provident quae ratione rem saepe sunt tempora velit veritatis voluptatibus. Amet atque dolor ea excepturi hic maxime molestiae quam repellendus soluta tempora. Accusamus at ea eligendi, error facere in ipsa labore minima natus.'
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

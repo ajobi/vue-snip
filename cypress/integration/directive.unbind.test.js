@@ -1,6 +1,6 @@
 describe('Directive Unbind', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/directive.html')
+    cy.visit('./cypress/tests/vue-snip.html')
   })
 
   it('Removes the elements from the map', () => {
