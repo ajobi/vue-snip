@@ -1,6 +1,6 @@
 import { elementLines } from '../../instrumented/element/element.lines'
 import { getInserted } from '../../instrumented/directive'
-import { getSnipText } from '../../src/element/element.snip'
+import { getSnipText } from '../../instrumented/element/element.snip'
 
 describe('Directive Inserted', () => {
   beforeEach(() => {

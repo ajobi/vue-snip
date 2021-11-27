@@ -1,43 +1,21 @@
+import { getUnbind } from '../../instrumented/directive'
+
 describe('Directive Unbind', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/vue-snip.html')
+    cy.visit('./cypress/tests/directive.html')
   })
 
   it('Removes the elements from the map', () => {
-    cy.window().then(window => {
-      const { elementMap } = window.__VueSnipState
+    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+      const elementMap = new WeakMap()
+      const state = { elementMap }
 
-      let paragraph1 = null
-      let paragraph2 = null
-      let paragraph3 = null
-      let paragraph4 = null
+      const unbind = getUnbind(state)
 
-      cy.get('[data-cy=paragraph1]').then(([paragraph]) => {
-        expect(elementMap.has(paragraph)).to.equal(true)
-        paragraph1 = paragraph
-      })
+      elementMap.set(paragraph, {})
+      unbind(paragraph)
 
-      cy.get('[data-cy=paragraph2]').then(([paragraph]) => {
-        paragraph2 = paragraph
-        expect(elementMap.has(paragraph)).to.equal(true)
-      })
-
-      cy.get('[data-cy=paragraph3]').then(([paragraph]) => {
-        paragraph3 = paragraph
-        expect(elementMap.has(paragraph)).to.equal(true)
-      })
-
-      cy.get('[data-cy=paragraph4]').then(([paragraph]) => {
-        paragraph4 = paragraph
-        expect(elementMap.has(paragraph)).to.equal(true)
-      })
-
-      cy.get('[data-cy=visibilityToggle]').click().then(() => {
-        expect(elementMap.has(paragraph1)).to.equal(false)
-        expect(elementMap.has(paragraph2)).to.equal(false)
-        expect(elementMap.has(paragraph3)).to.equal(false)
-        expect(elementMap.has(paragraph4)).to.equal(false)
-      })
+      expect(elementMap.has(paragraph)).to.equal(false)
     })
   })
 })
