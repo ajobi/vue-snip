@@ -4,7 +4,7 @@ import { getSnipText } from '../../instrumented/element/element.snip'
 
 describe('addObserver', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/utils.observer.html')
+    cy.visit('./cypress/tests/paragraph-single.html')
   })
 
   it('Adds the observer to the element state', () => {
@@ -25,46 +25,46 @@ describe('addObserver', () => {
   })
 
   it('Snips the element on resize', () => {
-    cy.get('[data-cy=paragraph]').then(([el]) => {
+    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
       const elementMap = new WeakMap()
       const state = { elementMap, options: defaultOptions }
-      elementMap.set(el, {})
+      elementMap.set(paragraph, {})
 
       const snipText = cy.stub()
-      addObserver(state, snipText, el)
+      addObserver(state, snipText, paragraph)
 
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(20).then(() => {
         expect(snipText).to.have.callCount(1)
 
-        el.style.width = '50%'
+        paragraph.style.width = '50%'
 
         // eslint-disable-next-line cypress/no-unnecessary-waiting
         cy.wait(20).then(() => {
           expect(snipText).to.have.callCount(2)
 
-          destroyObserver(state, el)
+          destroyObserver(state, paragraph)
         })
       })
     })
   })
 
   it('Does not snip if the element dimensions did not change', () => {
-    cy.get('[data-cy=paragraph]').then(([el]) => {
+    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
       const elementMap = new WeakMap()
       const state = { elementMap, options: defaultOptions }
-      elementMap.set(el, {})
+      elementMap.set(paragraph, {})
 
       const snipText = cy.stub()
-      const elState = elementMap.get(el)
-      elState.prevWidth = el.clientWidth
-      elState.prevHeight = el.clientHeight
-      addObserver(state, snipText, el)
+      const elState = elementMap.get(paragraph)
+      elState.prevWidth = paragraph.clientWidth
+      elState.prevHeight = paragraph.clientHeight
+      addObserver(state, snipText, paragraph)
 
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(20).then(() => {
         expect(snipText).to.have.callCount(0)
-        destroyObserver(state, el)
+        destroyObserver(state, paragraph)
       })
     })
   })

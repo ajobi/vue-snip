@@ -2,22 +2,22 @@ import { addObserver, destroyObserver } from '../../instrumented/utils'
 
 describe('addObserver', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/utils.observer.html')
+    cy.visit('./cypress/tests/paragraph-single.html')
   })
 
   it('Removes the observer from the element state', () => {
-    cy.get('[data-cy=paragraph]').then(([el]) => {
+    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
       const elementMap = new WeakMap()
-      elementMap.set(el, {})
+      elementMap.set(paragraph, {})
 
       const snipText = () => {}
       const state = { elementMap }
 
-      addObserver(state, snipText, el)
-      destroyObserver(state, el)
+      addObserver(state, snipText, paragraph)
+      destroyObserver(state, paragraph)
 
-      expect(state.elementMap.get(el).observer).eq(undefined)
-      expect(state.elementMap.get(el).observer).eq(undefined)
+      expect(state.elementMap.get(paragraph).observer).eq(undefined)
+      expect(state.elementMap.get(paragraph).observer).eq(undefined)
     })
   })
 })

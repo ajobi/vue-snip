@@ -1,9 +1,10 @@
 import { getInserted } from '../../instrumented/directive'
 import { defaultOptions } from '../../instrumented/defaultOptions'
+import { destroyObserver } from '../../instrumented/utils'
 
 describe('Directive Inserted', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/directive.html')
+    cy.visit('./cypress/tests/paragraph-single.html')
   })
 
   it('Adds the element to the map', () => {
@@ -50,6 +51,8 @@ describe('Directive Inserted', () => {
         cy.wait(20).then(() => {
           expect(snipText).to.have.callCount(1)
           expect(snipText).to.be.calledWith(paragraph)
+
+          destroyObserver(state, paragraph)
         })
       })
     })

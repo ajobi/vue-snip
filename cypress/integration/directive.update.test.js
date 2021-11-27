@@ -2,10 +2,11 @@ import { getSnipText } from '../../instrumented/element/element.snip'
 import { getUpdate } from '../../instrumented/directive'
 import { defaultOptions } from '../../instrumented/defaultOptions'
 import { elementLines } from '../../instrumented/element/element.lines'
+import { destroyObserver } from '../../instrumented/utils'
 
 describe('Directive Update', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/directive.html')
+    cy.visit('./cypress/tests/paragraph-single.html')
   })
 
   it('Updates the map record of the element', () => {
@@ -49,6 +50,8 @@ describe('Directive Update', () => {
 
       update(paragraph, { value: 4, arg: 'js' })
       expect(elementLines(paragraph)).equal(4)
+
+      destroyObserver(state, paragraph)
     })
   })
 })

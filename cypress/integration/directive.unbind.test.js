@@ -3,7 +3,7 @@ import { defaultOptions } from '../../instrumented/defaultOptions'
 
 describe('Directive Unbind', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/directive.html')
+    cy.visit('./cypress/tests/paragraph-single.html')
   })
 
   it('Removes the elements from the map', () => {
