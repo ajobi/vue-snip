@@ -1,4 +1,4 @@
-import { addObserver, normalizeMaxLines, normalizeSnipMethod, destroyObserver } from '../utils'
+import { addObserver, normalizeMaxLines, normalizeSnipMethod, destroyObserver } from '../utils/index'
 
 export const getUpdate = (state, snipText) => (el, { value, arg }) => {
   const elState = state.elementMap.get(el)

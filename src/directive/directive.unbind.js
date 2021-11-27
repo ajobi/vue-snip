@@ -1,4 +1,4 @@
-import { destroyObserver } from '../utils'
+import { destroyObserver } from '../utils/index'
 
 export const getUnbind = (state) => (el) => {
   const { elementMap } = state

@@ -1,11 +1,9 @@
-import esbuild from 'rollup-plugin-esbuild'
 import { babel } from '@rollup/plugin-babel'
 import serve from 'rollup-plugin-serve'
 import pkg from './package.json'
 
 const input = 'src/index.js'
 const plugins = [
-  esbuild({ minify: true }),
   babel({ babelHelpers: 'bundled' })
 ]
 

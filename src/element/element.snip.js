@@ -1,4 +1,4 @@
-import { snipByCSS, snipByJS } from '../method'
+import { snipByCSS, snipByJS } from '../method/index'
 
 export const getSnipText = (state) => (el) => {
   const elState = state.elementMap.get(el)
