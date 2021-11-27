@@ -1,6 +1,4 @@
-import { elementLines } from '../../instrumented/element/element.lines'
 import { getInserted } from '../../instrumented/directive'
-import { getSnipText } from '../../instrumented/element/element.snip'
 import { defaultOptions } from '../../instrumented/defaultOptions'
 
 describe('Directive Inserted', () => {
@@ -13,7 +11,7 @@ describe('Directive Inserted', () => {
       const elementMap = new WeakMap()
       const state = { elementMap, options: defaultOptions }
 
-      const snipText = getSnipText(state)
+      const snipText = cy.stub()
       const inserted = getInserted(state, snipText)
 
       inserted(paragraph, { value: 3, arg: 'css' })
@@ -28,28 +26,32 @@ describe('Directive Inserted', () => {
         const elementMap = new WeakMap()
         const state = { elementMap, options: defaultOptions }
 
-        const snipText = getSnipText(state)
+        const snipText = cy.stub()
         const inserted = getInserted(state, snipText)
 
         inserted(paragraph, { value: 3, arg: 'css' })
-
-        expect(elementLines(paragraph)).equal(3)
+        expect(snipText).to.have.callCount(1)
+        expect(snipText).to.be.calledWith(paragraph)
       })
     })
 
-    // it('With JS method', () => {
-    //   cy.get('[data-cy=paragraph]').then(([paragraph]) => {
-    //     const elementMap = new WeakMap()
-    //     const state = { elementMap, options: defaultOptions }
-    //
-    //     const snipText = getSnipText(state)
-    //     const inserted = getInserted(state, snipText)
-    //     elementMap.set(paragraph, { fullText: paragraph.textContent })
-    //
-    //     inserted(paragraph, { value: 3, arg: 'js' })
-    //
-    //     expect(elementLines(paragraph)).equal(3)
-    //   })
-    // })
+    it('With JS method', () => {
+      cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+        const elementMap = new WeakMap()
+        const state = { elementMap, options: defaultOptions }
+
+        const snipText = cy.stub()
+        const inserted = getInserted(state, snipText)
+        elementMap.set(paragraph, { fullText: paragraph.textContent })
+
+        inserted(paragraph, { value: 3, arg: 'js' })
+
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(20).then(() => {
+          expect(snipText).to.have.callCount(1)
+          expect(snipText).to.be.calledWith(paragraph)
+        })
+      })
+    })
   })
 })
