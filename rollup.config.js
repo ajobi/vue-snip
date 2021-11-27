@@ -1,10 +1,12 @@
 import { babel } from '@rollup/plugin-babel'
+import { terser } from 'rollup-plugin-terser'
 import serve from 'rollup-plugin-serve'
 import pkg from './package.json'
 
 const input = 'src/index.js'
 const plugins = [
-  babel({ babelHelpers: 'bundled' })
+  babel({ babelHelpers: 'bundled' }),
+  terser()
 ]
 
 if (process.env.NODE_ENV === 'development') {
