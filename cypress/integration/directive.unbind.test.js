@@ -1,4 +1,5 @@
 import { getUnbind } from '../../instrumented/directive'
+import { defaultOptions } from '../../instrumented/defaultOptions'
 
 describe('Directive Unbind', () => {
   beforeEach(() => {
@@ -8,7 +9,7 @@ describe('Directive Unbind', () => {
   it('Removes the elements from the map', () => {
     cy.get('[data-cy=paragraph]').then(([paragraph]) => {
       const elementMap = new WeakMap()
-      const state = { elementMap }
+      const state = { elementMap, options: defaultOptions }
 
       const unbind = getUnbind(state)
 
