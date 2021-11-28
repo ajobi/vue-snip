@@ -1,6 +1,6 @@
 const UA_LINE_HEIGHT = 1.2
 
-export const elementLines = el => {
+export const elementLines = (el: HTMLElement): number => {
   const computedStyle = window.getComputedStyle(el)
   const computedHeight = parseFloat(computedStyle.height)
   const computedLineHeight = computedStyle.lineHeight === 'normal'
