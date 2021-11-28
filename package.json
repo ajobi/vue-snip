@@ -37,7 +37,8 @@
     "eslint-plugin-standard": "^5.0.0",
     "rollup": "^2.60.1",
     "rollup-plugin-serve": "^1.1.0",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.5.2"
   },
   "homepage": "https://github.com/ajobi/vue-snip",
   "repository": {
