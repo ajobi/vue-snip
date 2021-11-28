@@ -1,7 +1,9 @@
 import { snipByCSS, snipByJS } from '../method/index'
 import { VueSnipState } from '../index'
 
-export const getSnipText = (state: VueSnipState) => (el: HTMLElement) => {
+export type SnipText = (el: HTMLElement) => void
+
+export const getSnipText = (state: VueSnipState): SnipText => (el) => {
   const elState = state.elementMap.get(el)
 
   if (elState.snipMethod === 'css') {
