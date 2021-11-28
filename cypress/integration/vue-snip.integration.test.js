@@ -13,7 +13,7 @@ const getVue = (version, directive) => {
 
 describe('Vue Snip', () => {
   beforeEach(() => {
-    cy.visit('./cypress/tests/integration.html')
+    cy.visit('./cypress/tests/integration-v2.html')
   })
 
   describe('Installation', () => {

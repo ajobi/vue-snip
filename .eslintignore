@@ -2,7 +2,8 @@ node_modules
 dist
 
 instrumented
-cypress/tests/vue.js
+cypress/tests/vue3.min.js
+cypress/tests/vue2.min.js
 docs/vue.min.js
 docs/main.js
 docs/polyfill
