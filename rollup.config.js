@@ -9,7 +9,7 @@ const input = 'src/index.ts'
 
 const plugins = [
   nodeResolve({ extensions: ['.ts'] }),
-  babel({ babelHelpers: 'bundled' }),
+  babel({ babelHelpers: 'bundled', extensions: ['.ts'] }),
   terser(),
   ...(process.env.NODE_ENV === 'development' ? [serve({ port: 3000, contentBase: 'docs', open: true })] : [])
 ]
