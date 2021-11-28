@@ -1,6 +1,6 @@
-import { defaultOptions } from './defaultOptions.js'
+import { defaultOptions } from './defaultOptions'
 import { getSnipText } from './element/element.snip'
-import { getInserted, getUpdate, getUnbind } from './directive/index'
+import { getInserted, getUpdate, getUnbind } from './directive'
 
 export default {
   install (Vue, options) {

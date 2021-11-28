@@ -1,4 +1,4 @@
-import { elementLines } from '../element/element.lines.js'
+import { elementLines } from '../element/element.lines'
 
 export const snipByJS = (state, el) => {
   const { fullText, maxLines } = state.elementMap.get(el)
