@@ -170,6 +170,7 @@ describe('Vue Snip', () => {
     })
 
     it('Is compatible with Vue 3', () => {
+      cy.visit('./cypress/tests/integration-v3.html')
       let directiveResult = null
 
       plugin.install(getVue('3.0.0', (directiveName, directiveOptions) => {
