@@ -1,6 +1,7 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { babel } from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
+import dts from 'rollup-plugin-dts'
 import serve from 'rollup-plugin-serve'
 import pkg from './package.json'
 
@@ -29,5 +30,13 @@ export default () => [
       }
     ],
     plugins: plugins
+  },
+  {
+    input,
+    output: {
+      file: pkg.types,
+      format: 'esm'
+    },
+    plugins: [dts()]
   }
 ]

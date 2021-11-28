@@ -18,7 +18,7 @@ export default {
     const snipText = getSnipText(state)
     const inserted = getInserted(state, snipText)
     const update = getUpdate(state, snipText)
-    const unbind = getUnbind(state, snipText)
+    const unbind = getUnbind(state)
 
     const isVue3 = Vue.version[0] > 2
 
@@ -33,7 +33,7 @@ export default {
     }
 
     if (options.debugMode) {
-      window.__VueSnipState = state
+      globalThis.__VueSnipState = state
     }
   }
 }
