@@ -1,5 +1,5 @@
 // https://css-tricks.com/almanac/properties/l/line-clamp/
-import { VueSnipState } from '../index'
+import { VueSnipState } from '../types'
 
 export const snipByCSS = (state: VueSnipState, el: HTMLElement) => {
   const { fullText, maxLines } = state.elementMap.get(el)

@@ -1,4 +1,4 @@
-import { VueSnipState } from '../index'
+import { VueSnipState } from '../types'
 
 export const destroyObserver = (state: VueSnipState, el: HTMLElement) => {
   const elState = state.elementMap.get(el)

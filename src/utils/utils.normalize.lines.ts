@@ -1,5 +1,5 @@
 import { defaultOptions } from '../defaultOptions'
-import { VueSnipState } from '../index'
+import { VueSnipState } from '../types'
 
 export const normalizeMaxLines = (state: VueSnipState, maxLines) => {
   const parsedMaxLines = parseInt(maxLines)

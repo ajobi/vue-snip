@@ -1,5 +1,5 @@
 import { elementLines } from '../element/element.lines'
-import { VueSnipState } from '../index'
+import { VueSnipState } from '../types'
 
 export const snipByJS = (state: VueSnipState, el: HTMLElement) => {
   const { fullText, maxLines } = state.elementMap.get(el)

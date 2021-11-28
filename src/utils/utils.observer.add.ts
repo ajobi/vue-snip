@@ -1,5 +1,4 @@
-import { VueSnipState } from '../index'
-import { SnipText } from '../element/element.snip'
+import { VueSnipState, SnipText } from '../types'
 
 export const addObserver = (state: VueSnipState, snipText: SnipText, el: HTMLElement) => {
   const elState = state.elementMap.get(el)

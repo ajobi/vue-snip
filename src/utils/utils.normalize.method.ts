@@ -1,5 +1,5 @@
 import { defaultOptions } from '../defaultOptions'
-import { VueSnipState } from '../index'
+import { VueSnipState } from '../types'
 
 const supportsCSSMethod = (): boolean =>
   typeof CSS !== 'undefined' &&
