@@ -11,7 +11,7 @@ const getVue = (version, directive) => {
   return Vue
 }
 
-describe('Vue Snip', () => {
+describe('Vue Plugin', () => {
   beforeEach(() => {
     cy.visit('./cypress/tests/integration-v2.html')
   })
