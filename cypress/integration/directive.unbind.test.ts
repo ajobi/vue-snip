@@ -7,7 +7,9 @@ describe('Directive Unbind', () => {
   })
 
   it('Removes the elements from the map', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
+
       const elementMap = new WeakMap()
       const state = { elementMap, options: defaultOptions }
 

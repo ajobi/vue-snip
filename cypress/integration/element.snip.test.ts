@@ -22,7 +22,8 @@ describe('snipText', () => {
   })
 
   it('Does snip with CSS method', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       const snipText = getSnipText(getMockState(paragraph, 2, 'css'))
 
       snipText(paragraph)
@@ -32,7 +33,8 @@ describe('snipText', () => {
   })
 
   it('Does snip with JS method', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       const snipText = getSnipText(getMockState(paragraph, 2, 'js'))
 
       snipText(paragraph)
@@ -42,7 +44,8 @@ describe('snipText', () => {
   })
 
   it('Does not snip on undefined method', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       const snipText = getSnipText(getMockState(paragraph, null, 'unknown method'))
 
       snipText(paragraph)

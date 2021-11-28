@@ -8,24 +8,26 @@ describe('addObserver', () => {
   })
 
   it('Adds the observer to the element state', () => {
-    cy.get('[data-cy=paragraph]').then(([el]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       const elementMap = new WeakMap()
       const state = { elementMap, options: defaultOptions }
 
-      elementMap.set(el, {})
+      elementMap.set(paragraph, {})
 
       const snipText = getSnipText(state)
-      expect(state.elementMap.get(el).observer).eq(undefined)
+      expect(state.elementMap.get(paragraph).observer).eq(undefined)
 
-      addObserver(state, snipText, el)
+      addObserver(state, snipText, paragraph)
 
-      expect(state.elementMap.get(el).observer).not.eq(undefined)
-      destroyObserver(state, el)
+      expect(state.elementMap.get(paragraph).observer).not.eq(undefined)
+      destroyObserver(state, paragraph)
     })
   })
 
   it('Snips the element on resize', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       const elementMap = new WeakMap()
       const state = { elementMap, options: defaultOptions }
       elementMap.set(paragraph, {})
@@ -50,7 +52,8 @@ describe('addObserver', () => {
   })
 
   it('Does not snip if the element dimensions did not change', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       const elementMap = new WeakMap()
       const state = { elementMap, options: defaultOptions }
       elementMap.set(paragraph, {})

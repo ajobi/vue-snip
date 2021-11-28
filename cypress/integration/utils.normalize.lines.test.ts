@@ -1,6 +1,7 @@
 import { normalizeMaxLines } from '../../instrumented/utils'
 
 const getMockState = (maxLines) => ({
+  elementMap: new WeakMap(),
   options: {
     maxLines
   }

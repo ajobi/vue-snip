@@ -5,8 +5,8 @@ describe('Vue compatibility', () => {
     cy.visit('./cypress/tests/integration-v2.html')
     expect(true).to.equal(true)
 
-    cy.get('[data-cy=paragraph4]').then(([paragraph]) => {
-      expect(elementLines(paragraph)).to.equal(3)
+    cy.get('[data-cy=paragraph4]').then(($paragraph) => {
+      expect(elementLines($paragraph.get()[0])).to.equal(3)
     })
   })
 
@@ -14,8 +14,8 @@ describe('Vue compatibility', () => {
     cy.visit('./cypress/tests/integration-v3.html')
     expect(true).to.equal(true)
 
-    cy.get('[data-cy=paragraph4]').then(([paragraph]) => {
-      expect(elementLines(paragraph)).to.equal(3)
+    cy.get('[data-cy=paragraph4]').then(($paragraph) => {
+      expect(elementLines($paragraph.get()[0])).to.equal(3)
     })
   })
 })

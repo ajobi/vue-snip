@@ -8,7 +8,8 @@ describe('Directive Inserted', () => {
   })
 
   it('Adds the element to the map', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       const elementMap = new WeakMap()
       const state = { elementMap, options: defaultOptions }
 
@@ -23,7 +24,8 @@ describe('Directive Inserted', () => {
 
   describe('Snips the element', () => {
     it('With CSS method', () => {
-      cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+      cy.get('[data-cy=paragraph]').then(($paragraph) => {
+        const paragraph = $paragraph.get()[0]
         const elementMap = new WeakMap()
         const state = { elementMap, options: defaultOptions }
 
@@ -37,7 +39,8 @@ describe('Directive Inserted', () => {
     })
 
     it('With JS method', () => {
-      cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+      cy.get('[data-cy=paragraph]').then(($paragraph) => {
+        const paragraph = $paragraph.get()[0]
         const elementMap = new WeakMap()
         const state = { elementMap, options: defaultOptions }
 

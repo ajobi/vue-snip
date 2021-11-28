@@ -1,6 +1,7 @@
 import { normalizeSnipMethod } from '../../instrumented/utils'
 
 const getMockState = (snipMethod) => ({
+  elementMap: new WeakMap(),
   options: {
     snipMethod
   }

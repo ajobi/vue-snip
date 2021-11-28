@@ -1,5 +1,6 @@
 import { elementLines } from '../../instrumented/element/element.lines'
 import { snipByCSS } from '../../instrumented/method'
+import { defaultOptions } from '../../instrumented/defaultOptions'
 
 const getMockState = (element, maxLines = 3) => {
   const elementMap = new WeakMap()
@@ -9,6 +10,7 @@ const getMockState = (element, maxLines = 3) => {
   })
 
   return {
+    options: defaultOptions,
     elementMap
   }
 }
@@ -19,7 +21,8 @@ describe('snipByCSS', () => {
   })
 
   it('Snips on negative max lines', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       const oldLines = elementLines(paragraph)
 
       snipByCSS(getMockState(paragraph, -1), paragraph)
@@ -29,7 +32,8 @@ describe('snipByCSS', () => {
   })
 
   it('Snips on zero max lines', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       const oldLines = elementLines(paragraph)
 
       snipByCSS(getMockState(paragraph, 0), paragraph)
@@ -39,7 +43,8 @@ describe('snipByCSS', () => {
   })
 
   it('Snips on 1 max lines', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       snipByCSS(getMockState(paragraph, 1), paragraph)
 
       expect(elementLines(paragraph)).to.equal(1)
@@ -47,7 +52,8 @@ describe('snipByCSS', () => {
   })
 
   it('Snips on 2 max lines', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       snipByCSS(getMockState(paragraph, 2), paragraph)
 
       expect(elementLines(paragraph)).to.equal(2)
@@ -55,7 +61,8 @@ describe('snipByCSS', () => {
   })
 
   it('Does not snip on 10 max lines', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       const oldLines = elementLines(paragraph)
 
       snipByCSS(getMockState(paragraph, 10), paragraph)
@@ -65,7 +72,8 @@ describe('snipByCSS', () => {
   })
 
   it('Maintains the original style attributes', () => {
-    cy.get('[data-cy=paragraph]').then(([paragraph]) => {
+    cy.get('[data-cy=paragraph]').then(($paragraph) => {
+      const paragraph = $paragraph.get()[0]
       const originalColor = paragraph.style.color
 
       snipByCSS(getMockState(paragraph, 2), paragraph)
