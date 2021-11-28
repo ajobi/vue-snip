@@ -154,7 +154,7 @@ describe('Vue Snip', () => {
   })
 
   describe('Compatibility', () => {
-    it('Is compatible with Vue 2', () => {
+    it('Handles Vue 2', () => {
       let directiveResult = null
 
       plugin.install(getVue('2.0.0', (directiveName, directiveOptions) => {
@@ -169,8 +169,7 @@ describe('Vue Snip', () => {
       expect(directiveResult.unbind).not.equal(undefined)
     })
 
-    it('Is compatible with Vue 3', () => {
-      cy.visit('./cypress/tests/integration-v3.html')
+    it('Handles Vue 3', () => {
       let directiveResult = null
 
       plugin.install(getVue('3.0.0', (directiveName, directiveOptions) => {
