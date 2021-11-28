@@ -1,6 +1,7 @@
 import { normalizeMaxLines, normalizeSnipMethod, addObserver } from '../utils/index'
+import { VueSnipState } from '../index'
 
-export const getInserted = (state, snipText) => (el, { value, arg }) => {
+export const getInserted = (state: VueSnipState, snipText) => (el: HTMLElement, { value, arg }) => {
   const { elementMap } = state
 
   const elState = {

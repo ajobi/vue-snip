@@ -1,4 +1,6 @@
-export const addObserver = (state, snipText, el) => {
+import { VueSnipState } from '../index'
+
+export const addObserver = (state: VueSnipState, snipText, el: HTMLElement) => {
   const elState = state.elementMap.get(el)
 
   const observer = elState.observer || new ResizeObserver(() => {

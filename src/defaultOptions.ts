@@ -1,7 +1,10 @@
+export type SnipMethod = 'css' | 'js'
+export type MaxLines = number
+
 export interface SnipOptions {
   directiveName?: string
-  snipMethod?: 'css' | 'js'
-  maxLines?: number
+  snipMethod?: SnipMethod
+  maxLines?: MaxLines
   separators?: string[],
   ellipsis?: string
   debugMode?: boolean
