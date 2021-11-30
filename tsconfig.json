@@ -2,6 +2,6 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "ES2015",
-    "types": ["cypress"]
+    "types": ["cypress", "node"]
   }
 }
