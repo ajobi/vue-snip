@@ -37,7 +37,7 @@ export default ((): Plugin => ({
     }
 
     if (options.debugMode) {
-      globalThis.__VueSnipState = state
+      window.__VueSnipState = state
     }
   }
 }))()

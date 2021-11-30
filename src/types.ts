@@ -27,3 +27,9 @@ export interface VueSnipState {
 }
 
 export type SnipText = (el: HTMLElement) => void
+
+declare global {
+  interface Window {
+    __VueSnipState?: VueSnipState
+  }
+}
