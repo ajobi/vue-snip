@@ -1,4 +1,4 @@
-import { snipByCSS, snipByJS } from '../method/index'
+import { snipByCSS, snipByJS } from '../method'
 import { VueSnipState, SnipText } from '../types'
 
 export const getSnipText = (state: VueSnipState): SnipText => (el) => {

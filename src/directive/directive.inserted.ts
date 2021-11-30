@@ -1,4 +1,4 @@
-import { normalizeMaxLines, normalizeSnipMethod, addObserver } from '../utils/index'
+import { normalizeMaxLines, normalizeSnipMethod, addObserver } from '../utils'
 import { VueSnipState, SnipText } from '../types'
 
 export const getInserted = (state: VueSnipState, snipText: SnipText) => (el: HTMLElement, { value, arg }) => {

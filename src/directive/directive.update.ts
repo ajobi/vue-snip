@@ -1,4 +1,4 @@
-import { addObserver, normalizeMaxLines, normalizeSnipMethod, destroyObserver } from '../utils/index'
+import { addObserver, normalizeMaxLines, normalizeSnipMethod, destroyObserver } from '../utils'
 import { VueSnipState, SnipText } from '../types'
 
 export const getUpdate = (state: VueSnipState, snipText: SnipText) => (el: HTMLElement, { value, arg }) => {

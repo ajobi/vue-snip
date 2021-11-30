@@ -1,5 +1,5 @@
 import { defaultOptions } from './defaultOptions'
-import { getSnipText } from './element/element.snip'
+import { getSnipText } from './element'
 import { getInserted, getUpdate, getUnbind } from './directive'
 import { SnipOptions, VueSnipState } from './types'
 import { Plugin } from 'vue'

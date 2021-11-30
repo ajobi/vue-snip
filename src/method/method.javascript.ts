@@ -1,4 +1,4 @@
-import { elementLines } from '../element/element.lines'
+import { elementLines } from '../element'
 import { VueSnipState } from '../types'
 
 export const snipByJS = (state: VueSnipState, el: HTMLElement) => {
