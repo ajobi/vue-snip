@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "yarn build",
     "lint": "eslint './**/*.{js,ts}'",
+    "lint:fix": "eslint './**/*.{js,ts}' --fix",
     "build": "rollup -c",
     "dev": "NODE_ENV=development rollup -c",
     "es-check": "es-check es5 dist/*.js",
@@ -22,7 +23,10 @@
     "dist/"
   ],
   "dependencies": {
-    "js-snip": "^1.0.0-beta.4"
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "js-snip": "^1.0.0-beta.4",
+    "prettier": "^2.5.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
