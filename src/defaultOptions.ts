@@ -8,5 +8,5 @@ export const defaultOptions: SnipOptions = {
   ellipsis: '.\u200A.\u200A.',
   debugMode: false,
   exposeSnipFunction: false,
-  snipFunctionName: 'snipText'
+  snipFunctionName: 'snipText',
 }

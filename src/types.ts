@@ -5,7 +5,7 @@ export interface SnipOptions {
   directiveName?: string
   snipMethod?: SnipMethod
   maxLines?: MaxLines
-  separators?: string[],
+  separators?: string[]
   ellipsis?: string
   debugMode?: boolean
   exposeSnipFunction?: boolean

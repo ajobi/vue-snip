@@ -4,10 +4,10 @@ import { SnipOptions } from './types'
 import { Plugin } from 'vue'
 
 export default ((): Plugin => ({
-  install (Vue, options: SnipOptions) {
+  install(Vue, options: SnipOptions) {
     options = {
       ...defaultOptions,
-      ...options
+      ...options,
     }
 
     const inserted = getInserted()
@@ -19,7 +19,7 @@ export default ((): Plugin => ({
     Vue.directive(options.directiveName, {
       [isVue3 ? 'mounted' : 'inserted']: inserted,
       [isVue3 ? 'updated' : 'update']: update,
-      [isVue3 ? 'unmounted' : 'unbind']: unbind
+      [isVue3 ? 'unmounted' : 'unbind']: unbind,
     })
-  }
+  },
 }))()

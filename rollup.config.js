@@ -11,7 +11,7 @@ const plugins = [
   nodeResolve({ extensions: ['.ts'] }),
   babel({ babelHelpers: 'bundled', extensions: ['.ts'] }),
   terser(),
-  ...(process.env.NODE_ENV === 'development' ? [serve({ port: 3000, contentBase: 'docs', open: true })] : [])
+  ...(process.env.NODE_ENV === 'development' ? [serve({ port: 3000, contentBase: 'docs', open: true })] : []),
 ]
 
 export default () => [
@@ -21,22 +21,22 @@ export default () => [
       {
         file: pkg.main,
         format: 'umd',
-        name: 'VueSnip'
+        name: 'VueSnip',
       },
       {
         file: pkg.main.replace('dist', 'docs'),
         format: 'umd',
-        name: 'VueSnip'
-      }
+        name: 'VueSnip',
+      },
     ],
-    plugins: plugins
+    plugins: plugins,
   },
   {
     input,
     output: {
       file: pkg.types,
-      format: 'esm'
+      format: 'esm',
     },
-    plugins: [dts()]
-  }
+    plugins: [dts()],
+  },
 ]

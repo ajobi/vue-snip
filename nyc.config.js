@@ -1,3 +1,3 @@
 module.exports = {
-  extends: '@istanbuljs/nyc-config-typescript'
+  extends: '@istanbuljs/nyc-config-typescript',
 }
