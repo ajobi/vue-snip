@@ -1,9 +1,5 @@
-import { destroyObserver } from '../utils'
-import { VueSnipState } from '../types'
+import { unsnip } from 'js-snip'
 
-export const getUnbind = (state: VueSnipState) => (el: HTMLElement) => {
-  const { elementMap } = state
-
-  destroyObserver(state, el)
-  elementMap.delete(el)
+export const getUnbind = () => (el: HTMLElement) => {
+  unsnip(el)
 }

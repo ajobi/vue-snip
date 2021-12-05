@@ -1,18 +1,5 @@
-import { addObserver, normalizeMaxLines, normalizeSnipMethod, destroyObserver } from '../utils'
-import { VueSnipState, SnipText } from '../types'
+import { snip } from 'js-snip'
 
-export const getUpdate = (state: VueSnipState, snipText: SnipText) => (el: HTMLElement, { value, arg }) => {
-  const elState = state.elementMap.get(el)
-
-  const prevMaxlines = elState.maxLines
-  const prevMethod = elState.snipMethod
-
-  elState.maxLines = normalizeMaxLines(state, value)
-  elState.snipMethod = normalizeSnipMethod(state, arg)
-
-  const needsObserver = elState.snipMethod === 'js'
-  needsObserver && typeof ResizeObserver !== 'undefined' ? addObserver(state, snipText, el) : destroyObserver(state, el)
-
-  const needsSnipping = (prevMaxlines !== elState.maxLines) || (prevMethod !== elState.snipMethod && elState.snipMethod === 'css')
-  needsSnipping && snipText(el)
+export const getUpdate = () => (el: HTMLElement, { value, arg }) => {
+  snip(el, { maxLines: value, method: arg })
 }

@@ -1,7 +1,6 @@
 import { defaultOptions } from './defaultOptions'
-import { getSnipText } from './element'
 import { getInserted, getUpdate, getUnbind } from './directive'
-import { SnipOptions, VueSnipState } from './types'
+import { SnipOptions } from './types'
 import { Plugin } from 'vue'
 
 export default ((): Plugin => ({
@@ -11,16 +10,9 @@ export default ((): Plugin => ({
       ...options
     }
 
-    const elementMap = new WeakMap()
-    const state: VueSnipState = {
-      elementMap,
-      options
-    }
-
-    const snipText = getSnipText(state)
-    const inserted = getInserted(state, snipText)
-    const update = getUpdate(state, snipText)
-    const unbind = getUnbind(state)
+    const inserted = getInserted()
+    const update = getUpdate()
+    const unbind = getUnbind()
 
     const isVue3 = parseFloat(Vue.version[0]) > 2
 
@@ -29,15 +21,5 @@ export default ((): Plugin => ({
       [isVue3 ? 'updated' : 'update']: update,
       [isVue3 ? 'unmounted' : 'unbind']: unbind
     })
-
-    if (options.exposeSnipFunction) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      Vue.prototype[`$${options.snipFunctionName}`] = snipText
-    }
-
-    if (options.debugMode) {
-      window.__VueSnipState = state
-    }
   }
 }))()
