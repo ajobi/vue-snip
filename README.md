@@ -12,8 +12,6 @@ Vue.js directive that clamps the content of a text element if it exceeds the spe
 * two snipping approaches (CSS / JavaScript) picked on a per-element basis
 * no need to specify line heights
 * re-snipping on element resize and reactive data change
-* no dependencies (small and fast)
-
 
 ![](assets/illustration.png)
 
