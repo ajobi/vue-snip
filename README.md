@@ -148,30 +148,7 @@ Vue.use(VueSnip, options)
 
 ## How it works
 
-- **CSS** approach is based on the `-webkit-line-clamp`.
-- **JavaScript** approach is based on the progressive cutting of the element's `innerText` in a loop.
-
-*Note: CSS approach is faster (preferred), but does not work in older browsers / in all situations (f.e. does not work in IE11, when you need the text to flow around a floated element, or when you want a custom ellipsis). The idea is to allow you to freely pick the approach on a per-element basis.*
-
-### Caveats
-
-For the directive to be able to determine the number of lines / hide the text-overflow properly, the height of the element should be the same as the height of the text. Be wary of any CSS steps that will affect the height of the element. Some of the common examples:
-* vertical paddings
-* fixed height / fixed min-height
-* making the element a flex-item (flex container's `align-items` defaults to `stretch`)
-* making the element height grow with the `flex-grow` in the column flex layout.
-
-*Note: You can still use the directive with flexbox, just make sure to change the default `align-items` / `align-self` value to `flex-start` or whatever fits your case.*
-
-## IE11 Support
-
-IE11 does not support `-webkit-line-clamp` (falls back to the JS method), and the `ResizeObserver API`. This API needs to be polyfilled if you want to re-snip the elements on the resize in IE11 (they would still get snipped when inserted / on data change without the polyfill). Recommended: [@juggle/resize-observer](https://www.npmjs.com/package/@juggle/resize-observer)
-
-``` javascript
-import { ResizeObserver as Polyfill } from '@juggle/resize-observer';
- 
-window.ResizeObserver = window.ResizeObserver || Polyfill;
-```
+The library uses [js-snip](https://www.npmjs.com/package/js-snip) under the hood. You can find more about how snipping works in its [documentation](https://github.com/ajobi/js-snip#how-it-works).
 
 ## Change Log
 All changes are documented in the [change log](https://github.com/ajobi/vue-snip/blob/master/CHANGELOG.md).
