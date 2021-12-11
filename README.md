@@ -94,30 +94,6 @@ Both of these are reactive so you can do even this:
 </script>
 ```
 
-Elements are automatically re-snipped when they get resized or when reactive data changes. If you need to re-snip an element in some different case, you can expose the snipping function to your Vue instances via the `exposeSnipFunction` options property and snip the element manually as needed:
-
-``` html
-<template>
-  <p v-snip:js="3" :class={ 'big-font-size': bigFontSize } ref="paragraph"> ... </p>
-</template>
-
-<script>
-  export default {
-    data () {
-      return {
-        bigFontSize: false,
-      }
-    }
-    mounted () {
-      setTimeout(() => {
-        this.bigFontSize = true
-        this.$nextTick(() => this.$snipText(this.$refs.paragraph))
-      }, 2000)
-    }
-  }
-</script>
-```
-
 ## Options
 
 Your options will get merged with the defaults, so just define what you want to change (no need to redefine all properties).
@@ -142,9 +118,6 @@ Vue.use(VueSnip, options)
 | maxLines | `3` | Global max lines. Will be used for the element if no explicit `maxLines` value is passed in for that element. |
 | separators | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` of the element into chunks and find the snipped text in an effective way. *Note: Property only applies to the JS approach.* |
 | ellipsis | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Property only applies to the JS approach. You cannot change the ellipsis when using the CSS method.* |
-| debugMode | `false` | Exposes directive state as the `window.__VueSnipState` |
-| exposeSnipFunction | `false` | Exposes the internal snip function ((el: Element) => void) as the instance property via `Vue.prototype`. |
-| snipFunctionName | `'snipText'` | The name of the exposed instance property. Gets prefixed with `$` (f.e. `this.$snipText`). |
 
 ## How it works
 
