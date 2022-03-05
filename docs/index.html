@@ -43,6 +43,10 @@
               <input id="input-snip" type="checkbox" v-model="isSnipped">
               <i class="form-icon"></i> Snip the card text
             </label>
+            <label for="input-more" class="form-checkbox">
+              <input id="input-more" type="checkbox" v-model="hasReadMore" :disabled="!isSnipped">
+              <i class="form-icon"></i> Show read more
+            </label>
             <label for="input-float" class="form-checkbox">
               <input id="input-float" type="checkbox" v-model="floatElement">
               <i class="form-icon"></i> Show floated element
@@ -59,6 +63,7 @@
           <div v-if="floatElement" class="float-element bg-gray"></div>
           <p v-if="isSnipped" v-snip="{ lines, mode }" ref="paragraph">{{ displayText }}</p>
           <p v-else>{{ displayText }}</p>
+          <button class="btn btn-primary mt-2" v-if="hasReadMore && isSnipped && hasEllipsis" @click="isSnipped = false">Read more</button>
         </div>
         <div class="card-footer" v-if="tip">
           <span class="toast toast-primary" ><i>{{ tip }}</i></span>
@@ -78,6 +83,8 @@
             mode: 'css',
             floatElement: false,
             width: 500,
+            hasReadMore: true,
+            hasEllipsis: true
           }
         },
         computed: {
