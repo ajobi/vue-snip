@@ -20,12 +20,12 @@
       <h1 class="h1">vue-snip</h1>
       <div class="form-horizontal">
         <div class="form-group">
-          <label for="input-maxlines" class="form-label col-5">Max lines:</label>
-          <input id="input-maxlines" type="number" v-model="maxLines" class="form-input col-7" :disabled="!isSnipped">
+          <label for="input-lines" class="form-label col-5">Max lines:</label>
+          <input id="input-lines" type="number" v-model="lines" class="form-input col-7" :disabled="!isSnipped">
         </div>
         <div class="form-group">
-          <label for="input-method" class="form-label col-5">Snipping method:</label>
-          <select id="input-method" v-model="method" class="form-select col-7" :disabled="!isSnipped">
+          <label for="input-mode" class="form-label col-5">Snipping mode:</label>
+          <select id="input-mode" v-model="mode" class="form-select col-7" :disabled="!isSnipped">
             <option>css</option>
             <option>js</option>
           </select>
@@ -57,7 +57,7 @@
         </div>
         <div class="card-body">
           <div v-if="floatElement" class="float-element bg-gray"></div>
-          <p v-if="isSnipped" v-snip="{ lines: maxLines, mode: method }" ref="paragraph">{{ displayText }}</p>
+          <p v-if="isSnipped" v-snip="{ lines, mode }" ref="paragraph">{{ displayText }}</p>
           <p v-else>{{ displayText }}</p>
         </div>
         <div class="card-footer" v-if="tip">
@@ -74,8 +74,8 @@
         data: function() {
           return {
             isSnipped: true,
-            maxLines: 7,
-            method: 'css',
+            lines: 7,
+            mode: 'css',
             floatElement: false,
             width: 500,
           }
@@ -94,16 +94,16 @@
               CSS.supports('-webkit-line-clamp', '3') &&
               CSS.supports('-webkit-box-orient', 'vertical'))
 
-            if (this.method === 'css' && isCSSUnsupported) {
-              return 'Warning: The CSS method is not supported in this browser and automatically falls back to the JS method.'
+            if (this.mode === 'css' && isCSSUnsupported) {
+              return 'Warning: The CSS mode is not supported in this browser and automatically falls back to the JS mode.'
             }
 
-            if (this.method === 'css' && this.floatElement) {
-              return 'Tip: The CSS method cannot make the text flow around the floated element. Switch to the JS method for a better effect.'
+            if (this.mode === 'css' && this.floatElement) {
+              return 'Tip: The CSS mode cannot make the text flow around the floated element. Switch to the JS mode for a better effect.'
             }
 
-            if (this.method === 'js' && !this.floatElement && !isCSSUnsupported) {
-              return "Tip: You might be better off with the more performant CSS method if you don't use floats (or don't have other use case where the JS method would be required)."
+            if (this.mode === 'js' && !this.floatElement && !isCSSUnsupported) {
+              return "Tip: You might be better off with the more performant CSS mode if you don't use floats (or don't have other use case where the JS mode would be required)."
             }
           },
           code: function () {
@@ -112,12 +112,12 @@
             if (this.isSnipped) {
               directive = ' v-snip'
 
-              if (this.method !== '') {
-                directive = directive + ':' + this.method
+              if (this.mode !== '') {
+                directive = directive + ':' + this.mode
               }
 
-              if (this.maxLines !== '') {
-                directive = directive + '=' + this.maxLines
+              if (this.lines !== '') {
+                directive = directive + '=' + this.lines
               }
             }
 
