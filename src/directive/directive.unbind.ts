@@ -1,5 +1,5 @@
 import { unsnip } from 'js-snip'
 
-export const getUnbind = () => (el: HTMLElement) => {
+export const unbind = (el: HTMLElement) => {
   unsnip(el)
 }

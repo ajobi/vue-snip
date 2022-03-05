@@ -1,3 +1,3 @@
-export { getInserted } from './directive.inserted'
-export { getUpdate } from './directive.update'
-export { getUnbind } from './directive.unbind'
+export { inserted } from './directive.inserted'
+export { update } from './directive.update'
+export { unbind } from './directive.unbind'

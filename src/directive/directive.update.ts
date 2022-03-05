@@ -1,7 +1,5 @@
 import { snip } from 'js-snip'
 
-export const getUpdate =
-  () =>
-  (el: HTMLElement, { value, arg }) => {
-    snip(el, { lines: value, mode: arg })
-  }
+export const update = (el: HTMLElement, { value, arg }) => {
+  snip(el, { lines: value, mode: arg })
+}
