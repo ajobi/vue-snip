@@ -57,7 +57,7 @@
         </div>
         <div class="card-body">
           <div v-if="floatElement" class="float-element bg-gray"></div>
-          <p v-if="snip" v-snip:[method]="maxLines" ref="paragraph">{{ displayText }}</p>
+          <p v-if="snip" v-snip="{ lines: maxLines, mode: method }" ref="paragraph">{{ displayText }}</p>
           <p v-else>{{ displayText }}</p>
         </div>
         <div class="card-footer" v-if="tip">
