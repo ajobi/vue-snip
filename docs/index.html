@@ -21,11 +21,11 @@
       <div class="form-horizontal">
         <div class="form-group">
           <label for="input-maxlines" class="form-label col-5">Max lines:</label>
-          <input id="input-maxlines" type="number" v-model="maxLines" class="form-input col-7" :disabled="!snip">
+          <input id="input-maxlines" type="number" v-model="maxLines" class="form-input col-7" :disabled="!isSnipped">
         </div>
         <div class="form-group">
           <label for="input-method" class="form-label col-5">Snipping method:</label>
-          <select id="input-method" v-model="method" class="form-select col-7" :disabled="!snip">
+          <select id="input-method" v-model="method" class="form-select col-7" :disabled="!isSnipped">
             <option>css</option>
             <option>js</option>
           </select>
@@ -40,7 +40,7 @@
           <div class="form-label col-5">Other options: </div>
           <div class="col-7">
             <label for="input-snip" class="form-checkbox">
-              <input id="input-snip" type="checkbox" v-model="snip">
+              <input id="input-snip" type="checkbox" v-model="isSnipped">
               <i class="form-icon"></i> Snip the card text
             </label>
             <label for="input-float" class="form-checkbox">
@@ -57,7 +57,7 @@
         </div>
         <div class="card-body">
           <div v-if="floatElement" class="float-element bg-gray"></div>
-          <p v-if="snip" v-snip="{ lines: maxLines, mode: method }" ref="paragraph">{{ displayText }}</p>
+          <p v-if="isSnipped" v-snip="{ lines: maxLines, mode: method }" ref="paragraph">{{ displayText }}</p>
           <p v-else>{{ displayText }}</p>
         </div>
         <div class="card-footer" v-if="tip">
@@ -73,7 +73,7 @@
         el: '#demo',
         data: function() {
           return {
-            snip: true,
+            isSnipped: true,
             maxLines: 7,
             method: 'css',
             floatElement: false,
@@ -85,7 +85,7 @@
             return 'Vue (pronounced /vjuː/, like view) is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries.'
           },
           tip: function () {
-            if (!this.snip) {
+            if (!this.isSnipped) {
               return null
             }
 
@@ -109,7 +109,7 @@
           code: function () {
             let directive = ''
 
-            if (this.snip) {
+            if (this.isSnipped) {
               directive = ' v-snip'
 
               if (this.method !== '') {
