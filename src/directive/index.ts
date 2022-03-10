@@ -1,3 +1,3 @@
-export { inserted } from './inserted'
-export { update } from './update'
-export { unbind } from './unbind'
+export { mounted } from './mounted'
+export { updated } from './updated'
+export { unmounted } from './unmounted'

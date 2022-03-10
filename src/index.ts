@@ -1,4 +1,4 @@
-import { inserted, update, unbind } from './directive'
+import { mounted, updated, unmounted } from './directive'
 import { Plugin } from 'vue'
 
 export default ((): Plugin => ({
@@ -6,9 +6,9 @@ export default ((): Plugin => ({
     const isVue3 = parseFloat(Vue.version[0]) > 2
 
     Vue.directive('snip', {
-      [isVue3 ? 'mounted' : 'inserted']: inserted,
-      [isVue3 ? 'updated' : 'update']: update,
-      [isVue3 ? 'unmounted' : 'unbind']: unbind,
+      [isVue3 ? 'mounted' : 'inserted']: mounted,
+      [isVue3 ? 'updated' : 'update']: updated,
+      [isVue3 ? 'unmounted' : 'unbind']: unmounted,
     })
   },
 }))()
