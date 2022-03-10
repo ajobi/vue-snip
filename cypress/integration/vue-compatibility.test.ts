@@ -1,4 +1,4 @@
-import { elementLines } from '../../instrumented/element/element.lines'
+import { getLines } from 'js-snip'
 
 describe('Vue compatibility', () => {
   it('Works with Vue 2', () => {
@@ -6,7 +6,7 @@ describe('Vue compatibility', () => {
     expect(true).to.equal(true)
 
     cy.get('[data-cy=paragraph4]').then(($paragraph) => {
-      expect(elementLines($paragraph.get()[0])).to.equal(3)
+      expect(getLines($paragraph.get()[0])).to.equal(3)
     })
   })
 
@@ -15,7 +15,7 @@ describe('Vue compatibility', () => {
     expect(true).to.equal(true)
 
     cy.get('[data-cy=paragraph4]').then(($paragraph) => {
-      expect(elementLines($paragraph.get()[0])).to.equal(3)
+      expect(getLines($paragraph.get()[0])).to.equal(3)
     })
   })
 })

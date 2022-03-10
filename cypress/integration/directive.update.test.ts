@@ -1,7 +1,7 @@
+import { getLines } from 'js-snip'
 import { getSnipText } from '../../instrumented/element/element.snip'
 import { getUpdate } from '../../instrumented/directive'
 import { defaultOptions } from '../../instrumented/defaultOptions'
-import { elementLines } from '../../instrumented/element/element.lines'
 import { destroyObserver } from '../../instrumented/utils'
 
 describe('Directive Update', () => {
@@ -44,16 +44,16 @@ describe('Directive Update', () => {
       elementMap.set(paragraph, { fullText: paragraph.textContent })
 
       update(paragraph, { value: 3, arg: 'js' })
-      expect(elementLines(paragraph)).equal(3)
+      expect(getLines(paragraph)).equal(3)
 
       update(paragraph, { value: 4, arg: 'css' })
-      expect(elementLines(paragraph)).equal(4)
+      expect(getLines(paragraph)).equal(4)
 
       update(paragraph, { value: 4, arg: 'css' })
-      expect(elementLines(paragraph)).equal(4)
+      expect(getLines(paragraph)).equal(4)
 
       update(paragraph, { value: 4, arg: 'js' })
-      expect(elementLines(paragraph)).equal(4)
+      expect(getLines(paragraph)).equal(4)
 
       destroyObserver(state, paragraph)
     })
