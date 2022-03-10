@@ -12,3 +12,5 @@ export default ((): Plugin => ({
     })
   },
 }))()
+
+export * from './types'
