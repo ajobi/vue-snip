@@ -119,21 +119,11 @@
             }
           },
           code: function () {
-            let directive = ''
-
             if (this.isSnipped) {
-              directive = ' v-snip'
-
-              if (this.mode !== '') {
-                directive = directive + ':' + this.mode
-              }
-
-              if (this.lines !== '') {
-                directive = directive + '=' + this.lines
-              }
+              return '<p v-snip="{ lines: ' + this.lines + ', mode: "' + this.mode + '" }">{{ text }}</p>'
+            } else {
+              return '<p>{{ text }}</p>'
             }
-
-            return '<p' + directive + '>{{ text }}</p>'
           },
         },
       });
