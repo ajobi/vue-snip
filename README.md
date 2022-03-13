@@ -51,52 +51,52 @@ createApp(App).use(VueSnip).mount('#app')
 
 ## Usage
 
-The most basic usage looks like this:
-
-``` html
+```vue
+<!-- minimal example -->
 <template>
   <p v-snip> ... </p>
 </template>
 ```
 
-Most of the time, you probably need to pass in the `maxLines` value:
-
-``` html
+```vue
+<!-- with options -->
 <template>
-  <p v-snip="3"> ... </p>
+  <p v-snip="{ lines: 3 }"> ... </p>
 </template>
 ```
 
-You can also pass in the snipping `method` argument:
-
-``` html
+```vue
+<!-- with several options -->
 <template>
-  <p v-snip:js="3"> ... </p>
+  <p v-snip="{ lines: 3, mode: 'js', midWord: false }"> ... </p>
 </template>
 ```
 
-Both of these are reactive so you can do even this:
-
-``` html
+```vue
+<!-- with options and callback -->
 <template>
-  <p v-snip:[method]="maxLines"> ... </p>
+  <p v-snip="{ lines: 3, onSnipped }"> ... </p>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        method: 'js',
-        maxLines: 3
-      }
+export default {
+  data () {
+    return {
+      hasEllipsis: false,
+    }
+  },
+  methods: {
+    onSnipped (newState) {
+      this.hasEllipsis = newState.hasEllipsis
     }
   }
+}
 </script>
 ```
 
 ## How it works
 
-The library uses [js-snip](https://www.npmjs.com/package/js-snip) under the hood. You can find more about how snipping works in its [documentation](https://github.com/ajobi/js-snip#how-it-works).
+The library uses [js-snip](https://www.npmjs.com/package/js-snip) under the hood. You can find more about the options and how snipping works in its [documentation](https://github.com/ajobi/js-snip#how-it-works).
 
 ## Change Log
 All changes are documented in the [change log](https://github.com/ajobi/vue-snip/blob/master/CHANGELOG.md).
