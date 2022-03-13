@@ -94,31 +94,6 @@ Both of these are reactive so you can do even this:
 </script>
 ```
 
-## Options
-
-Your options will get merged with the defaults, so just define what you want to change (no need to redefine all properties).
-
-``` javascript
-import Vue from 'vue'
-import VueSnip from 'vue-snip'
-
-const options = {
-  // your setup
-}
-
-Vue.use(VueSnip, options)
-```
-
-#### The options object:
-
-| Property | Default | Description |
-| --- | --- | --- |
-| directiveName | `'snip'` | The name of the directive in your templates. Gets prefixed with `v-` (f.e. `v-snip`). |
-| snipMethod | `'css'` | Global snipping approach. Will be used for the element if no explicit `method` argument is passed in for that element. Should equal `'css'` or `'js'`. |
-| maxLines | `3` | Global max lines. Will be used for the element if no explicit `maxLines` value is passed in for that element. |
-| separators | `['. ', ', ', ' ', '']` | Used internally to split the `innerText` of the element into chunks and find the snipped text in an effective way. *Note: Property only applies to the JS approach.* |
-| ellipsis | `'.\u200A.\u200A.'` | A character or a group of characters displayed at the end of the snipped text. *Note: Property only applies to the JS approach. You cannot change the ellipsis when using the CSS method.* |
-
 ## How it works
 
 The library uses [js-snip](https://www.npmjs.com/package/js-snip) under the hood. You can find more about how snipping works in its [documentation](https://github.com/ajobi/js-snip#how-it-works).
