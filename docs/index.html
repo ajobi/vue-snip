@@ -61,7 +61,7 @@
         </div>
         <div class="card-body">
           <div v-if="floatElement" class="float-element bg-gray"></div>
-          <p v-if="isSnipped" v-snip="{ lines, mode, onSnipped }" ref="paragraph">{{ displayText }}</p>
+          <p v-if="isSnipped" v-snip="{ lines: lines, mode: mode, onSnipped: onSnipped }">{{ displayText }}</p>
           <p v-else>{{ displayText }}</p>
           <button class="btn btn-primary mt-2" v-if="hasReadMore && isSnipped && hasEllipsis" @click="isSnipped = false">Read more</button>
         </div>
