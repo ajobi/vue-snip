@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 2.0.0
+
+:package: [js-snip](https://www.npmjs.com/package/js-snip) used for snipping
+
+*Breaking Change: Directive API changed to mirror the js-snip API*
+
+
 ## 1.3.0
 
 :package: Typescript support added
