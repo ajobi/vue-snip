@@ -2,6 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/ajobi/vue-snip)
 ![GitHub issues](https://img.shields.io/github/issues/ajobi/vue-snip)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/vue-snip)
 
 Vue.js directive that clamps the content of a text element if it exceeds the specified number of lines.
