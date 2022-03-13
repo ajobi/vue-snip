@@ -1,21 +1,39 @@
 import { getLines } from 'js-snip'
 
 describe('Vue compatibility', () => {
-  it('Works with Vue 2', () => {
-    cy.visit('./cypress/tests/integration-v2.html')
-    expect(true).to.equal(true)
+  describe('Vue 2', () => {
+    beforeEach(() => {
+      cy.visit('./cypress/tests/integration-v2.html')
+    })
 
-    cy.get('[data-cy=paragraph4]').should(($paragraph) => {
-      expect(getLines($paragraph.get()[0])).to.equal(3)
+    it('Works in CSS mode', () => {
+      cy.get('[data-cy=paragraph1]').should(($paragraph) => {
+        expect(getLines($paragraph.get()[0])).to.equal(2)
+      })
+    })
+
+    it('Works in JS mode', () => {
+      cy.get('[data-cy=paragraph2]').should(($paragraph) => {
+        expect(getLines($paragraph.get()[0])).to.equal(2)
+      })
     })
   })
 
-  it('Works with Vue 3', () => {
-    cy.visit('./cypress/tests/integration-v3.html')
-    expect(true).to.equal(true)
+  describe('Vue 3', () => {
+    beforeEach(() => {
+      cy.visit('./cypress/tests/integration-v3.html')
+    })
 
-    cy.get('[data-cy=paragraph4]').should(($paragraph) => {
-      expect(getLines($paragraph.get()[0])).to.equal(3)
+    it('Works in CSS mode', () => {
+      cy.get('[data-cy=paragraph1]').should(($paragraph) => {
+        expect(getLines($paragraph.get()[0])).to.equal(2)
+      })
+    })
+
+    it('Works in JS mode', () => {
+      cy.get('[data-cy=paragraph2]').should(($paragraph) => {
+        expect(getLines($paragraph.get()[0])).to.equal(2)
+      })
     })
   })
 })
