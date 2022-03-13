@@ -14,8 +14,7 @@
     "test:run": "yarn instrument && yarn build && cypress run --browser chrome",
     "test": "yarn test:run && yarn coverage && yarn es-check",
     "instrument": "nyc instrument src instrumented",
-    "coverage": "npx nyc report --reporter=text --reporter=text-summary",
-    "coveralls": "npx nyc report --reporter=text-lcov | coveralls"
+    "coverage": "npx nyc report --reporter=text --reporter=text-summary"
   },
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -34,7 +33,6 @@
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
-    "coveralls": "^3.1.0",
     "cypress": "^9.1.0",
     "es-check": "^6.1.1",
     "eslint": "^7.32.0",
