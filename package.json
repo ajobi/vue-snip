@@ -25,6 +25,7 @@
     "js-snip": "^1.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-typescript": "^7.16.0",
     "@cypress/code-coverage": "^3.8.1",
@@ -33,7 +34,7 @@
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
-    "cypress": "^9.1.0",
+    "cypress": "^12.5.1",
     "es-check": "^6.1.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
