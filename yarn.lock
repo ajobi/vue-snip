@@ -4290,10 +4290,10 @@ js-levenshtein@^1.1.3:
   resolved "https://registry.npmjs.org/js-levenshtein/-/js-levenshtein-1.1.6.tgz"
   integrity sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==
 
-js-snip@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/js-snip/-/js-snip-1.1.0.tgz"
-  integrity sha512-/gE/ZinFdGu3OmWd+iEfvI18uA/M5ZbsrvOfj3+6YNywRLnq5Pn4I+BR5J9Zbvz4osPG8m671PuLtkZAXQAXhw==
+js-snip@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/js-snip/-/js-snip-1.2.0.tgz#fd3daf3a31abee98a284d94e64b669d1c8bee526"
+  integrity sha512-zGBNAM0xTHPNWXxwQipjER1sAvHYaXy8aOOV1EuOEErhyB+gLv+j/OZbhUvaGG5sMoCK8CsHD0ZX3UpgKTk05g==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
