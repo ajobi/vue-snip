@@ -22,7 +22,7 @@
     "dist/"
   ],
   "dependencies": {
-    "js-snip": "^1.1.0"
+    "js-snip": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
