@@ -18,4 +18,5 @@ export default ((): Plugin => ({
   },
 }))()
 
+// test comment
 export * from './types'
