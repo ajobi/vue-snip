@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 2.0.2
+
+:wrench: Fixes undefined textContent error in the updated hook ([#39](https://github.com/ajobi/vue-snip/pull/39))
+
 ## 2.0.1
 
 :wrench: Fixes directive not updating the text correctly ([#25](https://github.com/ajobi/vue-snip/issues/25))
