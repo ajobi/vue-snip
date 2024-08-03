@@ -56,7 +56,7 @@
   "homepage": "https://github.com/ajobi/vue-snip",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ajobi/vue-snip"
+    "url": "git+https://github.com/ajobi/vue-snip.git"
   },
   "keywords": [
     "clamp",
